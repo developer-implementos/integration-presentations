@@ -64,12 +64,12 @@ Vamos a ver los criterios de decisión.
 
 ### Criterios de Decisión
 
-<table style="font-size: 0.7em;">
+<table style="font-size: 0.7em; width: 100%; border-collapse: separate; border-spacing: 15px 5px;">
 <thead>
 <tr>
-<th>Criterio</th>
-<th>Managed</th>
-<th>Self-Hosted</th>
+<th style="text-align: left; padding-right: 40px;">Criterio</th>
+<th style="text-align: left; padding-right: 40px;">Managed</th>
+<th style="text-align: left;">Self-Hosted</th>
 </tr>
 </thead>
 <tbody>
@@ -185,7 +185,7 @@ Vamos a ver por qué.
 
 <div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Firestore</h4>
 
 **Ventajas:**
@@ -202,7 +202,7 @@ Vamos a ver por qué.
 - ❌ Vendor lock-in (GCP)
 </div>
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>MongoDB</h4>
 
 **Ventajas:**
@@ -274,7 +274,7 @@ Es un Redis managed de GCP.
 
 <div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Memorystore</h4>
 
 **Ventajas:**
@@ -291,7 +291,7 @@ Es un Redis managed de GCP.
 - ❌ Limited modules
 </div>
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Redis</h4>
 
 **Ventajas:**
@@ -383,7 +383,7 @@ Es el sistema de mensajería managed de GCP.
 
 <div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Pub/Sub</h4>
 
 **Ventajas:**
@@ -398,7 +398,7 @@ Es el sistema de mensajería managed de GCP.
 - ❌ Vendor lock-in
 </div>
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Kafka</h4>
 
 **Ventajas:**
@@ -491,9 +491,9 @@ Es contenedores sin servidores que administrar.
 
 ### Cloud Run vs Compute Engine
 
-<div style="display: flex; justify-content: space-around;">
+<div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Cloud Run (Nuestra elección)</h4>
 
 **Ventajas:**
@@ -511,7 +511,7 @@ Es contenedores sin servidores que administrar.
 - ❌ Límite de request timeout (60 min max)
 </div>
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Compute Engine</h4>
 
 **Ventajas:**
@@ -658,9 +658,9 @@ Es una de las decisiones más obvias - nunca self-host secrets.
 
 ### Secret Manager vs Alternativas
 
-<div style="display: flex; justify-content: space-around;">
+<div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Secret Manager (Nuestra elección)</h4>
 
 **Ventajas:**
@@ -676,7 +676,7 @@ Es una de las decisiones más obvias - nunca self-host secrets.
 - ❌ Costo por secret y por access
 </div>
 
-<div style="width: 45%;">
+<div style="width: 45%; text-align: left;">
 <h4>Alternativas</h4>
 
 **HashiCorp Vault (self-hosted):**
@@ -842,12 +842,16 @@ Es la forma recomendada por Google para CI/CD.
 
 ### Service Accounts por País
 
+<div style="font-size: 0.7em;">
+
 | Ambiente | Chile | Perú |
 |----------|-------|------|
 | **Terraform QA** | sa-terraform-qa-chile | sa-terraform-qa-peru |
 | **Terraform PROD** | sa-terraform-prod-chile | sa-terraform-prod-peru |
 | **Deploy QA** | sa-deploy-qa-chile | sa-deploy-qa-peru |
 | **Deploy PROD** | sa-deploy-prod-chile | sa-deploy-prod-peru |
+
+</div>
 
 > **Principio**: Zero cross-environment access
 
@@ -875,6 +879,8 @@ Estos son números aproximados para nuestro caso de uso.
 
 ### Breakdown de Costos Mensuales
 
+<div style="font-size: 0.65em;">
+
 | Servicio | Configuración | Costo Mensual | Alternativa Self-Hosted | Ahorro |
 |----------|---------------|---------------|------------------------|--------|
 | **Firestore** | 100GB, 10M reads, 5M writes | ~$150 | MongoDB (n1-standard-2) | -$100 |
@@ -888,6 +894,8 @@ Estos son números aproximados para nuestro caso de uso.
 **Total Managed:** ~$355/mes
 **Total Self-Hosted:** ~$100/mes
 **Diferencia:** ~$255/mes (~3x más caro)
+
+</div>
 
 Note:
 Sí, que GCP administre es ~3x más caro que administrar nosotros.
@@ -942,6 +950,8 @@ ROI es obvio: pagamos $255 para ahorrar $5,400.
 
 ## 📊 Resumen de Decisiones
 
+<div style="font-size: 0.7em;">
+
 | Servicio | Decisión | Razón Principal |
 |----------|----------|-----------------|
 | **Database** | Firestore | MongoDB API, zero ops, auto-scaling |
@@ -953,6 +963,8 @@ ROI es obvio: pagamos $255 para ahorrar $5,400.
 **Filosofía:** Preferir managed para enfocarnos en features, no en infraestructura.
 
 **Exit strategy:** Firestore usa MongoDB wire protocol → podemos migrar a MongoDB Atlas/self-hosted sin cambiar código.
+
+</div>
 
 Note:
 Este es el resumen de todas nuestras decisiones.
