@@ -385,32 +385,32 @@ No necesitas ver todo de una vez. Sigue el path según tu rol y necesidades.
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 700px; margin: 30px auto;">
 
 <div style="background: #1e293b; padding: 15px 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace;">→</kbd>
+<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace; min-width: 45px; text-align: center;">→</kbd>
 <span style="color: #94a3b8; font-size: 0.8em;">Siguiente slide</span>
 </div>
 
 <div style="background: #1e293b; padding: 15px 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace;">←</kbd>
+<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace; min-width: 45px; text-align: center;">←</kbd>
 <span style="color: #94a3b8; font-size: 0.8em;">Slide anterior</span>
 </div>
 
 <div style="background: #1e293b; padding: 15px 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace;">↓</kbd>
+<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace; min-width: 45px; text-align: center;">↓</kbd>
 <span style="color: #94a3b8; font-size: 0.8em;">Profundizar tema</span>
 </div>
 
 <div style="background: #1e293b; padding: 15px 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace;">Esc</kbd>
+<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace; min-width: 45px; text-align: center;">Esc</kbd>
 <span style="color: #94a3b8; font-size: 0.8em;">Vista general</span>
 </div>
 
 <div style="background: #1e293b; padding: 15px 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace;">S</kbd>
+<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace; min-width: 45px; text-align: center;">S</kbd>
 <span style="color: #94a3b8; font-size: 0.8em;">Speaker notes</span>
 </div>
 
 <div style="background: #1e293b; padding: 15px 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace;">F</kbd>
+<kbd style="background: #334155; padding: 8px 12px; border-radius: 6px; font-family: monospace; min-width: 45px; text-align: center;">F</kbd>
 <span style="color: #94a3b8; font-size: 0.8em;">Pantalla completa</span>
 </div>
 
