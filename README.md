@@ -27,7 +27,7 @@ Presentaciones autocontenidas, listas para usar:
 | **Testing Patterns** | [testing-patterns.md](presentations/testing-patterns.md) | Todos | ~60 min |
 | **Clean Architecture** | [clean-architecture.md](presentations/clean-architecture.md) | Todos | ~45 min |
 | **Angular Moderno** | [angular-moderno.md](presentations/angular-moderno.md) | Frontend | ~60 min |
-| **Por Qué Monolito Modular** | [why-modular-monolith.md](presentations/why-modular-monolith.md) | Todos | ~20 min |
+| **Platform Architecture** | [platform-architecture.md](presentations/platform-architecture.md) | Todos | ~45 min |
 | **Patrones Enterprise** | [enterprise-patterns.md](presentations/enterprise-patterns.md) | Avanzados | ~45 min |
 | **Infraestructura GCP** | [infrastructure-gcp.md](presentations/infrastructure-gcp.md) | DevOps/Architects | ~30 min |
 
@@ -170,9 +170,9 @@ npx reveal-md presentations/core-monorepo-overview.md --theme night
 
 ---
 
-#### Por Qué Monolito Modular
+#### Platform Architecture
 
-Justificación arquitectónica y comparación con microservicios.
+Monolito Modular vs Microservicios: justificación arquitectónica.
 
 **Contenido:**
 - Comparación detallada: Microservicios vs Monolito Modular
@@ -183,10 +183,11 @@ Justificación arquitectónica y comparación con microservicios.
 - Depuración y trazabilidad
 - Resiliencia de red
 - Mantenibilidad
+- Cuándo SÍ usar Microservicios
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/why-modular-monolith.md --theme night
+npx reveal-md presentations/platform-architecture.md --theme night
 ```
 
 ---
@@ -323,7 +324,7 @@ integration-presentations/
 │   ├── testing-patterns.md        # Testing
 │   ├── clean-architecture.md      # Las 5 capas
 │   ├── angular-moderno.md         # Angular 21 Signals
-│   ├── why-modular-monolith.md    # Justificación (~20 min)
+│   ├── platform-architecture.md   # Monolito vs Microservicios (~45 min)
 │   ├── enterprise-patterns.md     # Patrones avanzados (~45 min)
 │   └── infrastructure-gcp.md      # Infra GCP (~30 min)
 │
