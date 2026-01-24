@@ -780,16 +780,25 @@ graph TB
         PROD_PE[PROD Peru]
     end
 
+    subgraph "España"
+        QA_ES[QA España]
+        PROD_ES[PROD España]
+    end
+
     CI --> DEPLOY
     DEPLOY -->|workflow_dispatch| QA_CL
     DEPLOY -->|workflow_dispatch| PROD_CL
     DEPLOY -->|workflow_dispatch| QA_PE
     DEPLOY -->|workflow_dispatch| PROD_PE
+    DEPLOY -->|workflow_dispatch| QA_ES
+    DEPLOY -->|workflow_dispatch| PROD_ES
 
     style QA_CL fill:#f1c40f
     style PROD_CL fill:#2ecc71
     style QA_PE fill:#f1c40f
     style PROD_PE fill:#2ecc71
+    style QA_ES fill:#f1c40f
+    style PROD_ES fill:#2ecc71
 ```
 
 **Características**:
