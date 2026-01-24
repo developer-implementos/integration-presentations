@@ -357,16 +357,37 @@ graph TB
     style E fill:#2ecc71
 ```
 
-**Standard Tier:**
-- 1 primary + 1 replica (cross-zone)
-- Failover automático en <30 segundos
-- Backups diarios automáticos
-- 99.9% SLA
-
 Note:
 Usamos Memorystore Standard Tier que nos da alta disponibilidad.
+Arquitectura simple: Cloud Run Services se conectan via VPC Connector al Primary Redis.
+El Primary hace replicación automática al Standby y backups automáticos a Cloud Storage.
+
+----
+
+<!-- .slide: data-background="#0f3460" -->
+
+### Standard Tier
+
+<div style="font-size: 0.9em; text-align: left; max-width: 700px; margin: 0 auto;">
+
+| Característica | Detalle |
+|----------------|---------|
+| **Réplicas** | 1 primary + 1 replica (cross-zone) |
+| **Failover** | Automático en <30 segundos |
+| **Backups** | Diarios automáticos |
+| **SLA** | 99.9% disponibilidad |
+
+</div>
+
+<br>
+
+> **Costo:** ~$50/mes para instancia M1 (5GB)
+
+Note:
 Hay un primary y un replica en zonas diferentes.
 Si el primary falla, el replica se promociona automáticamente en <30 segundos.
+Los backups son automáticos y van a Cloud Storage.
+No tenemos que configurar nada de esto - GCP lo maneja.
 Los backups son automáticos y van a Cloud Storage.
 No tenemos que configurar nada de esto - GCP lo maneja.
 
@@ -733,16 +754,35 @@ const mongoUri = version.payload.data.toString();
 // Audit log registra el acceso
 ```
 
-**Ventajas:**
-- No API keys en código
-- Workload Identity usa service account de Cloud Run
-- Audit logs rastrean todo acceso
-- Secrets versionados (rollback fácil)
+Note:
+Así accedemos secrets desde código.
+No necesitamos API keys - Cloud Run usa su service account para acceder secrets via Workload Identity.
+El código es simple y seguro.
+
+----
+
+<!-- .slide: data-background="#0f3460" -->
+
+### Ventajas de Secret Manager
+
+<div style="font-size: 0.9em; text-align: left; max-width: 700px; margin: 0 auto;">
+
+| Ventaja | Descripción |
+|---------|-------------|
+| **No API keys** | El código no contiene credenciales |
+| **Workload Identity** | Cloud Run usa su service account |
+| **Audit logs** | Cada acceso queda registrado |
+| **Versionado** | Rollback fácil si algo falla |
+
+</div>
+
+<br>
+
+> **Costo:** ~$5/mes para 50 secrets con 1M accesos
 
 Note:
 Secret Manager se integra con Workload Identity.
-No necesitamos API keys - Cloud Run usa su service account para acceder secrets.
-Cada acceso queda registrado en audit logs.
+Cada acceso queda registrado en audit logs - compliance friendly.
 Los secrets están versionados - si rotamos un secret y algo falla, hacemos rollback fácil.
 
 ---
