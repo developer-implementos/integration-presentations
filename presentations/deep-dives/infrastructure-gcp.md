@@ -520,7 +520,7 @@ Es contenedores sin servidores que administrar.
 
 ### Cloud Run vs Compute Engine
 
-> **Ventajas**
+**Ventajas**
 
 <div style="display: flex; justify-content: space-between; font-size: 0.75em;">
 
@@ -558,7 +558,7 @@ Solo hacemos `gcloud run deploy` y GCP maneja todo.
 
 ### Cloud Run vs Compute Engine
 
-> **Desventajas**
+**Desventajas**
 
 <div style="display: flex; justify-content: space-between; font-size: 0.75em;">
 
@@ -931,12 +931,16 @@ Es la forma recomendada por Google para CI/CD.
 
 ### Beneficios de Workload Identity
 
+<div style="font-size: 0.75em; max-width: 600px; margin: 0 auto;">
+
 | Beneficio | Descripción |
 |-----------|-------------|
 | **Sin secretos estáticos** | No hay JSON keys que puedan filtrarse |
 | **Tokens corta duración** | Expiran al terminar el job |
 | **Auditoría completa** | Cada acceso queda registrado |
 | **Rotación automática** | Sin intervención manual |
+
+</div>
 
 Note:
 Sin secretos estáticos significa que no hay nada que robar.
