@@ -328,34 +328,34 @@ Redis es crítico para performance - no queremos que falle porque olvidamos conf
 
 ### Arquitectura Memorystore
 
+<div class="mermaid-container" style="max-height: 450px; overflow: hidden;">
+
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
-graph TB
-    subgraph "Cloud Run Services"
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}, 'flowchart': {'useMaxWidth': true}}}%%
+graph LR
+    subgraph SERVICES["Cloud Run Services"]
         A[integration-api]
         B[notif-worker]
         C[report-worker]
     end
 
-    subgraph "Memorystore Redis"
-        D[Primary Redis]
-        E[Replica Standby]
+    subgraph REDIS["Memorystore Redis"]
+        D[Primary]
+        E[Replica]
     end
 
-    subgraph "Backup"
-        F[Cloud Storage]
-    end
+    F[(Cloud Storage)]
 
-    A -->|VPC Connector| D
-    B -->|VPC Connector| D
-    C -->|VPC Connector| D
-
-    D -->|Auto Failover| E
-    D -->|Auto Backup| F
+    A & B & C -->|VPC| D
+    D -->|Failover| E
+    D -->|Backup| F
 
     style D fill:#3498db
     style E fill:#2ecc71
+    style F fill:#9b59b6
 ```
+
+</div>
 
 Note:
 Usamos Memorystore Standard Tier que nos da alta disponibilidad.
@@ -518,44 +518,29 @@ Es contenedores sin servidores que administrar.
 
 <!-- .slide: data-background="#1a1a2e" -->
 
-### Cloud Run vs Compute Engine
+### Cloud Run vs Compute Engine - Ventajas
 
 <div style="display: flex; justify-content: space-between; font-size: 0.75em;">
 
 <div style="width: 48%; text-align: left;">
-<h4>Cloud Run</h4>
+<h4>Cloud Run ✅</h4>
 
-**Ventajas:**
-- ✅ Serverless (no VMs que administrar)
-- ✅ Escala a cero (costo cero en idle)
-- ✅ Escala automático (0 → 1000+ instancias)
-- ✅ Pay-per-request (no pagar idle time)
-- ✅ Deploy con un comando
-- ✅ Blue/green deployment automático
-- ✅ Traffic splitting built-in
-
-**Desventajas:**
-- ❌ Cold starts (~500ms-2s)
-- ❌ Límite de memoria (8GB max)
-- ❌ Límite de request timeout (60 min max)
+- Serverless (no VMs que administrar)
+- Escala a cero (costo cero en idle)
+- Escala automático (0 → 1000+ instancias)
+- Pay-per-request (no pagar idle time)
+- Deploy con un comando
+- Blue/green deployment automático
+- Traffic splitting built-in
 </div>
 
 <div style="width: 48%; text-align: left;">
-<h4>Compute Engine</h4>
+<h4>Compute Engine ✅</h4>
 
-**Ventajas:**
-- ✅ No cold starts
-- ✅ Memoria ilimitada (hasta 12TB)
-- ✅ Long-running processes (sin timeout)
-- ✅ Control total del OS
-
-**Desventajas:**
-- ❌ Administrar VMs (patches, updates)
-- ❌ Configurar auto-scaling
-- ❌ Configurar load balancer
-- ❌ Pagar por VMs idle
-- ❌ Configurar health checks
-- ❌ Deploys más complejos
+- No cold starts
+- Memoria ilimitada (hasta 12TB)
+- Long-running processes (sin timeout)
+- Control total del OS
 </div>
 
 </div>
@@ -564,9 +549,43 @@ Note:
 Cloud Run es perfecto para APIs web y workers.
 No administramos VMs, no configuramos auto-scaling, no configuramos load balancers.
 Solo hacemos `gcloud run deploy` y GCP maneja todo.
+
+----
+
+<!-- .slide: data-background="#0f3460" -->
+
+### Cloud Run vs Compute Engine - Desventajas
+
+<div style="display: flex; justify-content: space-between; font-size: 0.75em;">
+
+<div style="width: 48%; text-align: left;">
+<h4>Cloud Run ❌</h4>
+
+- Cold starts (~500ms-2s)
+- Límite de memoria (8GB max)
+- Límite de request timeout (60 min max)
+</div>
+
+<div style="width: 48%; text-align: left;">
+<h4>Compute Engine ❌</h4>
+
+- Administrar VMs (patches, updates)
+- Configurar auto-scaling
+- Configurar load balancer
+- Pagar por VMs idle
+- Configurar health checks
+- Deploys más complejos
+</div>
+
+</div>
+
+> **Conclusión:** Cloud Run gana para nuestro caso de uso
+
+Note:
+Los cold starts de Cloud Run son aceptables (~500ms).
+Para Compute Engine, el overhead operacional es alto.
 Escala automáticamente de 0 a 1000 instancias según el traffic.
 Cuando no hay traffic, escala a cero y no pagamos nada.
-Los cold starts son aceptables para nuestra use case (~500ms).
 
 ----
 
@@ -658,10 +677,30 @@ spec:
             memory: 2Gi
 ```
 
-**Estrategia:**
-- Mantener `minScale: 1` en producción (elimina cold starts)
-- Cost: ~$50/mes por tener 1 instancia siempre warm
-- Benefit: Zero cold starts, respuestas <100ms
+Note:
+Configuramos minScale y maxScale para controlar el auto-scaling.
+minScale: 1 mantiene siempre una instancia warm.
+maxScale: 100 limita el escalado máximo.
+
+----
+
+<!-- .slide: data-background="#16213e" -->
+
+### Estrategia de Mitigación
+
+<div style="font-size: 0.9em; text-align: left; max-width: 700px; margin: 0 auto;">
+
+| Config | Valor | Efecto |
+|--------|-------|--------|
+| **minScale** | 1 | Elimina cold starts |
+| **maxScale** | 100 | Limita escalado |
+| **Costo** | ~$50/mes | 1 instancia warm 24/7 |
+
+</div>
+
+<br>
+
+> **Resultado:** Zero cold starts, respuestas <100ms
 
 Note:
 Los cold starts de Cloud Run pueden ser ~500ms-2s.
@@ -765,7 +804,7 @@ El código es simple y seguro.
 
 ### Ventajas de Secret Manager
 
-<div style="font-size: 0.9em; text-align: left; max-width: 700px; margin: 0 auto;">
+<div style="font-size: 0.7em; text-align: left; max-width: 550px; margin: 0 auto;">
 
 | Ventaja | Descripción |
 |---------|-------------|
@@ -775,8 +814,6 @@ El código es simple y seguro.
 | **Versionado** | Rollback fácil si algo falla |
 
 </div>
-
-<br>
 
 > **Costo:** ~$5/mes para 50 secrets con 1M accesos
 
@@ -862,34 +899,19 @@ Los colores muestran: amarillo para QA, verde para producción.
 ### Workload Identity Federation
 
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
-flowchart TB
-    subgraph GH["🔧 GitHub Actions"]
-        RUNNER["Runner<br/>Job en ejecución"]
-    end
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}, 'flowchart': {'useMaxWidth': true}}}%%
+flowchart LR
+    GH["🔧 GitHub<br/>Runner"] -->|"🔐 OIDC"| WIF["IAM Workload<br/>Identity Pool"]
+    WIF -->|"✅ Impersonate"| SA["Service Account<br/>(sin keys)"]
+    SA -->|"🚀 Deploy"| RES["Cloud Run / Pub/Sub<br/>Secret Manager"]
 
-    subgraph GCP["☁️ Google Cloud Platform"]
-        WIF["IAM Workload<br/>Identity Pool"]
-        SA["Service Account<br/>(sin JSON keys)"]
-    end
-
-    RUNNER -->|"🔐 OIDC Token"| WIF
-    WIF -->|"✅ Impersonate"| SA
-    SA -->|"🚀 Deploy"| RESOURCES["Cloud Run<br/>Pub/Sub<br/>Secret Manager"]
-
-    style GH fill:#24292e,stroke:#58a6ff,stroke-width:2px
-    style GCP fill:#1a73e8,stroke:#4285f4,stroke-width:2px
-    style RUNNER fill:#238636,stroke:#3fb950
-    style WIF fill:#f9ab00,stroke:#fbbc04
-    style SA fill:#34a853,stroke:#5bb974
-    style RESOURCES fill:#673ab7,stroke:#9575cd
+    style GH fill:#238636,stroke:#3fb950,stroke-width:2px
+    style WIF fill:#f9ab00,stroke:#fbbc04,stroke-width:2px
+    style SA fill:#34a853,stroke:#5bb974,stroke-width:2px
+    style RES fill:#673ab7,stroke:#9575cd,stroke-width:2px
 ```
 
-**Beneficios:**
-- ✅ Sin secretos estáticos
-- ✅ Tokens de corta duración
-- ✅ Auditoría completa
-- ✅ Rotación automática
+> **Zero secrets** - Autenticación via OIDC sin JSON keys
 
 Note:
 Este es un patrón de seguridad moderno para CI/CD.
@@ -899,7 +921,24 @@ No hay secretos estáticos que puedan filtrarse.
 Los tokens duran solo lo que dura el job - segundos o minutos.
 Es la forma recomendada por Google para CI/CD.
 
-> Zero secrets - Autenticación via OIDC
+----
+
+<!-- .slide: data-background="#0f3460" data-background-transition="fade" -->
+
+### Beneficios de Workload Identity
+
+| Beneficio | Descripción |
+|-----------|-------------|
+| **Sin secretos estáticos** | No hay JSON keys que puedan filtrarse |
+| **Tokens corta duración** | Expiran al terminar el job |
+| **Auditoría completa** | Cada acceso queda registrado |
+| **Rotación automática** | Sin intervención manual |
+
+Note:
+Sin secretos estáticos significa que no hay nada que robar.
+Los tokens duran segundos - si alguien los intercepta, ya expiraron.
+Audit logs para compliance y seguridad.
+Rotación automática sin downtime.
 
 ----
 
@@ -973,35 +1012,103 @@ $255/mes extra es MUCHO más barato que el tiempo del equipo.
 
 <!-- .slide: data-background="#16213e" -->
 
-### ROI: Managed vs Self-Hosted
+### ROI: Self-Hosted ❌
 
-```text
-Escenario: Equipo de 3 developers full-stack
+> Escenario: Equipo de 3 developers full-stack
 
-=== Self-Hosted ===
-Infraestructura:        $100/mes
-Tiempo ops (20% x 3):   $6,000/mes  (20% de $10k/dev x 3)
-Total:                  $6,100/mes
+<div style="display: flex; justify-content: space-between; font-size: 0.8em;">
 
-Problemas:
+<div style="width: 48%; text-align: left;">
+
+**Costos Mensuales:**
+
+| Concepto | Costo |
+|----------|-------|
+| Infraestructura | $100 |
+| Tiempo ops (20% x 3 devs) | $6,000 |
+| **Total** | **$6,100/mes** |
+
+</div>
+
+<div style="width: 48%; text-align: left;">
+
+**Problemas:**
 - Oncall para DB issues
 - Tiempo configurando Kafka
 - Debuggear Redis failover
 - Aplicar patches MongoDB
 
-=== Managed ===
-Infraestructura:        $355/mes
-Tiempo ops (2% x 3):    $600/mes    (2% de $10k/dev x 3)
-Total:                  $955/mes
+</div>
 
-Beneficios:
+</div>
+
+Note:
+Self-hosted parece barato en infraestructura, pero el tiempo del equipo es el costo real.
+20% del tiempo de 3 developers = $6,000/mes en tiempo perdido.
+
+----
+
+<!-- .slide: data-background="#0f3460" -->
+
+### ROI: Managed ✅
+
+> Escenario: Equipo de 3 developers full-stack
+
+<div style="display: flex; justify-content: space-between; font-size: 0.8em;">
+
+<div style="width: 48%; text-align: left;">
+
+**Costos Mensuales:**
+
+| Concepto | Costo |
+|----------|-------|
+| Infraestructura | $355 |
+| Tiempo ops (2% x 3 devs) | $600 |
+| **Total** | **$955/mes** |
+
+</div>
+
+<div style="width: 48%; text-align: left;">
+
+**Beneficios:**
 - GCP maneja ops
-- Equipo enfocado en funcionalidades
+- Equipo enfocado en features
 - Menos context switching
 - Menos riesgo de outages
 
-AHORRO: $5,145/mes con managed services
-```
+</div>
+
+</div>
+
+Note:
+Managed cuesta más en infraestructura pero ahorra tiempo del equipo.
+Solo 2% del tiempo en monitoreo básico = $600/mes.
+
+----
+
+<!-- .slide: data-background="#1a1a2e" -->
+
+### Conclusión ROI
+
+<div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px;">
+
+<div style="background: #e74c3c; padding: 20px 30px; border-radius: 12px; text-align: center;">
+<p style="font-size: 0.7em; margin: 0; color: #fca5a5;">Self-Hosted</p>
+<p style="font-size: 1.8em; margin: 10px 0; font-weight: bold;">$6,100</p>
+<p style="font-size: 0.6em; margin: 0; color: #fca5a5;">/mes</p>
+</div>
+
+<div style="background: #27ae60; padding: 20px 30px; border-radius: 12px; text-align: center;">
+<p style="font-size: 0.7em; margin: 0; color: #a7f3d0;">Managed</p>
+<p style="font-size: 1.8em; margin: 10px 0; font-weight: bold;">$955</p>
+<p style="font-size: 0.6em; margin: 0; color: #a7f3d0;">/mes</p>
+</div>
+
+</div>
+
+<p style="font-size: 1.2em; margin-top: 40px; color: #2ecc71; font-weight: bold;">
+Ahorro: $5,145/mes con managed services
+</p>
 
 Note:
 Este es el cálculo real que importa.
