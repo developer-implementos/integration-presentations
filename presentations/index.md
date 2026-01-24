@@ -9,7 +9,7 @@ revealOptions:
   progress: true
   center: true
   hash: true
-  navigationMode: grid
+  navigationMode: default
 ---
 
 <!-- .slide: data-background="linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)" -->
@@ -338,36 +338,36 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 ## 🗺️ Learning Path
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 40px; flex-wrap: wrap;">
+<div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 40px; flex-wrap: nowrap;">
 
-<div style="background: #3b82f6; padding: 15px 25px; border-radius: 12px; text-align: center;">
-<span style="font-size: 1.5em;">📅</span>
-<p style="margin: 5px 0 0 0; font-size: 0.8em; font-weight: bold;">Semana 1</p>
-<p style="margin: 0; font-size: 0.6em; color: #bfdbfe;">Onboarding</p>
+<div style="background: #3b82f6; padding: 10px 15px; border-radius: 10px; text-align: center;">
+<span style="font-size: 1.1em;">📅</span>
+<p style="margin: 3px 0 0 0; font-size: 0.65em; font-weight: bold;">Semana 1</p>
+<p style="margin: 0; font-size: 0.5em; color: #bfdbfe;">Onboarding</p>
 </div>
 
-<span style="font-size: 1.5em; color: #475569;">→</span>
+<span style="font-size: 1em; color: #475569;">→</span>
 
-<div style="background: #8b5cf6; padding: 15px 25px; border-radius: 12px; text-align: center;">
-<span style="font-size: 1.5em;">📅</span>
-<p style="margin: 5px 0 0 0; font-size: 0.8em; font-weight: bold;">Semana 2</p>
-<p style="margin: 0; font-size: 0.6em; color: #ddd6fe;">Arquitectura</p>
+<div style="background: #8b5cf6; padding: 10px 15px; border-radius: 10px; text-align: center;">
+<span style="font-size: 1.1em;">📅</span>
+<p style="margin: 3px 0 0 0; font-size: 0.65em; font-weight: bold;">Semana 2</p>
+<p style="margin: 0; font-size: 0.5em; color: #ddd6fe;">Arquitectura</p>
 </div>
 
-<span style="font-size: 1.5em; color: #475569;">→</span>
+<span style="font-size: 1em; color: #475569;">→</span>
 
-<div style="background: #10b981; padding: 15px 25px; border-radius: 12px; text-align: center;">
-<span style="font-size: 1.5em;">📅</span>
-<p style="margin: 5px 0 0 0; font-size: 0.8em; font-weight: bold;">Semana 3-4</p>
-<p style="margin: 0; font-size: 0.6em; color: #a7f3d0;">Enterprise</p>
+<div style="background: #10b981; padding: 10px 15px; border-radius: 10px; text-align: center;">
+<span style="font-size: 1.1em;">📅</span>
+<p style="margin: 3px 0 0 0; font-size: 0.65em; font-weight: bold;">Semana 3-4</p>
+<p style="margin: 0; font-size: 0.5em; color: #a7f3d0;">Enterprise</p>
 </div>
 
-<span style="font-size: 1.5em; color: #475569;">→</span>
+<span style="font-size: 1em; color: #475569;">→</span>
 
-<div style="background: #f59e0b; padding: 15px 25px; border-radius: 12px; text-align: center;">
-<span style="font-size: 1.5em;">📅</span>
-<p style="margin: 5px 0 0 0; font-size: 0.8em; font-weight: bold;">Semana 5+</p>
-<p style="margin: 0; font-size: 0.6em; color: #fef3c7;">Deep Dives</p>
+<div style="background: #f59e0b; padding: 10px 15px; border-radius: 10px; text-align: center;">
+<span style="font-size: 1.1em;">📅</span>
+<p style="margin: 3px 0 0 0; font-size: 0.65em; font-weight: bold;">Semana 5+</p>
+<p style="margin: 0; font-size: 0.5em; color: #fef3c7;">Deep Dives</p>
 </div>
 
 </div>
@@ -430,14 +430,14 @@ Elige una categoría y empieza tu aprendizaje
 
 <div style="display: flex; justify-content: center; gap: 15px; margin-top: 40px;">
 <a href="onboarding/core-monorepo-overview.html" style="text-decoration: none;">
-<div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); padding: 15px 30px; border-radius: 25px; font-weight: bold;">
+<div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); padding: 15px 30px; border-radius: 25px; font-weight: bold; color: #fff;">
 ▶️ Empezar Onboarding
 </div>
 </a>
 </div>
 
-<p style="color: #475569; font-size: 0.6em; margin-top: 50px;">
-Presiona <kbd style="background: #334155; padding: 2px 6px; border-radius: 4px;">Esc</kbd> para ver el mapa completo
+<p style="color: #94a3b8; font-size: 0.6em; margin-top: 50px;">
+Presiona <kbd style="background: #334155; padding: 2px 6px; border-radius: 4px; color: #fff;">Esc</kbd> para ver el mapa completo
 </p>
 
 </div>
