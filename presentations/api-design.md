@@ -427,7 +427,7 @@ export class ProductsController {
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 const config = new DocumentBuilder()
-  .setTitle('Core API')
+  .setTitle('Integration API')
   .setDescription('API de integracion para el sistema core')
   .setVersion('1.0')
   .addBearerAuth()

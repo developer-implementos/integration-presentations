@@ -1,6 +1,6 @@
 # Presentaciones de Integración
 
-Material de capacitación para developers del equipo Core API y partners de integración.
+Material de capacitación para developers del equipo Integration API y partners de integración.
 
 ## Quick Start
 
@@ -11,6 +11,26 @@ npx reveal-md presentations/developer-workflow.md --theme night
 # Abrir en puerto específico
 npx reveal-md presentations/developer-workflow.md --theme night --port 3000
 ```
+
+## 📚 Training Hub
+
+El **[Training Hub](presentations/index.md)** es el punto de entrada principal con todas las presentaciones organizadas por categoría y learning paths:
+
+```bash
+# Abrir el Training Hub
+npx reveal-md presentations/index.md --theme night
+```
+
+| Categoría | Presentaciones | Tiempo Total | Audiencia |
+|-----------|----------------|--------------|-----------|
+| 🎯 **Onboarding** | Monorepo, Local Dev, Workflow, CI/CD | ~2.5h | Nuevos developers |
+| 🏗️ **Arquitectura** | Clean Architecture, Platform, Testing | ~2.5h | Todos |
+| 🛡️ **Resiliencia & Ops** | Resiliencia, Observabilidad, Event-Driven, Seguridad | ~2h | Todos |
+| 🔬 **Deep Dives** | Patrones Avanzados, Case Study, Infra GCP | ~1.5h | Avanzados |
+
+> **Recomendado:** Usa el Training Hub para una experiencia de navegación visual con cards y learning paths.
+
+---
 
 ## Presentaciones Disponibles
 
@@ -26,9 +46,15 @@ Presentaciones autocontenidas, listas para usar:
 | **CI/CD Pipeline** | [cicd-pipeline.md](presentations/cicd-pipeline.md) | Todos | ~45 min |
 | **Testing Patterns** | [testing-patterns.md](presentations/testing-patterns.md) | Todos | ~60 min |
 | **Clean Architecture** | [clean-architecture.md](presentations/clean-architecture.md) | Todos | ~45 min |
-| **Angular Moderno** | [angular-moderno.md](presentations/angular-moderno.md) | Frontend | ~60 min |
+| **Angular Moderno** | [modern-angular.md](presentations/modern-angular.md) | Frontend | ~60 min |
 | **Platform Architecture** | [platform-architecture.md](presentations/platform-architecture.md) | Todos | ~45 min |
-| **Patrones Enterprise** | [enterprise-patterns.md](presentations/enterprise-patterns.md) | Avanzados | ~45 min |
+| **Resiliencia** | [resilience.md](presentations/resilience.md) | Todos | ~30 min |
+| **Observabilidad** | [observability.md](presentations/observability.md) | Todos | ~30 min |
+| **Event-Driven** | [event-driven.md](presentations/event-driven.md) | Todos | ~30 min |
+| **Seguridad** | [security.md](presentations/security.md) | Todos | ~30 min |
+| **Patrones Avanzados** | [advanced-patterns.md](presentations/advanced-patterns.md) | Avanzados | ~30 min |
+| **Caso de Estudio: Notificaciones** | [case-study-notifications.md](presentations/case-study-notifications.md) | Avanzados | ~45 min |
+| **Metricas y Roadmap** | [project-metrics.md](presentations/project-metrics.md) | Todos | ~30 min |
 | **Infraestructura GCP** | [infrastructure-gcp.md](presentations/infrastructure-gcp.md) | DevOps/Architects | ~30 min |
 
 ### Descripcion de Cada Presentacion
@@ -147,7 +173,7 @@ Angular 21 con Signals - muy diferente al Angular clasico.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/angular-moderno.md --theme night
+npx reveal-md presentations/modern-angular.md --theme night
 ```
 
 ---
@@ -192,24 +218,128 @@ npx reveal-md presentations/platform-architecture.md --theme night
 
 ---
 
-#### Patrones Enterprise
+#### Resiliencia
 
-Patrones avanzados de aplicación, caso de estudio completo y métricas del proyecto.
+Patrones para sistemas que NO se caen.
 
 **Contenido:**
-- Facade Pattern (ADR-0002)
-- Circuit Breaker y políticas de resiliencia
-- Observability (logging, health checks, SRE)
-- Security patterns
-- Transactional Outbox Pattern
-- Event-Driven Architecture (Pub/Sub patterns)
-- Caching avanzado y Feature Flags
-- Caso de Estudio: Sistema de Notificaciones
-- Métricas y Roadmap del proyecto
+- Circuit Breaker (Cockatiel)
+- Timeout Pattern
+- Retry con Exponential Backoff
+- Bulkhead Pattern
+- Composicion de politicas
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/enterprise-patterns.md --theme night
+npx reveal-md presentations/resilience.md --theme night
+```
+
+---
+
+#### Observabilidad
+
+Los tres pilares para operar sistemas en produccion.
+
+**Contenido:**
+- Logging estructurado con Pino
+- Metricas con OpenTelemetry
+- Traces distribuidos
+- Health Checks
+- Error Budget (SRE)
+
+**Levantar:**
+```bash
+npx reveal-md presentations/observability.md --theme night
+```
+
+---
+
+#### Event-Driven
+
+Comunicacion asincrona entre modulos via Cloud Pub/Sub.
+
+**Contenido:**
+- Por que Event-Driven
+- Transactional Outbox Pattern
+- Idempotencia
+- Dead Letter Queue
+- Topics disponibles
+
+**Levantar:**
+```bash
+npx reveal-md presentations/event-driven.md --theme night
+```
+
+---
+
+#### Seguridad
+
+Defense in Depth: Multiples capas de proteccion.
+
+**Contenido:**
+- Autenticacion (JWT + API Keys)
+- Autorizacion (RBAC)
+- Rate Limiting (3 niveles)
+- Input Validation
+- Data Redaction
+
+**Levantar:**
+```bash
+npx reveal-md presentations/security.md --theme night
+```
+
+---
+
+#### Patrones Avanzados
+
+Caching avanzado y Feature Flags.
+
+**Contenido:**
+- Stampede Protection
+- Write-Through Cache
+- Cache Coherence
+- Feature Flags
+- Kill-Switch Pattern
+
+**Levantar:**
+```bash
+npx reveal-md presentations/advanced-patterns.md --theme night
+```
+
+---
+
+#### Caso de Estudio: Notificaciones
+
+Sistema completo que aplica todos los patrones.
+
+**Contenido:**
+- Arquitectura del sistema
+- Flujo de errores y retry
+- DLQ vs PERMANENTLY_FAILED
+- Stuck Recovery
+- Runbook de troubleshooting
+
+**Levantar:**
+```bash
+npx reveal-md presentations/case-study-notifications.md --theme night
+```
+
+---
+
+#### Metricas y Roadmap
+
+Estado actual del proyecto y planes futuros.
+
+**Contenido:**
+- Performance actual (latencia, uptime)
+- Cobertura de tests
+- Load Testing con k6
+- RFCs completados y en desarrollo
+- Como participar en RFCs
+
+**Levantar:**
+```bash
+npx reveal-md presentations/project-metrics.md --theme night
 ```
 
 ---
@@ -267,9 +397,11 @@ Dia 3-5: Practica con componentes del admin
 ### Semana 4: Enterprise Patterns
 
 ```text
-Dia 1-2: Patrones Enterprise (Facade, Circuit Breaker, Outbox)
-Dia 3:   Caso de Estudio: Notificaciones
-Dia 4-5: Aplicar patrones en features propias
+Dia 1:   Resiliencia (Circuit Breaker, Retry, Timeout)
+Dia 2:   Observabilidad (Logs, Metricas, Traces)
+Dia 3:   Event-Driven + Seguridad
+Dia 4:   Patrones Avanzados (Caching, Feature Flags)
+Dia 5:   Caso de Estudio: Notificaciones
 ```
 
 ### Semana 5+: Deep Dives
@@ -317,16 +449,23 @@ integration-presentations/
 │   └── images/                    # Screenshots y diagramas
 │
 ├── presentations/                 # Slides reveal.js
+│   ├── index.md                   # 🌟 Training Hub (punto de entrada)
 │   ├── core-monorepo-overview.md  # Índice (~30 min)
 │   ├── local-development.md       # Setup entorno (DIA 1)
 │   ├── developer-workflow.md      # Workflow diario
 │   ├── cicd-pipeline.md           # Pipeline CI/CD
 │   ├── testing-patterns.md        # Testing
 │   ├── clean-architecture.md      # Las 5 capas
-│   ├── angular-moderno.md         # Angular 21 Signals
-│   ├── platform-architecture.md   # Monolito vs Microservicios (~45 min)
-│   ├── enterprise-patterns.md     # Patrones avanzados (~45 min)
-│   └── infrastructure-gcp.md      # Infra GCP (~30 min)
+│   ├── modern-angular.md         # Angular 21 Signals
+│   ├── platform-architecture.md   # Monolito vs Microservicios
+│   ├── resilience.md             # Circuit Breaker, Retry, etc.
+│   ├── observability.md          # Logs, Metricas, Traces
+│   ├── event-driven.md            # Pub/Sub, Outbox
+│   ├── security.md               # Auth, RBAC, Rate Limiting
+│   ├── advanced-patterns.md       # Caching, Feature Flags
+│   ├── case-study-notifications.md # Caso de estudio completo
+│   ├── project-metrics.md         # Metricas y Roadmap
+│   └── infrastructure-gcp.md      # Infra GCP
 │
 └── dist/                          # Build estático (generado)
 ```

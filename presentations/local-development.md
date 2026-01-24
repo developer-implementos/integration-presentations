@@ -111,13 +111,13 @@ cd core
 pnpm install
 
 # 3. Copiar archivo de entorno
-cp apps/core-api/.env.example apps/core-api/.env.dev
+cp apps/integration-api/.env.example apps/integration-api/.env.dev
 
 # 4. Levantar servicios con Docker
 docker compose up -d mongo-db redis
 
 # 5. Verificar que todo funciona
-pnpm nx serve core-api
+pnpm nx serve integration-api
 
 # API corriendo en http://localhost:3000
 # Swagger en http://localhost:3000/api/docs
@@ -166,7 +166,7 @@ open http://localhost:3000/api/docs
 %%{init: {'theme': 'dark'}}%%
 flowchart LR
     subgraph LOCAL["Tu Maquina"]
-        API["core-api\n:3000"]
+        API["integration-api\n:3000"]
         ADMIN["admin\n:4200"]
     end
 
@@ -276,7 +276,7 @@ Mongo Express es opcional pero muy util para inspeccionar datos.
 ### Archivo .env.dev
 
 ```bash
-# apps/core-api/.env.dev (NUNCA commitear)
+# apps/integration-api/.env.dev (NUNCA commitear)
 
 # === Database ===
 DATABASE_URL=mongodb://test_user:test_password@localhost:27017/core_db?authSource=admin
@@ -350,13 +350,13 @@ SWAGGER_ENABLED=true
 
 ```bash
 # Levantar API con hot-reload
-pnpm nx serve core-api
+pnpm nx serve integration-api
 
 # Levantar admin frontend
 pnpm nx serve admin
 
 # Levantar ambos en paralelo
-pnpm nx run-many -t serve -p core-api,admin
+pnpm nx run-many -t serve -p integration-api,admin
 
 # Levantar un worker
 pnpm nx serve notification-worker
@@ -394,13 +394,13 @@ Ver presentacion [Testing Patterns](testing-patterns.md) para mas detalle
 
 ```bash
 # Build de una app
-pnpm nx build core-api
+pnpm nx build integration-api
 
 # Lint de un proyecto
 pnpm nx lint inventory-domain
 
 # Type check
-pnpm nx typecheck core-api
+pnpm nx typecheck integration-api
 
 # ANTES DE CADA COMMIT (lo que corre CI)
 pnpm nx affected -t lint,test
@@ -446,11 +446,11 @@ El proyecto incluye configs de debug en `.vscode/launch.json`:
 {
   "configurations": [
     {
-      "name": "Debug core-api",
+      "name": "Debug integration-api",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["nx", "serve", "core-api"],
+      "runtimeArgs": ["nx", "serve", "integration-api"],
       "env": { "NODE_OPTIONS": "--inspect=9229" }
     },
     {
@@ -472,7 +472,7 @@ El proyecto incluye configs de debug en `.vscode/launch.json`:
 
 **Opcion 1: Debug API completa**
 1. Ir a Run and Debug (Ctrl+Shift+D)
-2. Seleccionar "Debug core-api"
+2. Seleccionar "Debug integration-api"
 3. Click en Play o F5
 4. Poner breakpoints en el codigo
 5. Hacer request a la API
@@ -527,7 +527,7 @@ this.logger.debug('Processing order', {
 lsof -ti:3000 | xargs kill -9
 
 # Solucion 2: Usar otro puerto
-PORT=3001 pnpm nx serve core-api
+PORT=3001 pnpm nx serve integration-api
 ```
 
 ----
@@ -601,13 +601,13 @@ pnpm nx reset
 # Error: Invalid environment variables
 
 # 1. Verificar que existe .env.dev
-ls -la apps/core-api/.env*
+ls -la apps/integration-api/.env*
 
 # 2. Si no existe, copiar del example
-cp apps/core-api/.env.example apps/core-api/.env.dev
+cp apps/integration-api/.env.example apps/integration-api/.env.dev
 
 # 3. Verificar variables obligatorias
-grep -E "DATABASE_URL|JWT_SECRET" apps/core-api/.env.dev
+grep -E "DATABASE_URL|JWT_SECRET" apps/integration-api/.env.dev
 ```
 
 ----
@@ -670,7 +670,7 @@ Tiempo estimado: 30-60 minutos
 |---------|-----------|
 | `pnpm install` | Instalar dependencias |
 | `docker compose up -d mongo-db redis` | Levantar infra |
-| `pnpm nx serve core-api` | Levantar API |
+| `pnpm nx serve integration-api` | Levantar API |
 | `pnpm nx test <project>` | Correr tests |
 | `pnpm nx affected -t test` | Tests de cambios |
 | `pnpm nx graph` | Ver dependencias |
@@ -683,7 +683,7 @@ Tiempo estimado: 30-60 minutos
 
 | URL | Que es |
 |-----|--------|
-| `http://localhost:3000` | Core API |
+| `http://localhost:3000` | Integration API |
 | `http://localhost:3000/api/docs` | Swagger UI |
 | `http://localhost:3000/health` | Health check |
 | `http://localhost:4200` | Admin frontend |

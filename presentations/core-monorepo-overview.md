@@ -69,13 +69,13 @@ git clone https://github.com/developer-implementos/core.git
 pnpm install
 
 # Configurar variables de entorno
-cp apps/core-api/.env.example apps/core-api/.env
+cp apps/integration-api/.env.example apps/integration-api/.env
 
 # Levantar MongoDB
 docker-compose up -d
 
 # Iniciar desarrollo
-pnpm nx serve core-api
+pnpm nx serve integration-api
 ```
 
 Note:
@@ -92,7 +92,7 @@ NUNCA modifiquen el archivo .env directamente - usen el ejemplo.
 
 ```bash
 # Desarrollo
-pnpm nx serve core-api     # Iniciar API
+pnpm nx serve integration-api     # Iniciar API
 pnpm nx serve admin        # Iniciar Admin
 
 # Testing
@@ -104,13 +104,13 @@ pnpm nx lint <proyecto>    # Linting
 pnpm nx affected -t test   # Solo tests afectados
 
 # Build
-pnpm nx build core-api     # Build producción
+pnpm nx build integration-api     # Build producción
 pnpm nx graph            # Grafo dependencias
 ```
 
 Note:
 Estos comandos los van a usar todos los días.
-pnpm nx serve core-api arranca el servidor local.
+pnpm nx serve integration-api arranca el servidor local.
 pnpm nx test <proyecto> corre los tests.
 pnpm nx affected -t test es mágico: solo corre tests de lo que cambió.
 Memoricen estos - se vuelven segunda naturaleza rápido.
@@ -127,7 +127,7 @@ Memoricen estos - se vuelven segunda naturaleza rápido.
 pnpm nx <target> <project> [options]
         ───┬────  ───┬───   ───┬───
            │         │         └─ Opciones (--watch, --coverage)
-           │         └─ Proyecto (core-api, admin)
+           │         └─ Proyecto (integration-api, admin)
            └─ Target (serve, test, build, lint)
 ```
 
@@ -144,10 +144,10 @@ Las opciones van al final y son opcionales.
 
 ```bash
 # ❌ INCORRECTO (sintaxis antigua)
-pnpm nx serve:core-api
+pnpm nx serve:integration-api
 
 # ✅ CORRECTO
-pnpm nx serve core-api
+pnpm nx serve integration-api
 ```
 
 > Siempre separar con **espacios**,<br>
@@ -263,7 +263,7 @@ core/
 ├── apps/
 │   ├── admin/             # Panel administrativo
 │   ├── admin-e2e/           # Tests E2E con Playwright
-│   ├── core-api/            # API principal
+│   ├── integration-api/            # API principal
 │   ├── notification-worker/ # Procesador async
 │   ├── report-worker/       # Generador de reportes
 │   └── sync-worker/         # Sincronización con ERP

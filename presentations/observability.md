@@ -58,11 +58,11 @@ Traces muestran el camino de una request a traves de todos los componentes.
 ```
 Aplicacion                  Colectores              Visualizacion
     |                           |                        |
- Core API  -->  Pino     -->  Cloud Logging   \
+ Integration API  -->  Pino     -->  Cloud Logging   \
     |                                           \
- Core API  -->  OTel     -->  Prometheus     --> Grafana --> Alerting
+ Integration API  -->  OTel     -->  Prometheus     --> Grafana --> Alerting
     |                                           /
- Core API  -->  OTel     -->  Cloud Trace    /
+ Integration API  -->  OTel     -->  Cloud Trace    /
 ```
 
 ---
@@ -115,7 +115,7 @@ export const logger = pino({
     level: (label) => ({ level: label }),
   },
   base: {
-    service: 'core-api',
+    service: 'integration-api',
     environment: process.env.NODE_ENV,
   },
 });
@@ -124,7 +124,7 @@ export const logger = pino({
 {
   "level": "info",
   "message": "Stock updated",
-  "service": "core-api",
+  "service": "integration-api",
   "environment": "production",
   "correlationId": "abc-123",
   "timestamp": "2024-12-04T10:30:00Z",
@@ -261,7 +261,7 @@ Saturation: Cuanta capacidad tienes disponible.
 
 ```
 +------------------------------------------------------------------+
-|                    CORE-API DASHBOARD                             |
+|                    INTEGRATION-API DASHBOARD                             |
 +------------------------------------------------------------------+
 |  Request Rate: 1,234 req/s        |  Error Rate: 0.12%           |
 |  [====================........]    |  [=........................] |
@@ -416,7 +416,7 @@ Readiness: "Puedes recibir trafico?" - tal vez esta vivo pero aun conectandose a
 
 spec:
   containers:
-    - name: core-api
+    - name: integration-api
       livenessProbe:
         httpGet:
           path: /health

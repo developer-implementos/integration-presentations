@@ -1,7 +1,7 @@
 {
   "name": "integration-presentations",
   "version": "1.0.0",
-  "description": "Presentaciones de integración para Core API",
+  "description": "Presentaciones de integración para Integration API",
   "scripts": {
     "dev": "reveal-md presentations/ --theme night --css assets/css/custom.css --watch",
     "build": "reveal-md presentations/ --static dist --theme night --css assets/css/custom.css",

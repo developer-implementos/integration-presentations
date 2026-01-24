@@ -435,7 +435,7 @@ TestModuleBuilder simplifica el boilerplate de NestJS testing.
 ### Testing HTTP Endpoints
 
 ```typescript
-// apps/core-api/src/modules/inventory/inventory.controller.spec.ts
+// apps/integration-api/src/modules/inventory/inventory.controller.spec.ts
 
 import { Test } from '@nestjs/testing';
 import * as request from 'supertest';

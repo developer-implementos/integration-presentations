@@ -492,10 +492,10 @@ const REDACTION_PATTERNS = {
     <text x="60" y="42" text-anchor="middle" fill="#2c3e50" font-size="9">Rate Limit + Scopes</text>
   </g>
 
-  <!-- Core API -->
+  <!-- Integration API -->
   <g transform="translate(500, 115)">
     <rect x="0" y="0" width="140" height="70" rx="5" fill="#2ecc71"/>
-    <text x="70" y="30" text-anchor="middle" fill="#2c3e50" font-size="14" font-weight="bold">Core API</text>
+    <text x="70" y="30" text-anchor="middle" fill="#2c3e50" font-size="14" font-weight="bold">Integration API</text>
     <text x="70" y="50" text-anchor="middle" fill="#2c3e50" font-size="10">AuthGuard + RolesGuard</text>
   </g>
 
@@ -516,8 +516,8 @@ const REDACTION_PATTERNS = {
 </svg>
 </div>
 
-**Partner (rojo)**: API Key -> Gateway -> Core API
-**Admin (azul)**: JWT -> Core API (bypass Gateway)
+**Partner (rojo)**: API Key -> Gateway -> Integration API
+**Admin (azul)**: JWT -> Integration API (bypass Gateway)
 
 ---
 

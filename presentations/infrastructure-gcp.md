@@ -19,7 +19,7 @@ revealOptions:
 
 ## Decisiones Técnicas y Compromisos
 
-### Implementos Core API
+### Implementos Integration API
 
 Note:
 Esta presentación cubre las decisiones de infraestructura que tomamos para el proyecto.
@@ -322,19 +322,19 @@ Redis es crítico para performance - no queremos que falle porque olvidamos conf
 
 ### Arquitectura Memorystore
 
-```mermaid
+<div class="mermaid">
 graph LR
-    A[Cloud Run<br/>core-api] -->|VPC Connector| B[Memorystore<br/>Redis Standard Tier]
+    A[Cloud Run<br/>integration-api] -->|VPC Connector| B[Memorystore<br/>Redis Standard Tier]
     C[Cloud Run<br/>notification-worker] -->|VPC Connector| B
     D[Cloud Run<br/>report-worker] -->|VPC Connector| B
 
     B -->|Auto Backup| E[(Cloud Storage)]
-    B -->|Auto Failover<br/><30s| F[Replica<br/>Standby]
+    B -->|Auto Failover<br/>menos de 30s| F[Replica<br/>Standby]
 
     style B fill:#e74c3c
     style F fill:#c0392b
     style E fill:#f39c12
-```
+</div>
 
 **Standard Tier:**
 - 1 primary + 1 replica (cross-zone)
@@ -365,43 +365,39 @@ Es el sistema de mensajería managed de GCP.
 
 <!-- .slide: data-background="#1c1c1c" -->
 
-### Cloud Pub/Sub vs Kafka Self-Hosted
+### Pub/Sub vs Kafka en VM
 
-<div style="display: flex; justify-content: space-around;">
+<div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
 <div style="width: 45%;">
-<h4>Cloud Pub/Sub (Nuestra elección)</h4>
+<h4>Pub/Sub</h4>
 
 **Ventajas:**
 - ✅ Global y multi-region
-- ✅ Escalado infinito automático
-- ✅ At-least-once delivery garantizado
-- ✅ Ordering garantizado (en un topic)
-- ✅ Integración nativa GCP
-- ✅ Zero ops (no brokers, no zookeeper)
+- ✅ Escalado infinito auto
+- ✅ At-least-once garantizado
+- ✅ Zero ops
 
 **Desventajas:**
-- ❌ No es Kafka (diferentes APIs)
-- ❌ No soporta transactions entre topics
-- ❌ Vendor lock-in GCP
+- ❌ No Kafka API
+- ❌ No transactions
+- ❌ Vendor lock-in
 </div>
 
 <div style="width: 45%;">
-<h4>Kafka en Compute Engine</h4>
+<h4>Kafka</h4>
 
 **Ventajas:**
 - ✅ Kafka API (portable)
-- ✅ Transactions y exactly-once
-- ✅ Ecosistema Kafka (Kafka Streams, etc)
+- ✅ Exactly-once
+- ✅ Ecosistema completo
 - ✅ Más económico a escala
 
 **Desventajas:**
-- ❌ Configurar Kafka cluster (3+ brokers)
-- ❌ Configurar Zookeeper (o KRaft)
-- ❌ Monitorear lag, disk, replication
-- ❌ Compaction y retention policies
-- ❌ Expertise Kafka requerida
-- ❌ Failover manual
+- ❌ Configurar cluster (3+ brokers)
+- ❌ Configurar Zookeeper/KRaft
+- ❌ Monitorear lag, disk
+- ❌ Expertise requerida
 </div>
 
 </div>
@@ -420,10 +416,10 @@ Pero para nuestros casos de uso (notificaciones, reportes, sync), at-least-once 
 
 ### Arquitectura Pub/Sub
 
-```mermaid
+<div class="mermaid">
 graph TB
     subgraph "Publishers"
-        A[core-api]
+        A[integration-api]
         B[notification-worker]
     end
 
@@ -454,11 +450,11 @@ graph TB
     style T1 fill:#3498db
     style T2 fill:#3498db
     style T3 fill:#3498db
-```
+</div>
 
 Note:
 Nuestra arquitectura de Pub/Sub es simple.
-core-api publica eventos a topics.
+integration-api publica eventos a topics.
 Los workers (Cloud Run) son subscribers que procesan esos eventos.
 Si un worker falla, Pub/Sub hace retry automático.
 Si el worker está saturado, Pub/Sub hace backoff.
@@ -536,14 +532,14 @@ Los cold starts son aceptables para nuestra use case (~500ms).
 
 ### Arquitectura Cloud Run
 
-```mermaid
+<div class="mermaid">
 graph TB
     subgraph "Internet"
         U[Users/Clients]
     end
 
     subgraph "Cloud Run Services"
-        API[core-api<br/>0-100 instances<br/>Auto-scale]
+        API[integration-api<br/>0-100 instances<br/>Auto-scale]
         ADMIN[admin-app<br/>Static hosting]
         NW[notification-worker<br/>0-10 instances<br/>Pub/Sub triggered]
         RW[report-worker<br/>0-5 instances<br/>Pub/Sub triggered]
@@ -577,13 +573,13 @@ graph TB
     style RW fill:#3498db
     style SW fill:#3498db
     style LB fill:#e74c3c
-```
+</div>
 
 **Escala automática:** De 0 a 100+ instancias según load.
 
 Note:
 Nuestra arquitectura usa Cloud Run para todo.
-core-api es el servicio principal que maneja requests HTTP.
+integration-api es el servicio principal que maneja requests HTTP.
 Los workers (notification, report, sync) son servicios separados trigger
 
 eados por Pub/Sub.
@@ -601,7 +597,7 @@ El Load Balancer es managed también.
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: core-api
+  name: integration-api
 spec:
   template:
     metadata:
@@ -612,7 +608,7 @@ spec:
         autoscaling.knative.dev/maxScale: "100"
     spec:
       containers:
-      - image: gcr.io/implementos/core-api:latest
+      - image: gcr.io/implementos/integration-api:latest
         resources:
           limits:
             cpu: "2"
@@ -747,7 +743,7 @@ También permite cumplir con regulaciones locales de datos.
 
 ### Arquitectura Multi-País
 
-```mermaid
+<div class="mermaid">
 %%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#3498db', 'primaryTextColor': '#fff', 'primaryBorderColor': '#2980b9', 'lineColor': '#ecf0f1', 'secondaryColor': '#2c3e50', 'tertiaryColor': '#34495e', 'fontSize': '16px' }}}%%
 graph TB
     subgraph "GitHub Actions"
@@ -775,7 +771,7 @@ graph TB
     style PROD_CL fill:#2ecc71
     style QA_PE fill:#f1c40f
     style PROD_PE fill:#2ecc71
-```
+</div>
 
 **Características**:
 - Deployments manuales (workflow_dispatch)
