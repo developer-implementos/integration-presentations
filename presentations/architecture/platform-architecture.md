@@ -1075,7 +1075,3 @@ El principio DRY (Don't Repeat Yourself) es mucho mas facil de cumplir en un mon
 ---
 
 ## Preguntas?
-
-```
-npx reveal-md platform-architecture.md --watch
-```

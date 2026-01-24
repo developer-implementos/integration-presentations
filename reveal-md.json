@@ -1,0 +1,14 @@
+{
+  "scripts": [
+    "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+  ],
+  "revealOptions": {
+    "transition": "fade",
+    "transitionSpeed": "fast",
+    "controls": true,
+    "progress": true,
+    "center": true,
+    "hash": true
+  },
+  "postprocessor": "postprocessor.js"
+}

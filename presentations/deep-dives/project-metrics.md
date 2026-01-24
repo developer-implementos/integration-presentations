@@ -411,7 +411,3 @@ Cada solucion sigue patrones de Google, Stripe y AWS.
 ---
 
 ## Preguntas?
-
-```bash
-npx reveal-md project-metrics.md --theme night
-```

@@ -529,7 +529,3 @@ libs/shared/backend/observability/
 ---
 
 ## Preguntas?
-
-```
-npx reveal-md observabilidad.md --watch
-```

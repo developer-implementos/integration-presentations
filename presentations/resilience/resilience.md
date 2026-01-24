@@ -488,7 +488,3 @@ libs/shared/backend/resilience/
 ---
 
 ## Preguntas?
-
-```
-npx reveal-md resiliencia.md --watch
-```

@@ -550,7 +550,3 @@ libs/shared/backend/
 ---
 
 ## Preguntas?
-
-```
-npx reveal-md seguridad.md --watch
-```

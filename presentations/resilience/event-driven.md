@@ -486,7 +486,3 @@ DLQ:
 ---
 
 ## Preguntas?
-
-```
-npx reveal-md event-driven.md --watch
-```

@@ -323,17 +323,31 @@ Redis es crítico para performance - no queremos que falle porque olvidamos conf
 ### Arquitectura Memorystore
 
 <div class="mermaid">
-graph LR
-    A[Cloud Run<br/>integration-api] -->|VPC Connector| B[Memorystore<br/>Redis Standard Tier]
-    C[Cloud Run<br/>notification-worker] -->|VPC Connector| B
-    D[Cloud Run<br/>report-worker] -->|VPC Connector| B
+graph TB
+    subgraph "Cloud Run Services"
+        A[integration-api]
+        B[notif-worker]
+        C[report-worker]
+    end
 
-    B -->|Auto Backup| E[(Cloud Storage)]
-    B -->|Auto Failover<br/>menos de 30s| F[Replica<br/>Standby]
+    subgraph "Memorystore Redis"
+        D[Primary Redis]
+        E[Replica Standby]
+    end
 
-    style B fill:#e74c3c
-    style F fill:#c0392b
-    style E fill:#f39c12
+    subgraph "Backup"
+        F[Cloud Storage]
+    end
+
+    A -->|VPC Connector| D
+    B -->|VPC Connector| D
+    C -->|VPC Connector| D
+
+    D -->|Auto Failover| E
+    D -->|Auto Backup| F
+
+    style D fill:#3498db
+    style E fill:#2ecc71
 </div>
 
 **Standard Tier:**
@@ -420,7 +434,6 @@ Pero para nuestros casos de uso (notificaciones, reportes, sync), at-least-once 
 graph TB
     subgraph "Publishers"
         A[integration-api]
-        B[notification-worker]
     end
 
     subgraph "Cloud Pub/Sub"
@@ -430,9 +443,9 @@ graph TB
     end
 
     subgraph "Subscribers"
-        S1[notification-worker<br/>Cloud Run]
-        S2[report-worker<br/>Cloud Run]
-        S3[sync-worker<br/>Cloud Run]
+        S1[notification-worker]
+        S2[report-worker]
+        S3[sync-worker]
     end
 
     A -->|Publish| T1
@@ -539,15 +552,15 @@ graph TB
     end
 
     subgraph "Cloud Run Services"
-        API[integration-api<br/>0-100 instances<br/>Auto-scale]
-        ADMIN[admin-app<br/>Static hosting]
-        NW[notification-worker<br/>0-10 instances<br/>Pub/Sub triggered]
-        RW[report-worker<br/>0-5 instances<br/>Pub/Sub triggered]
-        SW[sync-worker<br/>0-3 instances<br/>Pub/Sub triggered]
+        API[integration-api<br/>0-100 instances]
+        ADMIN[admin-app]
+        NW[notification-worker<br/>0-10 instances]
+        RW[report-worker<br/>0-5 instances]
+        SW[sync-worker<br/>0-3 instances]
     end
 
     subgraph "GCP Managed Services"
-        LB[Cloud Load Balancer<br/>Global HTTPS]
+        LB[Cloud Load Balancer]
         PS[Cloud Pub/Sub]
         FS[(Firestore)]
         MS[(Memorystore)]
@@ -744,7 +757,6 @@ También permite cumplir con regulaciones locales de datos.
 ### Arquitectura Multi-País
 
 <div class="mermaid">
-%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#3498db', 'primaryTextColor': '#fff', 'primaryBorderColor': '#2980b9', 'lineColor': '#ecf0f1', 'secondaryColor': '#2c3e50', 'tertiaryColor': '#34495e', 'fontSize': '16px' }}}%%
 graph TB
     subgraph "GitHub Actions"
         CI[CI Pipeline]
@@ -756,9 +768,9 @@ graph TB
         PROD_CL[PROD Chile]
     end
 
-    subgraph "Perú"
-        QA_PE[QA Perú]
-        PROD_PE[PROD Perú]
+    subgraph "Peru"
+        QA_PE[QA Peru]
+        PROD_PE[PROD Peru]
     end
 
     CI --> DEPLOY
@@ -957,10 +969,6 @@ Pagamos un premium (~3x) pero ahorramos mucho más en tiempo del equipo.
 2. **Optimizar donde tenga sentido:** Ej. reducir Firestore reads con caching
 3. **Re-evaluar a escala:** Si llegamos a 10x traffic, revisar self-hosted
 4. **Documentar cambios:** ADRs para decisiones de infraestructura
-
-**Contacto:**
-- Preguntas sobre infra: `#infra` en Slack
-- Propuestas de cambio: RFC en `docs/architecture/rfcs/`
 
 Note:
 Estas decisiones no son permanentes.

@@ -358,7 +358,3 @@ libs/shared/backend/feature-flags/
 ---
 
 ## Preguntas?
-
-```bash
-npx reveal-md advanced-patterns.md --theme night
-```

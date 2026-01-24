@@ -536,7 +536,3 @@ db.notifications.find({
 ---
 
 ## Preguntas?
-
-```bash
-npx reveal-md case-study-notifications.md --theme night
-```

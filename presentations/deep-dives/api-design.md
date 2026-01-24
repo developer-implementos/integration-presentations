@@ -462,11 +462,11 @@ SwaggerModule.setup('docs', app, document);
 
 | Header | Proposito | Ejemplo |
 |--------|-----------|---------|
-| `X-Correlation-ID` | Echo del request | `uuid-v4` |
-| `X-RateLimit-Limit` | Limite de requests | `1000` |
-| `X-RateLimit-Remaining` | Requests restantes | `999` |
-| `X-RateLimit-Reset` | Cuando se resetea | Unix timestamp |
-| `Location` | URL del recurso creado | `/api/v1/products/123` |
+| `X-Correlation-ID` | Echo request | `uuid-v4` |
+| `X-RateLimit-Limit` | Limite | `1000` |
+| `X-RateLimit-Remaining` | Restantes | `999` |
+| `X-RateLimit-Reset` | Reset | `1704067200` |
+| `Location` | URL creado | `/products/123` |
 
 ---
 
@@ -526,7 +526,3 @@ export class InventoryController {
 ---
 
 ## Preguntas?
-
-```
-npx reveal-md api-design.md --watch
-```
