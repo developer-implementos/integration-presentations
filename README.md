@@ -6,10 +6,10 @@ Material de capacitación para developers del equipo Integration API y partners 
 
 ```bash
 # Levantar una presentación (tema oscuro recomendado)
-npx reveal-md presentations/developer-workflow.md --theme night
+npx reveal-md presentations/onboarding/developer-workflow.md --theme night
 
 # Abrir en puerto específico
-npx reveal-md presentations/developer-workflow.md --theme night --port 3000
+npx reveal-md presentations/onboarding/developer-workflow.md --theme night --port 3000
 ```
 
 ## 📚 Training Hub
@@ -40,22 +40,22 @@ Presentaciones autocontenidas, listas para usar:
 
 | Presentacion | Archivo | Audiencia | Duracion |
 |--------------|---------|-----------|----------|
-| **Monorepo Overview** | [core-monorepo-overview.md](presentations/core-monorepo-overview.md) | Nuevos | ~30 min |
-| **Local Development** | [local-development.md](presentations/local-development.md) | Nuevos | ~45 min |
-| **Developer Workflow** | [developer-workflow.md](presentations/developer-workflow.md) | Todos | ~45 min |
-| **CI/CD Pipeline** | [cicd-pipeline.md](presentations/cicd-pipeline.md) | Todos | ~45 min |
-| **Testing Patterns** | [testing-patterns.md](presentations/testing-patterns.md) | Todos | ~60 min |
-| **Clean Architecture** | [clean-architecture.md](presentations/clean-architecture.md) | Todos | ~45 min |
-| **Angular Moderno** | [modern-angular.md](presentations/modern-angular.md) | Frontend | ~60 min |
-| **Platform Architecture** | [platform-architecture.md](presentations/platform-architecture.md) | Todos | ~45 min |
-| **Resiliencia** | [resilience.md](presentations/resilience.md) | Todos | ~30 min |
-| **Observabilidad** | [observability.md](presentations/observability.md) | Todos | ~30 min |
-| **Event-Driven** | [event-driven.md](presentations/event-driven.md) | Todos | ~30 min |
-| **Seguridad** | [security.md](presentations/security.md) | Todos | ~30 min |
-| **Patrones Avanzados** | [advanced-patterns.md](presentations/advanced-patterns.md) | Avanzados | ~30 min |
-| **Caso de Estudio: Notificaciones** | [case-study-notifications.md](presentations/case-study-notifications.md) | Avanzados | ~45 min |
-| **Metricas y Roadmap** | [project-metrics.md](presentations/project-metrics.md) | Todos | ~30 min |
-| **Infraestructura GCP** | [infrastructure-gcp.md](presentations/infrastructure-gcp.md) | DevOps/Architects | ~30 min |
+| **Monorepo Overview** | [core-monorepo-overview.md](presentations/onboarding/core-monorepo-overview.md) | Nuevos | ~30 min |
+| **Local Development** | [local-development.md](presentations/onboarding/local-development.md) | Nuevos | ~45 min |
+| **Developer Workflow** | [developer-workflow.md](presentations/onboarding/developer-workflow.md) | Todos | ~45 min |
+| **CI/CD Pipeline** | [cicd-pipeline.md](presentations/onboarding/cicd-pipeline.md) | Todos | ~45 min |
+| **Testing Patterns** | [testing-patterns.md](presentations/architecture/testing-patterns.md) | Todos | ~60 min |
+| **Clean Architecture** | [clean-architecture.md](presentations/architecture/clean-architecture.md) | Todos | ~45 min |
+| **Angular Moderno** | [modern-angular.md](presentations/architecture/modern-angular.md) | Frontend | ~60 min |
+| **Platform Architecture** | [platform-architecture.md](presentations/architecture/platform-architecture.md) | Todos | ~45 min |
+| **Resiliencia** | [resilience.md](presentations/resilience/resilience.md) | Todos | ~30 min |
+| **Observabilidad** | [observability.md](presentations/resilience/observability.md) | Todos | ~30 min |
+| **Event-Driven** | [event-driven.md](presentations/resilience/event-driven.md) | Todos | ~30 min |
+| **Seguridad** | [security.md](presentations/resilience/security.md) | Todos | ~30 min |
+| **Patrones Avanzados** | [advanced-patterns.md](presentations/resilience/advanced-patterns.md) | Avanzados | ~30 min |
+| **Caso de Estudio: Notificaciones** | [case-study-notifications.md](presentations/deep-dives/case-study-notifications.md) | Avanzados | ~45 min |
+| **Metricas y Roadmap** | [project-metrics.md](presentations/deep-dives/project-metrics.md) | Todos | ~30 min |
+| **Infraestructura GCP** | [infrastructure-gcp.md](presentations/deep-dives/infrastructure-gcp.md) | DevOps/Architects | ~30 min |
 
 ### Descripcion de Cada Presentacion
 
@@ -76,7 +76,7 @@ Setup del entorno de desarrollo local desde cero.
 **Levantar:**
 
 ```bash
-npx reveal-md presentations/local-development.md --theme night
+npx reveal-md presentations/onboarding/local-development.md --theme night
 ```
 
 ---
@@ -95,7 +95,7 @@ Tu dia a dia como developer: commits, branches, PRs, code review.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/developer-workflow.md --theme night
+npx reveal-md presentations/onboarding/developer-workflow.md --theme night
 ```
 
 ---
@@ -112,7 +112,7 @@ Como funciona el pipeline de integracion y deploy continuo.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/cicd-pipeline.md --theme night
+npx reveal-md presentations/onboarding/cicd-pipeline.md --theme night
 ```
 
 ---
@@ -132,7 +132,7 @@ Como escribir y ejecutar tests en el proyecto.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/testing-patterns.md --theme night
+npx reveal-md presentations/architecture/testing-patterns.md --theme night
 ```
 
 ---
@@ -153,7 +153,7 @@ Las 5 capas del Monolito Modular y como leer cualquier codigo.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/clean-architecture.md --theme night
+npx reveal-md presentations/architecture/clean-architecture.md --theme night
 ```
 
 ---
@@ -173,7 +173,7 @@ Angular 21 con Signals - muy diferente al Angular clasico.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/modern-angular.md --theme night
+npx reveal-md presentations/architecture/modern-angular.md --theme night
 ```
 
 ---
@@ -191,7 +191,7 @@ Presentación principal e índice del sistema de presentaciones modulares.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/core-monorepo-overview.md --theme night
+npx reveal-md presentations/onboarding/core-monorepo-overview.md --theme night
 ```
 
 ---
@@ -213,7 +213,7 @@ Monolito Modular vs Microservicios: justificación arquitectónica.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/platform-architecture.md --theme night
+npx reveal-md presentations/architecture/platform-architecture.md --theme night
 ```
 
 ---
@@ -231,7 +231,7 @@ Patrones para sistemas que NO se caen.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/resilience.md --theme night
+npx reveal-md presentations/resilience/resilience.md --theme night
 ```
 
 ---
@@ -249,7 +249,7 @@ Los tres pilares para operar sistemas en produccion.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/observability.md --theme night
+npx reveal-md presentations/resilience/observability.md --theme night
 ```
 
 ---
@@ -267,7 +267,7 @@ Comunicacion asincrona entre modulos via Cloud Pub/Sub.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/event-driven.md --theme night
+npx reveal-md presentations/resilience/event-driven.md --theme night
 ```
 
 ---
@@ -285,7 +285,7 @@ Defense in Depth: Multiples capas de proteccion.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/security.md --theme night
+npx reveal-md presentations/resilience/security.md --theme night
 ```
 
 ---
@@ -303,7 +303,7 @@ Caching avanzado y Feature Flags.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/advanced-patterns.md --theme night
+npx reveal-md presentations/resilience/advanced-patterns.md --theme night
 ```
 
 ---
@@ -321,7 +321,7 @@ Sistema completo que aplica todos los patrones.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/case-study-notifications.md --theme night
+npx reveal-md presentations/deep-dives/case-study-notifications.md --theme night
 ```
 
 ---
@@ -339,7 +339,7 @@ Estado actual del proyecto y planes futuros.
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/project-metrics.md --theme night
+npx reveal-md presentations/deep-dives/project-metrics.md --theme night
 ```
 
 ---
@@ -363,7 +363,7 @@ Decisiones técnicas de infraestructura: managed vs self-hosted, pros/contras y 
 
 **Levantar:**
 ```bash
-npx reveal-md presentations/infrastructure-gcp.md --theme night
+npx reveal-md presentations/deep-dives/infrastructure-gcp.md --theme night
 ```
 
 ---
@@ -450,22 +450,31 @@ integration-presentations/
 │
 ├── presentations/                 # Slides reveal.js
 │   ├── index.md                   # 🌟 Training Hub (punto de entrada)
-│   ├── core-monorepo-overview.md  # Índice (~30 min)
-│   ├── local-development.md       # Setup entorno (DIA 1)
-│   ├── developer-workflow.md      # Workflow diario
-│   ├── cicd-pipeline.md           # Pipeline CI/CD
-│   ├── testing-patterns.md        # Testing
-│   ├── clean-architecture.md      # Las 5 capas
-│   ├── modern-angular.md         # Angular 21 Signals
-│   ├── platform-architecture.md   # Monolito vs Microservicios
-│   ├── resilience.md             # Circuit Breaker, Retry, etc.
-│   ├── observability.md          # Logs, Metricas, Traces
-│   ├── event-driven.md            # Pub/Sub, Outbox
-│   ├── security.md               # Auth, RBAC, Rate Limiting
-│   ├── advanced-patterns.md       # Caching, Feature Flags
-│   ├── case-study-notifications.md # Caso de estudio completo
-│   ├── project-metrics.md         # Metricas y Roadmap
-│   └── infrastructure-gcp.md      # Infra GCP
+│   │
+│   ├── onboarding/                # 🎯 Tu primer día
+│   │   ├── core-monorepo-overview.md
+│   │   ├── local-development.md
+│   │   ├── developer-workflow.md
+│   │   └── cicd-pipeline.md
+│   │
+│   ├── architecture/              # 🏗️ Fundamentos técnicos
+│   │   ├── clean-architecture.md
+│   │   ├── platform-architecture.md
+│   │   ├── testing-patterns.md
+│   │   └── modern-angular.md
+│   │
+│   ├── resilience/                # ⚡ Patrones enterprise
+│   │   ├── resilience.md
+│   │   ├── observability.md
+│   │   ├── event-driven.md
+│   │   ├── security.md
+│   │   └── advanced-patterns.md
+│   │
+│   └── deep-dives/                # 🔬 Especialización
+│       ├── case-study-notifications.md
+│       ├── infrastructure-gcp.md
+│       ├── project-metrics.md
+│       └── api-design.md
 │
 └── dist/                          # Build estático (generado)
 ```

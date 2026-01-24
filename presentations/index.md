@@ -87,7 +87,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <div style="display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto;">
 
-<a href="core-monorepo-overview.html" style="text-decoration: none;">
+<a href="onboarding/core-monorepo-overview.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #3b82f6;">
 <span style="font-size: 2em;">📍</span>
 <div style="text-align: left; flex: 1;">
@@ -98,7 +98,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="local-development.html" style="text-decoration: none;">
+<a href="onboarding/local-development.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #3b82f6;">
 <span style="font-size: 2em;">💻</span>
 <div style="text-align: left; flex: 1;">
@@ -109,7 +109,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="developer-workflow.html" style="text-decoration: none;">
+<a href="onboarding/developer-workflow.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #3b82f6;">
 <span style="font-size: 2em;">🔄</span>
 <div style="text-align: left; flex: 1;">
@@ -120,7 +120,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="cicd-pipeline.html" style="text-decoration: none;">
+<a href="onboarding/cicd-pipeline.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #3b82f6;">
 <span style="font-size: 2em;">🚀</span>
 <div style="text-align: left; flex: 1;">
@@ -149,7 +149,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <div style="display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto;">
 
-<a href="clean-architecture.html" style="text-decoration: none;">
+<a href="architecture/clean-architecture.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #8b5cf6;">
 <span style="font-size: 2em;">🧅</span>
 <div style="text-align: left; flex: 1;">
@@ -160,7 +160,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="platform-architecture.html" style="text-decoration: none;">
+<a href="architecture/platform-architecture.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #8b5cf6;">
 <span style="font-size: 2em;">🏛️</span>
 <div style="text-align: left; flex: 1;">
@@ -171,7 +171,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="testing-patterns.html" style="text-decoration: none;">
+<a href="architecture/testing-patterns.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #8b5cf6;">
 <span style="font-size: 2em;">🧪</span>
 <div style="text-align: left; flex: 1;">
@@ -182,7 +182,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="modern-angular.html" style="text-decoration: none;">
+<a href="architecture/modern-angular.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #8b5cf6;">
 <span style="font-size: 2em;">🅰️</span>
 <div style="text-align: left; flex: 1;">
@@ -211,7 +211,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <div style="display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto;">
 
-<a href="resilience.html" style="text-decoration: none;">
+<a href="resilience/resilience.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
 <span style="font-size: 2em;">🛡️</span>
 <div style="text-align: left; flex: 1;">
@@ -222,7 +222,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="observability.html" style="text-decoration: none;">
+<a href="resilience/observability.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
 <span style="font-size: 2em;">📊</span>
 <div style="text-align: left; flex: 1;">
@@ -233,7 +233,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="event-driven.html" style="text-decoration: none;">
+<a href="resilience/event-driven.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
 <span style="font-size: 2em;">📡</span>
 <div style="text-align: left; flex: 1;">
@@ -244,7 +244,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="security.html" style="text-decoration: none;">
+<a href="resilience/security.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
 <span style="font-size: 2em;">🔐</span>
 <div style="text-align: left; flex: 1;">
@@ -255,7 +255,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="advanced-patterns.html" style="text-decoration: none;">
+<a href="resilience/advanced-patterns.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
 <span style="font-size: 2em;">⚙️</span>
 <div style="text-align: left; flex: 1;">
@@ -284,7 +284,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <div style="display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto;">
 
-<a href="case-study-notifications.html" style="text-decoration: none;">
+<a href="deep-dives/case-study-notifications.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #f59e0b;">
 <span style="font-size: 2em;">📬</span>
 <div style="text-align: left; flex: 1;">
@@ -295,7 +295,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="infrastructure-gcp.html" style="text-decoration: none;">
+<a href="deep-dives/infrastructure-gcp.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #f59e0b;">
 <span style="font-size: 2em;">☁️</span>
 <div style="text-align: left; flex: 1;">
@@ -306,7 +306,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="project-metrics.html" style="text-decoration: none;">
+<a href="deep-dives/project-metrics.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #f59e0b;">
 <span style="font-size: 2em;">📈</span>
 <div style="text-align: left; flex: 1;">
@@ -317,7 +317,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
-<a href="api-design.html" style="text-decoration: none;">
+<a href="deep-dives/api-design.html" style="text-decoration: none;">
 <div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #f59e0b;">
 <span style="font-size: 2em;">🔌</span>
 <div style="text-align: left; flex: 1;">
@@ -429,7 +429,7 @@ Elige una categoría y empieza tu aprendizaje
 </p>
 
 <div style="display: flex; justify-content: center; gap: 15px; margin-top: 40px;">
-<a href="core-monorepo-overview.html" style="text-decoration: none;">
+<a href="onboarding/core-monorepo-overview.html" style="text-decoration: none;">
 <div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); padding: 15px 30px; border-radius: 25px; font-weight: bold;">
 ▶️ Empezar Onboarding
 </div>
