@@ -1,0 +1,13 @@
+{
+  "name": "integration-presentations",
+  "version": "1.0.0",
+  "description": "Presentaciones de integración para Core API",
+  "scripts": {
+    "dev": "reveal-md presentations/ --theme night --css assets/css/custom.css --watch",
+    "build": "reveal-md presentations/ --static dist --theme night --css assets/css/custom.css",
+    "preview": "npx serve dist"
+  },
+  "devDependencies": {
+    "reveal-md": "^6.1.4"
+  }
+}
