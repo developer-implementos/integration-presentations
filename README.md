@@ -350,9 +350,9 @@ Decisiones técnicas de infraestructura: managed vs self-hosted, pros/contras y 
 
 **Contenido:**
 - Filosofía: Managed vs Self-Hosted (criterios de decisión)
-- Storage: Firestore vs MongoDB en VM
-- Cache: Memorystore vs Redis en VM
-- Messaging: Pub/Sub vs Kafka en VM
+- Database: Firestore vs MongoDB
+- Cache: Memorystore vs Redis
+- Messaging: Pub/Sub vs Kafka
 - Compute: Cloud Run vs Compute Engine
 - Secrets: Secret Manager
 - Infraestructura Multi-País (deployment por país con aislamiento total)
@@ -407,7 +407,7 @@ Dia 5:   Caso de Estudio: Notificaciones
 ### Semana 5+: Deep Dives
 
 **Para DevOps/Architects:**
-- Infraestructura GCP (decisiones técnicas y compromisos)
+- Infraestructura GCP (decisiones técnicas)
 
 **Secciones modulares según necesidad:**
 - DDD en practica

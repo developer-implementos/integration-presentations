@@ -19,7 +19,7 @@ revealOptions:
 
 ## Decisiones Técnicas y Compromisos
 
-### Implementos Integration API
+### Integration API
 
 Note:
 Esta presentación cubre las decisiones de infraestructura que tomamos para el proyecto.
@@ -32,9 +32,9 @@ Veremos ventajas, desventajas, costos de cada opción.
 ## 📋 Agenda
 
 1. **🎯 Filosofía: Managed vs Self-Hosted**
-2. **💾 Storage: Firestore vs MongoDB en VM**
-3. **⚡ Cache: Memorystore vs Redis en VM**
-4. **📬 Messaging: Pub/Sub vs Kafka en VM**
+2. **💾 Database: Firestore vs MongoDB**
+3. **⚡ Cache: Memorystore vs Redis**
+4. **📬 Messaging: Pub/Sub vs Kafka**
 5. **🚀 Compute: Cloud Run vs Compute Engine**
 6. **🔐 Secrets: Secret Manager**
 7. **🌎 Infraestructura Multi-País**
@@ -64,12 +64,12 @@ Vamos a ver los criterios de decisión.
 
 ### Criterios de Decisión
 
-<table style="font-size: 0.7em; width: 100%; border-collapse: separate; border-spacing: 15px 5px;">
+<table style="font-size: 0.7em; width: 100%;">
 <thead>
 <tr>
-<th style="text-align: left; padding-right: 40px;">Criterio</th>
-<th style="text-align: left; padding-right: 40px;">Managed</th>
-<th style="text-align: left;">Self-Hosted</th>
+<th style="text-align: left; padding: 8px 30px 8px 0;">Criterio</th>
+<th style="text-align: left; padding: 8px 30px 8px 0;">Managed</th>
+<th style="text-align: left; padding: 8px 0;">Self-Hosted</th>
 </tr>
 </thead>
 <tbody>
@@ -166,9 +166,9 @@ Pero nosotros NO estamos en ese caso - somos una startup enfocada en features.
 
 ---
 
-## 💾 Storage: Firestore vs MongoDB en VM
+## 💾 Database: Firestore vs MongoDB
 
-> **Decisión: Firestore (managed)**
+> **Decisión: Firestore**
 
 ⬇️ _Navega hacia abajo para comparación_
 
@@ -256,9 +256,9 @@ Esto nos da flexibilidad.
 
 ---
 
-## ⚡ Cache: Memorystore vs Redis en VM
+## ⚡ Cache: Memorystore vs Redis
 
-> **Decisión: Memorystore (managed)**
+> **Decisión: Memorystore**
 
 ⬇️ _Navega hacia abajo para comparación_
 
@@ -365,9 +365,9 @@ No tenemos que configurar nada de esto - GCP lo maneja.
 
 ---
 
-## 📬 Messaging: Pub/Sub vs Kafka en VM
+## 📬 Messaging: Pub/Sub vs Kafka
 
-> **Decisión: Cloud Pub/Sub (managed)**
+> **Decisión: Cloud Pub/Sub**
 
 ⬇️ _Navega hacia abajo para comparación_
 
@@ -379,7 +379,7 @@ Es el sistema de mensajería managed de GCP.
 
 <!-- .slide: data-background="#1c1c1c" -->
 
-### Pub/Sub vs Kafka en VM
+### Pub/Sub vs Kafka
 
 <div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
@@ -494,7 +494,7 @@ Es contenedores sin servidores que administrar.
 <div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
 <div style="width: 45%; text-align: left;">
-<h4>Cloud Run (Nuestra elección)</h4>
+<h4>Cloud Run </h4>
 
 **Ventajas:**
 - ✅ Serverless (no VMs que administrar)
@@ -644,7 +644,7 @@ Para workers que no son críticos, dejamos minScale: 0 para ahorrar costos.
 
 ## 🔐 Secrets: Secret Manager
 
-> **Decisión: Secret Manager (managed)**
+> **Decisión: Secret Manager**
 
 ⬇️ _Navega hacia abajo para detalles_
 
@@ -661,7 +661,7 @@ Es una de las decisiones más obvias - nunca self-host secrets.
 <div style="display: flex; justify-content: space-around; font-size: 0.75em;">
 
 <div style="width: 45%; text-align: left;">
-<h4>Secret Manager (Nuestra elección)</h4>
+<h4>Secret Manager </h4>
 
 **Ventajas:**
 - ✅ Encryption at rest y in transit
