@@ -43,30 +43,30 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 ## 📚 Categorías
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px;">
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
 
-<div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); padding: 25px; border-radius: 16px; text-align: left;">
-<h3 style="margin: 0; font-size: 1.1em;">🎯 Onboarding</h3>
-<p style="color: #bfdbfe; font-size: 0.7em; margin: 10px 0 0 0;">Tu primer día hasta productividad</p>
-<span style="font-size: 0.6em; color: #93c5fd;">4 presentaciones • ~2.5h</span>
+<div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); padding: 20px 25px; border-radius: 16px; text-align: left;">
+<h3 style="margin: 0; font-size: 0.95em;">🎯 Onboarding</h3>
+<p style="color: #bfdbfe; font-size: 0.6em; margin: 8px 0 0 0; line-height: 1.4;">Tu primer día hasta productividad</p>
+<span style="font-size: 0.55em; color: #93c5fd;">4 presentaciones • ~2.5h</span>
 </div>
 
-<div style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); padding: 25px; border-radius: 16px; text-align: left;">
-<h3 style="margin: 0; font-size: 1.1em;">🏗️ Arquitectura</h3>
-<p style="color: #ddd6fe; font-size: 0.7em; margin: 10px 0 0 0;">Clean Architecture y patrones</p>
-<span style="font-size: 0.6em; color: #c4b5fd;">4 presentaciones • ~2.5h</span>
+<div style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); padding: 20px 25px; border-radius: 16px; text-align: left;">
+<h3 style="margin: 0; font-size: 0.95em;">🏗️ Arquitectura</h3>
+<p style="color: #ddd6fe; font-size: 0.6em; margin: 8px 0 0 0; line-height: 1.4;">Clean Architecture y patrones</p>
+<span style="font-size: 0.55em; color: #c4b5fd;">4 presentaciones • ~2.5h</span>
 </div>
 
-<div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 25px; border-radius: 16px; text-align: left;">
-<h3 style="margin: 0; font-size: 1.1em;">⚡ Resiliencia & Ops</h3>
-<p style="color: #a7f3d0; font-size: 0.7em; margin: 10px 0 0 0;">Patrones enterprise y observabilidad</p>
-<span style="font-size: 0.6em; color: #6ee7b7;">5 presentaciones • ~2h</span>
+<div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px 25px; border-radius: 16px; text-align: left;">
+<h3 style="margin: 0; font-size: 0.95em;">⚡ Resiliencia & Ops</h3>
+<p style="color: #a7f3d0; font-size: 0.6em; margin: 8px 0 0 0; line-height: 1.4;">Patrones enterprise y observabilidad</p>
+<span style="font-size: 0.55em; color: #6ee7b7;">5 presentaciones • ~2h</span>
 </div>
 
-<div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); padding: 25px; border-radius: 16px; text-align: left;">
-<h3 style="margin: 0; font-size: 1.1em;">🔬 Deep Dives</h3>
-<p style="color: #fef3c7; font-size: 0.7em; margin: 10px 0 0 0;">Casos de estudio y especialización</p>
-<span style="font-size: 0.6em; color: #fcd34d;">4 presentaciones • ~2h</span>
+<div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); padding: 20px 25px; border-radius: 16px; text-align: left;">
+<h3 style="margin: 0; font-size: 0.95em;">🔬 Deep Dives</h3>
+<p style="color: #fef3c7; font-size: 0.6em; margin: 8px 0 0 0; line-height: 1.4;">Casos de estudio y especialización</p>
+<span style="font-size: 0.55em; color: #fcd34d;">4 presentaciones • ~2h</span>
 </div>
 
 </div>
