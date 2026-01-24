@@ -962,12 +962,13 @@ ROI es obvio: pagamos $255 para ahorrar $5,400.
 
 <br>
 
-**Filosofía:** 
-<br>
-Preferir managed para enfocarnos en funcionalidades, no en infraestructura.
+<div style="text-align: left;">
 
-**Exit strategy:** 
-Firestore usa MongoDB wire protocol → podemos migrar a MongoDB Atlas/self-hosted sin cambiar código.
+**Filosofía:** Preferir managed para enfocarnos en funcionalidades, no en infraestructura.
+
+**Exit strategy:** Firestore usa MongoDB wire protocol → podemos migrar a MongoDB Atlas/self-hosted sin cambiar código.
+
+</div>
 
 </div>
 
@@ -983,12 +984,16 @@ Pagamos un premium (~3x) pero ahorramos mucho más en tiempo del equipo.
 ## 🎯 Próximos Pasos
 
 1. **Monitorear costos:** 
+<br>
 Revisar billing mensualmente
-2. **Optimizar donde tenga sentido:** 
+2. **Optimizar donde tenga sentido:**
+<br> 
 Ej. reducir Firestore reads con caching
-3. **Re-evaluar a escala:** 
+3. **Re-evaluar a escala:**
+<br> 
 Si llegamos a 10x traffic, revisar self-hosted
-4. **Documentar cambios:** 
+4. **Documentar cambios:**
+<br>
 ADRs para decisiones de infraestructura
 
 Note:
