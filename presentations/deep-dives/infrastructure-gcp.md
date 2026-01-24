@@ -328,7 +328,8 @@ Redis es crítico para performance - no queremos que falle porque olvidamos conf
 
 ### Arquitectura Memorystore
 
-<div class="mermaid">
+```mermaid
+%%{init: {'theme': 'dark'}}%%
 graph TB
     subgraph "Cloud Run Services"
         A[integration-api]
@@ -354,7 +355,7 @@ graph TB
 
     style D fill:#3498db
     style E fill:#2ecc71
-</div>
+```
 
 **Standard Tier:**
 - 1 primary + 1 replica (cross-zone)
@@ -436,7 +437,8 @@ Pero para nuestros casos de uso (notificaciones, reportes, sync), at-least-once 
 
 ### Arquitectura Pub/Sub
 
-<div class="mermaid">
+```mermaid
+%%{init: {'theme': 'dark'}}%%
 graph TB
     subgraph "Publishers"
         A[integration-api]
@@ -469,7 +471,7 @@ graph TB
     style T1 fill:#3498db
     style T2 fill:#3498db
     style T3 fill:#3498db
-</div>
+```
 
 Note:
 Nuestra arquitectura de Pub/Sub es simple.
@@ -551,7 +553,8 @@ Los cold starts son aceptables para nuestra use case (~500ms).
 
 ### Arquitectura Cloud Run
 
-<div class="mermaid">
+```mermaid
+%%{init: {'theme': 'dark'}}%%
 graph TB
     subgraph "Internet"
         U[Users/Clients]
@@ -592,7 +595,7 @@ graph TB
     style RW fill:#3498db
     style SW fill:#3498db
     style LB fill:#e74c3c
-</div>
+```
 
 **Escala automática:** De 0 a 100+ instancias según load.
 
@@ -770,9 +773,9 @@ graph TB
         DEPLOY[Deploy Workflow]
     end
 
-    subgraph "Chile"
-        QA_CL[QA Chile]
-        PROD_CL[PROD Chile]
+    subgraph "España"
+        QA_ES[QA España]
+        PROD_ES[PROD España]
     end
 
     subgraph "Peru"
@@ -780,9 +783,9 @@ graph TB
         PROD_PE[PROD Peru]
     end
 
-    subgraph "España"
-        QA_ES[QA España]
-        PROD_ES[PROD España]
+    subgraph "Chile"
+        QA_CL[QA Chile]
+        PROD_CL[PROD Chile]
     end
 
     CI --> DEPLOY
