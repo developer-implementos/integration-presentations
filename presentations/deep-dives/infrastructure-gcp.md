@@ -17,9 +17,9 @@ revealOptions:
 
 # ☁️ Infraestructura GCP
 
-## Decisiones Técnicas
+### Decisiones Técnicas
 
-### Integration API
+#### Integration API
 
 Note:
 Esta presentación cubre las decisiones de infraestructura que tomamos para el proyecto.
@@ -246,7 +246,13 @@ const uri = 'mongodb://mongodb-cluster.example.com/...'
 // El código de la aplicación NO cambia
 ```
 
-**Exit strategy clara:** Firestore Enterprise usa MongoDB wire protocol, podemos migrar a MongoDB Atlas o self-hosted sin cambiar código.
+<div style="text-align: left;">
+
+**Exit strategy clara:** 
+<br>
+Firestore Enterprise usa MongoDB wire protocol, podemos migrar a MongoDB Atlas o self-hosted sin cambiar código.
+
+</div>
 
 Note:
 Una de las razones para elegir Firestore Enterprise es que usa MongoDB wire protocol.
