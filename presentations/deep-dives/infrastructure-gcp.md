@@ -817,102 +817,39 @@ Los colores muestran: amarillo para QA, verde para producción.
 
 ----
 
-<!-- .slide: data-background="#181818" data-background-transition="fade" -->
-
-### Arquitectura Multi-País
-
-<svg viewBox="0 0 600 400" style="max-width: 700px; margin: 0 auto; display: block;">
-  <!-- GitHub Actions Box -->
-  <rect x="200" y="20" width="200" height="80" rx="8" fill="#2c3e50" stroke="#3498db" stroke-width="2"/>
-  <text x="300" y="45" text-anchor="middle" fill="#3498db" font-size="12" font-weight="bold">GitHub Actions</text>
-  <rect x="220" y="55" width="70" height="30" rx="4" fill="#34495e" stroke="#5dade2" stroke-width="1"/>
-  <text x="255" y="75" text-anchor="middle" fill="#fff" font-size="10">CI Pipeline</text>
-  <rect x="310" y="55" width="70" height="30" rx="4" fill="#34495e" stroke="#5dade2" stroke-width="1"/>
-  <text x="345" y="75" text-anchor="middle" fill="#fff" font-size="10">Deploy</text>
-
-  <!-- Arrow from CI to Deploy -->
-  <line x1="290" y1="70" x2="305" y2="70" stroke="#ecf0f1" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <!-- Chile Box -->
-  <rect x="50" y="180" width="180" height="100" rx="8" fill="#2c3e50" stroke="#e74c3c" stroke-width="2"/>
-  <text x="140" y="205" text-anchor="middle" fill="#e74c3c" font-size="12" font-weight="bold">Chile</text>
-  <rect x="70" y="220" width="60" height="35" rx="4" fill="#f1c40f" stroke="#f39c12" stroke-width="1"/>
-  <text x="100" y="242" text-anchor="middle" fill="#2c3e50" font-size="10" font-weight="bold">QA</text>
-  <rect x="150" y="220" width="60" height="35" rx="4" fill="#2ecc71" stroke="#27ae60" stroke-width="1"/>
-  <text x="180" y="242" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">PROD</text>
-
-  <!-- Peru Box -->
-  <rect x="370" y="180" width="180" height="100" rx="8" fill="#2c3e50" stroke="#9b59b6" stroke-width="2"/>
-  <text x="460" y="205" text-anchor="middle" fill="#9b59b6" font-size="12" font-weight="bold">Perú</text>
-  <rect x="390" y="220" width="60" height="35" rx="4" fill="#f1c40f" stroke="#f39c12" stroke-width="1"/>
-  <text x="420" y="242" text-anchor="middle" fill="#2c3e50" font-size="10" font-weight="bold">QA</text>
-  <rect x="470" y="220" width="60" height="35" rx="4" fill="#2ecc71" stroke="#27ae60" stroke-width="1"/>
-  <text x="500" y="242" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">PROD</text>
-
-  <!-- Arrows from Deploy to environments -->
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#ecf0f1"/>
-    </marker>
-  </defs>
-
-  <!-- Arrow to Chile QA -->
-  <path d="M 280 100 Q 180 140 100 180" stroke="#ecf0f1" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
-  <!-- Arrow to Chile PROD -->
-  <path d="M 300 100 Q 220 140 180 180" stroke="#ecf0f1" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
-  <!-- Arrow to Peru QA -->
-  <path d="M 320 100 Q 380 140 420 180" stroke="#ecf0f1" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
-  <!-- Arrow to Peru PROD -->
-  <path d="M 340 100 Q 420 140 500 180" stroke="#ecf0f1" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
-
-  <!-- Labels -->
-  <text x="160" y="145" text-anchor="middle" fill="#95a5a6" font-size="9">workflow_dispatch</text>
-  <text x="440" y="145" text-anchor="middle" fill="#95a5a6" font-size="9">workflow_dispatch</text>
-
-  <!-- Legend -->
-  <rect x="220" y="320" width="20" height="15" rx="2" fill="#f1c40f"/>
-  <text x="250" y="332" fill="#bdc3c7" font-size="10">QA</text>
-  <rect x="300" y="320" width="20" height="15" rx="2" fill="#2ecc71"/>
-  <text x="330" y="332" fill="#bdc3c7" font-size="10">PROD</text>
-</svg>
-
-**Características**:
-- Deployments manuales (workflow_dispatch)
-- Aislamiento total entre países
-- Service Accounts dedicados por país-ambiente
-
-Note:
-Versión SVG del diagrama para mejor compatibilidad.
-
-----
-
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
 
 ### Workload Identity Federation
 
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
+flowchart TB
+    subgraph GH["🔧 GitHub Actions"]
+        RUNNER["Runner<br/>Job en ejecución"]
+    end
+
+    subgraph GCP["☁️ Google Cloud Platform"]
+        WIF["IAM Workload<br/>Identity Pool"]
+        SA["Service Account<br/>(sin JSON keys)"]
+    end
+
+    RUNNER -->|"🔐 OIDC Token"| WIF
+    WIF -->|"✅ Impersonate"| SA
+    SA -->|"🚀 Deploy"| RESOURCES["Cloud Run<br/>Pub/Sub<br/>Secret Manager"]
+
+    style GH fill:#24292e,stroke:#58a6ff,stroke-width:2px
+    style GCP fill:#1a73e8,stroke:#4285f4,stroke-width:2px
+    style RUNNER fill:#238636,stroke:#3fb950
+    style WIF fill:#f9ab00,stroke:#fbbc04
+    style SA fill:#34a853,stroke:#5bb974
+    style RESOURCES fill:#673ab7,stroke:#9575cd
 ```
-┌─────────────────────────────────────────────────────────────┐
-│              WORKLOAD IDENTITY FEDERATION                    │
-│                                                              │
-│  ┌──────────────┐         ┌──────────────┐                  │
-│  │   GitHub     │  OIDC   │    GCP       │                  │
-│  │   Actions    │ ──────▶ │   IAM        │                  │
-│  │   Runner     │  Token  │   Workload   │                  │
-│  └──────────────┘         │   Identity   │                  │
-│                           └──────────────┘                  │
-│                                  │                          │
-│                                  ▼                          │
-│                     ┌────────────────────────┐              │
-│                     │   Service Account      │              │
-│                     │   (sin JSON keys)      │              │
-│                     └────────────────────────┘              │
-│                                                              │
-│  ✅ Sin secretos estáticos                                  │
-│  ✅ Tokens de corta duración                                │
-│  ✅ Auditoría completa                                      │
-│  ✅ Rotación automática                                     │
-└─────────────────────────────────────────────────────────────┘
-```
+
+**Beneficios:**
+- ✅ Sin secretos estáticos
+- ✅ Tokens de corta duración
+- ✅ Auditoría completa
+- ✅ Rotación automática
 
 Note:
 Este es un patrón de seguridad moderno para CI/CD.

@@ -163,7 +163,7 @@ open http://localhost:3000/api/docs
 ### Arquitectura Local
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 flowchart LR
     subgraph LOCAL["Tu Maquina"]
         API["integration-api\n:3000"]

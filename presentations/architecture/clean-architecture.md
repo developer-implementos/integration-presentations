@@ -82,7 +82,7 @@ class ProductController {
 ### La Solucion: Capas Separadas
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph TB
     subgraph "🎯 API Layer"
         CTRL[Controllers]
@@ -503,7 +503,7 @@ export class InventoryModule {}
 ### Direccion de Dependencias
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph LR
     subgraph OUTER[" "]
         API[API]
@@ -583,7 +583,7 @@ export class ReserveStockService {
 ### Flujo Completo
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 sequenceDiagram
     participant Client
     participant Controller as 🎯 Controller
@@ -639,7 +639,7 @@ sequenceDiagram
 ### Jerarquia de Errores
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph TB
     DE[DomainError<br/>abstracta]
 

@@ -92,7 +92,7 @@ Las big techs tienen 80%+ de coverage obligatorio.
 ### La Piramide
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph TB
     subgraph E2E["E2E - 10%"]
         E[Playwright]
@@ -828,7 +828,7 @@ pnpm nx e2e admin-e2e --project=chromium
 ### Workflow Recomendado
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 flowchart LR
     subgraph DEV["Durante Desarrollo"]
         A["pnpm nx test proyecto --watch"]

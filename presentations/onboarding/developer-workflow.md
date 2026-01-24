@@ -486,7 +486,7 @@ Tu PR necesita approval del CODEOWNER del codigo que modificaste.
 ### Flujo de Validacion
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 flowchart LR
     subgraph TU["🖥️ Tu Maquina"]
         A["git commit"] --> B["git push"]
