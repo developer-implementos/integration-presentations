@@ -964,9 +964,13 @@ ROI es obvio: pagamos $255 para ahorrar $5,400.
 
 <div style="text-align: left;">
 
-**Filosofía:** Preferir managed para enfocarnos en funcionalidades, no en infraestructura.
+**Filosofía:** 
+<br>
+Preferir managed para enfocarnos en funcionalidades, no en infraestructura.
 
-**Exit strategy:** Firestore usa MongoDB wire protocol → podemos migrar a MongoDB Atlas/self-hosted sin cambiar código.
+**Exit strategy:** 
+<br>
+Firestore usa MongoDB wire protocol → podemos migrar a MongoDB Atlas/self-hosted sin cambiar código.
 
 </div>
 
