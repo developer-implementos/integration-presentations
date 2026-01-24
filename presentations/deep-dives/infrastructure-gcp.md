@@ -518,7 +518,9 @@ Es contenedores sin servidores que administrar.
 
 <!-- .slide: data-background="#1a1a2e" -->
 
-### Cloud Run vs Compute Engine - Ventajas
+### Cloud Run vs Compute Engine
+
+> **Ventajas**
 
 <div style="display: flex; justify-content: space-between; font-size: 0.75em;">
 
@@ -554,7 +556,9 @@ Solo hacemos `gcloud run deploy` y GCP maneja todo.
 
 <!-- .slide: data-background="#0f3460" -->
 
-### Cloud Run vs Compute Engine - Desventajas
+### Cloud Run vs Compute Engine
+
+> **Desventajas**
 
 <div style="display: flex; justify-content: space-between; font-size: 0.75em;">
 
@@ -905,10 +909,10 @@ flowchart LR
     WIF -->|"✅ Impersonate"| SA["Service Account<br/>(sin keys)"]
     SA -->|"🚀 Deploy"| RES["Cloud Run / Pub/Sub<br/>Secret Manager"]
 
-    style GH fill:#238636,stroke:#3fb950,stroke-width:2px
-    style WIF fill:#f9ab00,stroke:#fbbc04,stroke-width:2px
-    style SA fill:#34a853,stroke:#5bb974,stroke-width:2px
-    style RES fill:#673ab7,stroke:#9575cd,stroke-width:2px
+    style GH fill:#238636,stroke:#3fb950,stroke-width:2px,color:#fff
+    style WIF fill:#f9ab00,stroke:#fbbc04,stroke-width:2px,color:#fff
+    style SA fill:#34a853,stroke:#5bb974,stroke-width:2px,color:#fff
+    style RES fill:#673ab7,stroke:#9575cd,stroke-width:2px,color:#fff
 ```
 
 > **Zero secrets** - Autenticación via OIDC sin JSON keys
