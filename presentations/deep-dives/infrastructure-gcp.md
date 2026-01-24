@@ -891,8 +891,8 @@ Estos son números aproximados para nuestro caso de uso.
 | **Secret Manager** | 50 secrets, 1M accesses | ~$5 | Vault (e2-small) | -$15 |
 | **Load Balancer** | Global HTTPS | ~$20 | Self-managed nginx | -$0 |
 
-**Total Managed:** ~$355/mes
-**Total Self-Hosted:** ~$100/mes
+**Total Managed:** ~$355/mes<br>
+**Total Self-Hosted:** ~$100/mes<br>
 **Diferencia:** ~$255/mes (~3x más caro)
 
 </div>
@@ -962,11 +962,11 @@ ROI es obvio: pagamos $255 para ahorrar $5,400.
 
 <br>
 
-**Filosofía:** Preferir managed para enfocarnos en funcionalidades, no en infraestructura.
+**Filosofía:** 
+Preferir managed para enfocarnos en funcionalidades, no en infraestructura.
 
-<br>
-
-**Exit strategy:** Firestore usa MongoDB wire protocol → podemos migrar a MongoDB Atlas/self-hosted sin cambiar código.
+**Exit strategy:** 
+Firestore usa MongoDB wire protocol → podemos migrar a MongoDB Atlas/self-hosted sin cambiar código.
 
 </div>
 
