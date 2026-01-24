@@ -590,13 +590,7 @@ git push
 
 ---
 
-## Preguntas?
-
-**Recursos:**
-- [GitHub Actions Docs](https://docs.github.com/en/actions)
-- [Nx Affected](https://nx.dev/concepts/affected)
-- [SonarCloud](https://sonarcloud.io)
-- [Renovate Docs](https://docs.renovatebot.com)
+# 🙏 Gracias
 
 Note:
 Si tienen dudas sobre CI/CD, revisen los logs de GitHub Actions.

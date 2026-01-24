@@ -528,4 +528,4 @@ libs/shared/backend/observability/
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

@@ -535,4 +535,4 @@ db.notifications.find({
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

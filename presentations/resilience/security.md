@@ -549,4 +549,4 @@ libs/shared/backend/
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

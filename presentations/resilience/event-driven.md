@@ -485,4 +485,4 @@ DLQ:
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

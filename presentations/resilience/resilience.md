@@ -487,4 +487,4 @@ libs/shared/backend/resilience/
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

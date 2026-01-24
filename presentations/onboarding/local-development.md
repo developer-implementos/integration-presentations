@@ -691,12 +691,7 @@ Tiempo estimado: 30-60 minutos
 
 ---
 
-## Preguntas?
-
-**Si algo falla:**
-1. Revisa esta presentacion (seccion Troubleshooting)
-2. Pregunta en Slack `#dev-help`
-3. Busca en los ADRs: `docs/architecture/adrs/`
+# 🙏 Gracias
 
 Note:
 No te frustres si algo no funciona a la primera.

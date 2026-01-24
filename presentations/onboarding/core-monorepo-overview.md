@@ -883,26 +883,8 @@ Esto permite onboarding personalizado según rol y experiencia.
 
 ---
 
-### 🙏 ¡Gracias!
-
-```
-        ╔═══════════════════════════════════════╗
-        ║                                       ║
-        ║   "First, solve the problem.          ║
-        ║    Then, write the code."             ║
-        ║                                       ║
-        ║                    — John Johnson     ║
-        ║                                       ║
-        ╚═══════════════════════════════════════╝
-```
-
-**Contacto**:
-- **Repo**: github.com/developer-implementos/core
-- **Slack**: #core-monorepo
-- **Issues**: GitHub Issues para bugs/features
+# 🙏 Gracias
 
 Note:
 Gracias por su atención.
-Recuerden la frase: "Primero, resuelve el problema. Luego, escribe el código."
-No se lancen a programar sin entender qué quieren lograr.
 Bienvenidos al equipo - estamos aquí para ayudarlos a crecer como developers.

@@ -17,7 +17,7 @@ revealOptions:
 
 # ☁️ Infraestructura GCP
 
-## Decisiones Técnicas y Compromisos
+## Decisiones Técnicas
 
 ### Integration API
 
@@ -131,7 +131,7 @@ No hay opción perfecta - siempre ganas algo y pierdes algo.
 ✅ **Managed es mejor cuando:**
 - No tienes expertise específica del servicio
 - El equipo es pequeño (<10 developers)
-- Quieres enfocarte en features, no en infraestructura
+- Quieres enfocarte en funcionalidades, no en infraestructura
 - La carga es variable (traffic spikes)
 - Compliance/SLAs requieren alta disponibilidad
 - Startup/MVP donde el time-to-market es crítico
@@ -140,7 +140,7 @@ No hay opción perfecta - siempre ganas algo y pierdes algo.
 
 Note:
 Estos son los casos donde conviene que GCP administre por nosotros.
-En nuestro caso, somos un equipo pequeño enfocado en features de negocio.
+En nuestro caso, somos un equipo pequeño enfocado en funcionalidades de negocio.
 No queremos perder tiempo configurando replicas de MongoDB o tuneando Kafka.
 Preferimos pagar un poco más y que GCP lo maneje.
 
@@ -162,7 +162,7 @@ Preferimos pagar un poco más y que GCP lo maneje.
 Note:
 Self-hosted hace sentido para empresas grandes con equipos dedicados.
 Si tienes un equipo de SRE de 5+ personas, puedes optimizar costos con self-hosted.
-Pero nosotros NO estamos en ese caso - somos una startup enfocada en features.
+Pero nosotros NO estamos en ese caso - somos una startup enfocada en funcionalidades.
 
 ---
 
@@ -198,7 +198,7 @@ Vamos a ver por qué.
 
 **Desventajas:**
 - ❌ Más caro a escala grande
-- ❌ Algunas features no disponibles
+- ❌ Algunas funcionalidades no disponibles
 - ❌ Vendor lock-in (GCP)
 </div>
 
@@ -207,7 +207,7 @@ Vamos a ver por qué.
 
 **Ventajas:**
 - ✅ Control total
-- ✅ Todas las features
+- ✅ Todas las funcionalidades
 - ✅ Más barato a escala grande
 - ✅ Portable (no vendor lock-in)
 
@@ -225,7 +225,7 @@ Note:
 Firestore nos da MongoDB API sin el overhead operacional.
 No tenemos que configurar replica sets, backups, sharding, etc.
 GCP se encarga de todo eso.
-El costo es más alto por operación, pero el equipo puede enfocarse en features.
+El costo es más alto por operación, pero el equipo puede enfocarse en funcionalidades.
 
 ----
 
@@ -421,7 +421,7 @@ Pub/Sub es mucho más simple que Kafka.
 No hay brokers, no hay Zookeeper, no hay configuración de partitions.
 Solo publicas mensajes y suscribes consumers.
 GCP maneja todo el escalado, la replicación, el retry.
-Sí, perdemos algunas features de Kafka (como exactly-once semantics).
+Sí, perdemos algunas funcionalidades de Kafka (como exactly-once semantics).
 Pero para nuestros casos de uso (notificaciones, reportes, sync), at-least-once es suficiente.
 
 ----
@@ -491,17 +491,17 @@ Es contenedores sin servidores que administrar.
 
 ### Cloud Run vs Compute Engine
 
-<div style="display: flex; justify-content: space-around; font-size: 0.75em;">
+<div style="display: flex; justify-content: space-between; font-size: 0.75em;">
 
-<div style="width: 45%; text-align: left;">
-<h4>Cloud Run </h4>
+<div style="width: 48%; text-align: left;">
+<h4>Cloud Run</h4>
 
 **Ventajas:**
 - ✅ Serverless (no VMs que administrar)
 - ✅ Escala a cero (costo cero en idle)
 - ✅ Escala automático (0 → 1000+ instancias)
 - ✅ Pay-per-request (no pagar idle time)
-- ✅ Deploy con un comando (`gcloud run deploy`)
+- ✅ Deploy con un comando
 - ✅ Blue/green deployment automático
 - ✅ Traffic splitting built-in
 
@@ -511,7 +511,7 @@ Es contenedores sin servidores que administrar.
 - ❌ Límite de request timeout (60 min max)
 </div>
 
-<div style="width: 45%; text-align: left;">
+<div style="width: 48%; text-align: left;">
 <h4>Compute Engine</h4>
 
 **Ventajas:**
@@ -526,7 +526,7 @@ Es contenedores sin servidores que administrar.
 - ❌ Configurar load balancer
 - ❌ Pagar por VMs idle
 - ❌ Configurar health checks
-- ❌ Más complejo deploys
+- ❌ Deploys más complejos
 </div>
 
 </div>
@@ -879,7 +879,7 @@ Estos son números aproximados para nuestro caso de uso.
 
 ### Breakdown de Costos Mensuales
 
-<div style="font-size: 0.65em;">
+<div style="font-size: 0.55em;">
 
 | Servicio | Configuración | Costo Mensual | Alternativa Self-Hosted | Ahorro |
 |----------|---------------|---------------|------------------------|--------|
@@ -901,7 +901,7 @@ Note:
 Sí, que GCP administre es ~3x más caro que administrar nosotros.
 Pero esto NO incluye el costo del tiempo del equipo.
 Si un developer dedica 20% de su tiempo a ops, eso son ~$2000/mes (asumiendo $10k/mes salary).
-Cuando GCP administra, el equipo se enfoca 100% en features.
+Cuando GCP administra, el equipo se enfoca 100% en funcionalidades.
 $255/mes extra es MUCHO más barato que el tiempo del equipo.
 
 ----
@@ -931,7 +931,7 @@ Total:                  $955/mes
 
 Beneficios:
 - GCP maneja ops
-- Equipo enfocado en features
+- Equipo enfocado en funcionalidades
 - Menos context switching
 - Menos riesgo de outages
 
@@ -960,7 +960,11 @@ ROI es obvio: pagamos $255 para ahorrar $5,400.
 | **Compute** | Cloud Run | Serverless, auto-scale, zero idle cost |
 | **Secrets** | Secret Manager | Seguridad crítica, audit logs |
 
-**Filosofía:** Preferir managed para enfocarnos en features, no en infraestructura.
+<br>
+
+**Filosofía:** Preferir managed para enfocarnos en funcionalidades, no en infraestructura.
+
+<br>
 
 **Exit strategy:** Firestore usa MongoDB wire protocol → podemos migrar a MongoDB Atlas/self-hosted sin cambiar código.
 
@@ -969,7 +973,7 @@ ROI es obvio: pagamos $255 para ahorrar $5,400.
 Note:
 Este es el resumen de todas nuestras decisiones.
 La filosofía es clara: que GCP administre cuando sea posible.
-Somos una startup enfocada en features de negocio.
+Somos una startup enfocada en funcionalidades de negocio.
 No queremos perder tiempo configurando infraestructura.
 Pagamos un premium (~3x) pero ahorramos mucho más en tiempo del equipo.
 
@@ -991,8 +995,6 @@ Pero por ahora, que GCP administre es la decisión correcta para nuestro equipo.
 ---
 
 # 🙏 Gracias
-
-¿Preguntas?
 
 Note:
 Fin de la presentación.

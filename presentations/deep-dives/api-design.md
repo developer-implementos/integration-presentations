@@ -525,4 +525,4 @@ export class InventoryController {
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

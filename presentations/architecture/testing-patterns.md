@@ -932,12 +932,7 @@ pnpm nx test proyecto --coverage  # Verificar coverage
 
 ---
 
-## Preguntas?
-
-**Recursos:**
-- [Vitest Documentation](https://vitest.dev/)
-- [Playwright Documentation](https://playwright.dev/)
-- [NestJS Testing](https://docs.nestjs.com/fundamentals/testing)
+# 🙏 Gracias
 
 Note:
 Si tienen dudas sobre testing, pregunten en Slack #dev-help.

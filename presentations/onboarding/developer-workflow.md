@@ -622,11 +622,7 @@ git rebase origin/main  # Actualizar branch
 
 ---
 
-## Preguntas?
-
-**Recursos:**
-- [Conventional Commits](https://conventionalcommits.org)
-- [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+# 🙏 Gracias
 
 Note:
 Si tienen dudas sobre el workflow, pregunten en Slack #dev-help.

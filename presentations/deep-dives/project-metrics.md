@@ -410,4 +410,4 @@ Cada solucion sigue patrones de Google, Stripe y AWS.
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

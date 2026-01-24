@@ -929,12 +929,7 @@ await TestBed.configureTestingModule({
 
 ---
 
-## Preguntas?
-
-**Recursos:**
-- `.claude/context/angular-modern.md` - Guia completa
-- `apps/admin/` - Ejemplos en el proyecto
-- [angular.dev/guide/signals](https://angular.dev/guide/signals)
+# 🙏 Gracias
 
 Note:
 Practica creando componentes pequenos primero.

@@ -1074,4 +1074,4 @@ El principio DRY (Don't Repeat Yourself) es mucho mas facil de cumplir en un mon
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

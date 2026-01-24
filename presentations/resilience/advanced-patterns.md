@@ -357,4 +357,4 @@ libs/shared/backend/feature-flags/
 
 ---
 
-## Preguntas?
+# 🙏 Gracias

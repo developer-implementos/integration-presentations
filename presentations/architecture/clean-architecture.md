@@ -941,12 +941,7 @@ Antes de escribir codigo, preguntate:
 
 ---
 
-## Preguntas?
-
-**Recursos adicionales:**
-- ADR-0003: Arquitectura por Capas
-- ADR-0020: Patron Facade
-- `libs/inventory/` - Ejemplo completo
+# 🙏 Gracias
 
 Note:
 Si te pierdes, abre inventory/ y sigue la estructura.
