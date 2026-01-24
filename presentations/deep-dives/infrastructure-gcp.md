@@ -329,7 +329,7 @@ Redis es crítico para performance - no queremos que falle porque olvidamos conf
 ### Arquitectura Memorystore
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph TB
     subgraph "Cloud Run Services"
         A[integration-api]
@@ -438,7 +438,7 @@ Pero para nuestros casos de uso (notificaciones, reportes, sync), at-least-once 
 ### Arquitectura Pub/Sub
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph TB
     subgraph "Publishers"
         A[integration-api]
@@ -554,7 +554,7 @@ Los cold starts son aceptables para nuestra use case (~500ms).
 ### Arquitectura Cloud Run
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph TB
     subgraph "Internet"
         U[Users/Clients]
