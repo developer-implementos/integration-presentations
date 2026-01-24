@@ -71,7 +71,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 </div>
 
-<p style="color: #64748b; font-size: 0.6em; margin-top: 30px;">↓ Navega hacia abajo para ver cada categoría</p>
+<p style="color: #94a3b8; font-size: 0.6em; margin-top: 30px;">↓ Navega hacia abajo para ver cada categoría</p>
 
 ---
 
@@ -85,49 +85,49 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <!-- .slide: data-background="#1a1a2e" -->
 
-<div style="display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto;">
+<div style="display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 750px; margin: 0 auto;">
 
 <a href="onboarding/core-monorepo-overview.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #3b82f6;">
-<span style="font-size: 2em;">📍</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #3b82f6;">
+<span style="font-size: 1.4em;">📍</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Monorepo Overview</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Estructura del proyecto, módulos y guía de navegación</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Monorepo Overview</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Estructura del proyecto, módulos y guía de navegación</p>
 </div>
-<span style="background: #3b82f6; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">30 min</span>
+<span style="background: #3b82f6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
 <a href="onboarding/local-development.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #3b82f6;">
-<span style="font-size: 2em;">💻</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #3b82f6;">
+<span style="font-size: 1.4em;">💻</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Local Development</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Setup completo: Node, Docker, VS Code, debugging</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Local Development</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Setup completo: Node, Docker, VS Code, debugging</p>
 </div>
-<span style="background: #3b82f6; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">45 min</span>
+<span style="background: #3b82f6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">45 min</span>
 </div>
 </a>
 
 <a href="onboarding/developer-workflow.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #3b82f6;">
-<span style="font-size: 2em;">🔄</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #3b82f6;">
+<span style="font-size: 1.4em;">🔄</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Developer Workflow</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Commits, branches, PRs, code review</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Developer Workflow</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Commits, branches, PRs, code review</p>
 </div>
-<span style="background: #3b82f6; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">45 min</span>
+<span style="background: #3b82f6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">45 min</span>
 </div>
 </a>
 
 <a href="onboarding/cicd-pipeline.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #3b82f6;">
-<span style="font-size: 2em;">🚀</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #3b82f6;">
+<span style="font-size: 1.4em;">🚀</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">CI/CD Pipeline</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">GitHub Actions, quality gates, deploy automático</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">CI/CD Pipeline</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">GitHub Actions, quality gates, deploy automático</p>
 </div>
-<span style="background: #3b82f6; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">45 min</span>
+<span style="background: #3b82f6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">45 min</span>
 </div>
 </a>
 
@@ -147,49 +147,49 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <!-- .slide: data-background="#1a1a2e" -->
 
-<div style="display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto;">
+<div style="display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 750px; margin: 0 auto;">
 
 <a href="architecture/clean-architecture.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #8b5cf6;">
-<span style="font-size: 2em;">🧅</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
+<span style="font-size: 1.4em;">🧅</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Clean Architecture</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Las 5 capas, regla de dependencia, Facade Pattern</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Clean Architecture</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Las 5 capas, regla de dependencia, Facade Pattern</p>
 </div>
-<span style="background: #8b5cf6; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">45 min</span>
+<span style="background: #8b5cf6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">45 min</span>
 </div>
 </a>
 
 <a href="architecture/platform-architecture.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #8b5cf6;">
-<span style="font-size: 2em;">🏛️</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
+<span style="font-size: 1.4em;">🏛️</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Platform Architecture</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Monolito Modular vs Microservicios: pros y contras</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Platform Architecture</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Monolito Modular vs Microservicios: pros y contras</p>
 </div>
-<span style="background: #8b5cf6; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">45 min</span>
+<span style="background: #8b5cf6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">45 min</span>
 </div>
 </a>
 
 <a href="architecture/testing-patterns.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #8b5cf6;">
-<span style="font-size: 2em;">🧪</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
+<span style="font-size: 1.4em;">🧪</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Testing Patterns</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Unit, Integration, E2E con Vitest y Playwright</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Testing Patterns</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Unit, Integration, E2E con Vitest y Playwright</p>
 </div>
-<span style="background: #8b5cf6; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">60 min</span>
+<span style="background: #8b5cf6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">60 min</span>
 </div>
 </a>
 
 <a href="architecture/modern-angular.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #8b5cf6;">
-<span style="font-size: 2em;">🅰️</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
+<span style="font-size: 1.4em;">🅰️</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Angular Moderno</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Signals, Control Flow, Standalone Components</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Angular Moderno</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Signals, Control Flow, Standalone Components</p>
 </div>
-<span style="background: #ec4899; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">Frontend</span>
+<span style="background: #8b5cf6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">60 min</span>
 </div>
 </a>
 
@@ -209,60 +209,60 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <!-- .slide: data-background="#1a1a2e" -->
 
-<div style="display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto;">
+<div style="display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 750px; margin: 0 auto;">
 
 <a href="resilience/resilience.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
-<span style="font-size: 2em;">🛡️</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #10b981;">
+<span style="font-size: 1.4em;">🛡️</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Resiliencia</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Circuit Breaker, Retry, Timeout, Bulkhead</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Resiliencia</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Circuit Breaker, Retry, Timeout, Bulkhead</p>
 </div>
-<span style="background: #10b981; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">30 min</span>
+<span style="background: #10b981; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
 <a href="resilience/observability.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
-<span style="font-size: 2em;">📊</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #10b981;">
+<span style="font-size: 1.4em;">📊</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Observabilidad</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Logs, Métricas, Traces, Health Checks, Error Budget</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Observabilidad</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Logs, Métricas, Traces, Health Checks, Error Budget</p>
 </div>
-<span style="background: #10b981; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">30 min</span>
+<span style="background: #10b981; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
 <a href="resilience/event-driven.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
-<span style="font-size: 2em;">📡</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #10b981;">
+<span style="font-size: 1.4em;">📡</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Event-Driven</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Cloud Pub/Sub, Outbox Pattern, Idempotencia</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Event-Driven</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Cloud Pub/Sub, Outbox Pattern, Idempotencia</p>
 </div>
-<span style="background: #10b981; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">30 min</span>
+<span style="background: #10b981; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
 <a href="resilience/security.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
-<span style="font-size: 2em;">🔐</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #10b981;">
+<span style="font-size: 1.4em;">🔐</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Seguridad</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">JWT, API Keys, RBAC, Rate Limiting, Data Redaction</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Seguridad</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">JWT, API Keys, RBAC, Rate Limiting, Data Redaction</p>
 </div>
-<span style="background: #10b981; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">30 min</span>
+<span style="background: #10b981; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
 <a href="resilience/advanced-patterns.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #10b981;">
-<span style="font-size: 2em;">⚙️</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #10b981;">
+<span style="font-size: 1.4em;">⚙️</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Patrones Avanzados</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Caching (Stampede, Write-Through), Feature Flags</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Patrones Avanzados</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Caching (Stampede, Write-Through), Feature Flags</p>
 </div>
-<span style="background: #f59e0b; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">Avanzado</span>
+<span style="background: #10b981; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
@@ -282,49 +282,49 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <!-- .slide: data-background="#1a1a2e" -->
 
-<div style="display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto;">
+<div style="display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 750px; margin: 0 auto;">
 
 <a href="deep-dives/case-study-notifications.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #f59e0b;">
-<span style="font-size: 2em;">📬</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #f59e0b;">
+<span style="font-size: 1.4em;">📬</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Caso de Estudio: Notificaciones</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Sistema completo con todos los patrones aplicados</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Caso de Estudio: Notificaciones</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Sistema completo con todos los patrones aplicados</p>
 </div>
-<span style="background: #f59e0b; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">45 min</span>
+<span style="background: #f59e0b; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">45 min</span>
 </div>
 </a>
 
 <a href="deep-dives/infrastructure-gcp.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #f59e0b;">
-<span style="font-size: 2em;">☁️</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #f59e0b;">
+<span style="font-size: 1.4em;">☁️</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Infraestructura GCP</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Managed vs Self-hosted, Multi-país, Workload Identity</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Infraestructura GCP</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Managed vs Self-hosted, Multi-país, Workload Identity</p>
 </div>
-<span style="background: #ef4444; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">DevOps</span>
+<span style="background: #f59e0b; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
 <a href="deep-dives/project-metrics.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #f59e0b;">
-<span style="font-size: 2em;">📈</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #f59e0b;">
+<span style="font-size: 1.4em;">📈</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">Métricas y Roadmap</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">Performance, k6 Load Testing, RFCs, estado del proyecto</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Métricas y Roadmap</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Performance, k6 Load Testing, RFCs, estado del proyecto</p>
 </div>
-<span style="background: #f59e0b; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">30 min</span>
+<span style="background: #f59e0b; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
 <a href="deep-dives/api-design.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 20px 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #f59e0b;">
-<span style="font-size: 2em;">🔌</span>
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #f59e0b;">
+<span style="font-size: 1.4em;">🔌</span>
 <div style="text-align: left; flex: 1;">
-<h4 style="margin: 0; color: #f1f5f9;">API Design</h4>
-<p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.75em;">REST best practices, versionado, documentación</p>
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">API Design</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">REST best practices, versionado, documentación</p>
 </div>
-<span style="background: #f59e0b; padding: 4px 12px; border-radius: 12px; font-size: 0.65em;">30 min</span>
+<span style="background: #f59e0b; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">30 min</span>
 </div>
 </a>
 
