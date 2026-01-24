@@ -963,6 +963,7 @@ ROI es obvio: pagamos $255 para ahorrar $5,400.
 <br>
 
 **Filosofía:** 
+<br>
 Preferir managed para enfocarnos en funcionalidades, no en infraestructura.
 
 **Exit strategy:** 
@@ -981,10 +982,14 @@ Pagamos un premium (~3x) pero ahorramos mucho más en tiempo del equipo.
 
 ## 🎯 Próximos Pasos
 
-1. **Monitorear costos:** Revisar billing mensualmente
-2. **Optimizar donde tenga sentido:** Ej. reducir Firestore reads con caching
-3. **Re-evaluar a escala:** Si llegamos a 10x traffic, revisar self-hosted
-4. **Documentar cambios:** ADRs para decisiones de infraestructura
+1. **Monitorear costos:** 
+Revisar billing mensualmente
+2. **Optimizar donde tenga sentido:** 
+Ej. reducir Firestore reads con caching
+3. **Re-evaluar a escala:** 
+Si llegamos a 10x traffic, revisar self-hosted
+4. **Documentar cambios:** 
+ADRs para decisiones de infraestructura
 
 Note:
 Estas decisiones no son permanentes.
