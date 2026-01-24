@@ -237,15 +237,6 @@ npx reveal-md presentations/infrastructure-gcp.md --theme night
 
 ---
 
-### Secciones Modulares
-
-Para sesiones de capacitacion mas granulares, ver [sections/README.md](presentations/sections/README.md).
-
-Las secciones permiten:
-- Sesiones de 45 min enfocadas
-- Tracks por nivel (Foundations, Core, Advanced)
-- Combinacion flexible de temas
-
 ## Orden Recomendado para Onboarding
 
 ### Semana 1: Foundations
@@ -334,8 +325,7 @@ integration-presentations/
 │   ├── angular-moderno.md         # Angular 21 Signals
 │   ├── why-modular-monolith.md    # Justificación (~20 min)
 │   ├── enterprise-patterns.md     # Patrones avanzados (~45 min)
-│   ├── infrastructure-gcp.md      # Infra GCP (~30 min)
-│   └── sections/                  # Secciones modulares
+│   └── infrastructure-gcp.md      # Infra GCP (~30 min)
 │
 └── dist/                          # Build estático (generado)
 ```
