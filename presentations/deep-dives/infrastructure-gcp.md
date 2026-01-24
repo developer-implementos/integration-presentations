@@ -766,7 +766,7 @@ También permite cumplir con regulaciones locales de datos.
 ### Arquitectura Multi-País
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph TB
     subgraph "GitHub Actions"
         CI[CI Pipeline]
