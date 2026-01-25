@@ -20,6 +20,8 @@ revealOptions:
 
 > La capacidad de entender que pasa DENTRO del sistema mirando desde AFUERA
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 Sin observabilidad, operar en produccion es como manejar con los ojos cerrados.
 Cuando algo falla a las 3am, necesitas herramientas que te digan QUE y DONDE.
@@ -70,6 +72,8 @@ Aplicacion                  Colectores              Visualizacion
 ## Logging Estructurado
 
 > JSON, no texto plano
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -201,6 +205,8 @@ Solo bajamos a 'debug' cuando investigamos un problema especifico.
 
 > Numeros que te dicen como esta tu sistema
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Tipos de Metricas
@@ -292,6 +298,8 @@ Los numeros verdes son buenos, amarillos son warning, rojos son criticos.
 
 > Entiende como fluye una request a traves del sistema
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Anatomia de un Trace
@@ -365,6 +373,8 @@ Solo tienes que inicializarlo al arrancar la aplicacion.
 ## Health Checks
 
 > Kubernetes necesita saber si tu app esta viva
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -441,6 +451,8 @@ Si readiness falla, deja de enviarle trafico (pero no lo reinicia).
 ## Error Budget (RFC-0012)
 
 > Cuantos errores podemos tener antes de romper nuestras promesas
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 

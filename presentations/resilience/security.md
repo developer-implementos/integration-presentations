@@ -20,6 +20,8 @@ revealOptions:
 
 > Si una capa falla, las otras siguen protegiendo
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ```
                     INTERNET
                         |
@@ -73,6 +75,8 @@ Si alguien pasa una, todavia tiene que pasar las otras.
 ## Autenticacion Dual
 
 > Humanos vs Maquinas
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -200,6 +204,8 @@ export class AuthGuard implements CanActivate {
 
 > Quien puede hacer que
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### RBAC para Usuarios Humanos
@@ -263,6 +269,8 @@ createProduct(@Body() dto: CreateProductDto) {
 
 > Proteccion contra abuso
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Tres Niveles de Rate Limiting
@@ -325,6 +333,8 @@ HTTP 429 Too Many Requests
 ## Input Validation
 
 > Rechaza datos maliciosos antes de procesarlos
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -391,6 +401,8 @@ app.useGlobalPipes(
 ## Data Redaction (RFC-0020)
 
 > Datos sensibles NUNCA aparecen en logs
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 

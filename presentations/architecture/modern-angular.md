@@ -25,20 +25,22 @@ Si vienes de versiones anteriores, esta presentacion es obligatoria.
 
 ---
 
-## Agenda
+## 📋 Agenda
 
-1. **Signals vs RxJS** - El nuevo modelo reactivo
-2. **Control Flow** - @if, @for, @switch
-3. **Standalone Components** - Sin NgModules
-4. **Modern Inputs/Outputs** - input(), output()
-5. **Signal Store** - Estado global reactivo
-6. **Migracion** - De clasico a moderno
+1. **📡 Signals vs RxJS** - El nuevo modelo reactivo
+2. **🔄 Control Flow** - @if, @for, @switch
+3. **📦 Standalone Components** - Sin NgModules
+4. **📥 Modern Inputs/Outputs** - input(), output()
+5. **🗄️ Signal Store** - Estado global reactivo
+6. **🔀 Migracion** - De clasico a moderno
 
 ---
 
-## Signals vs RxJS
+## 📡 Signals vs RxJS
 
 > El cambio mas importante de Angular moderno
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -191,9 +193,11 @@ export class ProductComponent {
 
 ---
 
-## Control Flow Moderno
+## 🔄 Control Flow Moderno
 
 > @if, @for, @switch en lugar de *ngIf, *ngFor
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -315,9 +319,11 @@ export class ProductComponent {
 
 ---
 
-## Standalone Components
+## 📦 Standalone Components
 
 > Sin NgModules - Componentes independientes
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -443,9 +449,11 @@ export const routes: Routes = [
 
 ---
 
-## Modern Inputs/Outputs
+## 📥 Modern Inputs/Outputs
 
 > input() y output() en lugar de decoradores
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -593,9 +601,11 @@ export class ProductCardComponent {
 
 ---
 
-## Signal Store
+## 🗄️ Signal Store
 
 > Estado global reactivo sin NgRx boilerplate
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -758,9 +768,11 @@ export class ProductListComponent implements OnInit {
 
 ---
 
-## Migracion
+## 🔀 Migracion
 
 > De Angular clasico a moderno
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -892,7 +904,7 @@ await TestBed.configureTestingModule({
 
 ---
 
-## Resumen
+## 📝 Resumen
 
 ----
 

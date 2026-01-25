@@ -25,17 +25,17 @@ Es material esencial que usaran todos los dias.
 
 ---
 
-## Agenda
+## 📋 Agenda
 
-1. **Conventional Commits** - Formato obligatorio
-2. **Branches** - Nomenclatura y flujo
-3. **Pull Requests** - Proceso completo
-4. **Code Review** - Como revisar y ser revisado
-5. **Validacion de Codigo** - CI valida automaticamente
+1. **📝 Conventional Commits** - Formato obligatorio
+2. **🌿 Branches** - Nomenclatura y flujo
+3. **🔀 Pull Requests** - Proceso completo
+4. **👀 Code Review** - Como revisar y ser revisado
+5. **✅ Validacion de Codigo** - CI valida automaticamente
 
 ---
 
-## El Ciclo Diario
+## 🔄 El Ciclo Diario
 
 > Del codigo al deploy: el ciclo completo
 
@@ -66,7 +66,7 @@ CODE → COMMIT → PUSH → PR → REVIEW → MERGE
 
 ---
 
-## Conventional Commits
+## 📝 Conventional Commits
 
 > Formato obligatorio para mensajes de commit
 
@@ -193,7 +193,7 @@ GitLens y GitHub Copilot estan configurados para generar commits en español:
 
 ---
 
-## Branches
+## 🌿 Branches
 
 > Una branch por feature, siempre desde main
 
@@ -277,7 +277,7 @@ force-with-lease es mas seguro que force.
 
 ---
 
-## Pull Requests
+## 🔀 Pull Requests
 
 > El PR es donde ocurre la magia del code review
 
@@ -403,7 +403,7 @@ Antes de merge, tu PR debe pasar:
 
 ---
 
-## Code Review
+## 👀 Code Review
 
 > Aprender y mejorar juntos
 
@@ -475,7 +475,7 @@ Tu PR necesita approval del CODEOWNER del codigo que modificaste.
 
 ---
 
-## Validacion de Codigo
+## ✅ Validacion de Codigo
 
 > CI valida todo - sin hooks locales (enfoque BigTech)
 
@@ -579,7 +579,7 @@ Para entender el pipeline completo de CI/CD:
 
 ---
 
-## Resumen
+## 📖 Resumen
 
 > Tu dia a dia en 4 pasos
 

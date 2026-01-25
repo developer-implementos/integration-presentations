@@ -22,6 +22,8 @@ revealOptions:
 
 > Como estamos hoy
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Metricas Clave
@@ -66,6 +68,8 @@ Fastest                                              Slowest
 
 > Que tan probado esta el codigo
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Por Modulo
@@ -106,6 +110,8 @@ pnpm nx run-many --target=test --coverage
 ## Load Testing con k6
 
 > RFC-0005: Verificar performance antes de produccion
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -209,6 +215,8 @@ performance-gate:
 
 > Numeros que muestran la escala
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Project Statistics
@@ -236,6 +244,8 @@ performance-gate:
 ## Roadmap
 
 > Donde estamos y hacia donde vamos
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 El roadmap muestra hacia donde va el proyecto.
@@ -313,6 +323,8 @@ gantt
 
 > Ejemplo de RFC reciente
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Los 3 Problemas que Resuelve
@@ -362,6 +374,8 @@ Cada solucion sigue patrones de Google, Stripe y AWS.
 ## Como Participar en RFCs
 
 > Tu voz importa
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 

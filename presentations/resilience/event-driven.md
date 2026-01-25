@@ -20,6 +20,8 @@ revealOptions:
 
 > Los modulos no se llaman directamente - publican eventos
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ```
 SIN Event-Driven:
   Orders -> Inventory.reserveStock()
@@ -133,6 +135,8 @@ Si Notifications esta caido, Orders sigue funcionando.
 ## El Problema: Dual Write
 
 > Que pasa si guardas en DB pero fallas al publicar?
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -346,6 +350,8 @@ export class StockEventHandler extends BasePubSubController {
 
 > Pub/Sub garantiza "at-least-once" - puede enviar duplicados
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### El Problema de Duplicados
@@ -416,6 +422,8 @@ async handleOrderCreated(@Body() message: PubSubMessage) {
 ## Dead Letter Queue (DLQ)
 
 > Que pasa con mensajes que siempre fallan?
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 

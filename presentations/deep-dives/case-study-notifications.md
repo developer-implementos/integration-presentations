@@ -22,6 +22,8 @@ revealOptions:
 
 > Todos los patrones que vieron, aplicados en produccion
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 Esta seccion es un caso de estudio completo.
 Vamos a ver como se aplican todos los patrones en un sistema real: Transactional Outbox, Retry, DLQ, etc.
@@ -45,6 +47,8 @@ No se preocupen si es mucha informacion - pueden volver a esta seccion cuando tr
 ## Overview del Sistema
 
 > Sistema de notificaciones asincronas multi-canal
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 Esta seccion profundiza en como funciona el sistema de notificaciones.
@@ -127,6 +131,8 @@ Este diagrama muestra el "happy path" del sistema.
 
 > Que pasa cuando Salesforce falla
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Diagrama de Errores
@@ -203,6 +209,8 @@ function isRetryable(error: SalesforceError): boolean {
 
 > La confusion mas comun para juniors
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Dos Lugares para Mensajes Fallidos
@@ -247,6 +255,8 @@ function isRetryable(error: SalesforceError): boolean {
 ## Uso del Modulo
 
 > Como usar notificaciones desde otros modulos
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -319,6 +329,8 @@ POST /v1/notifications/order-confirmed-pickup
 
 > Que pasa cuando el worker crashea mid-operation
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### El Problema: Notificaciones Huerfanas
@@ -377,6 +389,8 @@ El retry job corre cada 5 minutos y busca notificaciones stuck.
 
 > Intervencion humana para PERMANENTLY_FAILED
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Flujo de Intervencion
@@ -433,6 +447,8 @@ PATCH /notifications/{id}/reset-for-retry
 
 > Guia de emergencias para las 3am
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### 4 Escenarios Comunes
@@ -471,6 +487,8 @@ db.notifications.find({
 ## Troubleshooting para Juniors
 
 > El proceso mental cuando algo falla
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 

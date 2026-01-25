@@ -20,6 +20,8 @@ revealOptions:
 
 ## Por Que Resiliencia
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 **Para juniors**: Imaginen que llaman a un API externo y este no responde.
 Sin resiliencia: tu sistema se queda esperando y eventualmente se cae.
@@ -60,6 +62,8 @@ Cada patron resuelve un problema diferente:
 ## Circuit Breaker
 
 > El interruptor que protege tu sistema
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 El Circuit Breaker funciona como un interruptor electrico.
@@ -212,6 +216,8 @@ Con Circuit Breaker: 2 requests de 30s + 98 de 0ms = 60s total
 
 > No esperes para siempre
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 <!-- .slide: data-background="#1c1c1c" -->
 
 ```typescript
@@ -248,6 +254,8 @@ Esto libera recursos de nuestro lado rapidamente.
 ## Retry Pattern
 
 > Muchos errores son temporales
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 <!-- .slide: data-background="#181818" -->
 
@@ -321,6 +329,8 @@ El resto del sistema sigue funcionando normalmente.
 ## Composicion de Politicas
 
 > Los patrones se combinan como una cadena
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 <div style="text-align: center; background: #1e1e1e; padding: 20px; border-radius: 10px;">
 <svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">

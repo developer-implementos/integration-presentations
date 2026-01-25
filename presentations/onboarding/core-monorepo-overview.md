@@ -33,13 +33,12 @@ Vamos a ver cómo empezar rápidamente, conocer la estructura del sistema, y dó
 1. **🚀 Tu Primer Día** - Setup, comandos, testing básico
 2. **📁 Conoce el Sistema** - Estructura, módulos, arquitectura
 3. **🏛️ Clean Architecture** - Capas y organización
-4. **📚 Presentaciones Especializadas** - Temas avanzados
-5. **🎓 Guía de Onboarding** - Ruta recomendada de aprendizaje
+4. **🎓 Guía de Onboarding** - Ruta recomendada de aprendizaje
 
 Note:
-Esta presentación ha sido refactorizada para ser más corta y enfocada.
-Los temas avanzados ahora están en presentaciones especializadas separadas.
-Primero veremos lo esencial para empezar, y luego les guiaremos a las presentaciones especializadas según sus necesidades.
+Esta presentación cubre lo esencial para empezar a contribuir.
+Primero veremos el setup y comandos básicos, luego la estructura del sistema,
+y finalmente la ruta recomendada de aprendizaje según tu rol.
 
 ---
 
@@ -476,142 +475,6 @@ Note:
 El manejo de errores está estandarizado.
 Definimos errores custom que extienden DomainError.
 El GlobalExceptionFilter los convierte automáticamente a respuestas HTTP estructuradas.
-
----
-
-## 📚 Presentaciones Especializadas
-
-> Temas avanzados en presentaciones dedicadas
-
-⬇️ _Navega hacia abajo para ver cada presentación_
-
-Note:
-Los temas avanzados ahora están en presentaciones separadas.
-Esto hace que cada presentación sea más enfocada y fácil de mantener.
-Pueden ver solo lo que necesitan según el tema que estén trabajando.
-
-----
-
-<!-- .slide: data-background="#1a1a3a" data-background-transition="fade" -->
-
-### 🎯 Por Qué Monolito Modular
-
-<div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #1a1a3a 0%, #2a2a4a 100%); border-radius: 20px; border: 3px solid #3498db;">
-
-**📊 Comparación arquitectónica completa**
-
-<div style="margin: 30px 0; padding: 20px; background: rgba(52, 152, 219, 0.1); border-radius: 10px;">
-
-Entender **por qué** elegimos esta arquitectura vs microservicios
-
-</div>
-
-**🎬 Contenido:**
-- Comparación detallada: Monolito Modular vs Microservicios
-- Latencia acumulada (visualizaciones animadas)
-- Costos de infraestructura (con números reales)
-- Consistencia de datos (ACID vs Eventual)
-- Complejidad de despliegue
-- Depuración y trazabilidad
-- Resiliencia de red
-- Mantenibilidad y DRY
-
-**⏱️ Duración**: ~20 minutos
-
-**📁 Comando**:
-```bash
-reveal-md why-modular-monolith.md --theme night
-```
-
-</div>
-
-Note:
-Esta presentación explica las decisiones arquitectónicas.
-Incluye comparaciones animadas de latencia, costos y complejidad.
-Es material de contexto - no necesario para empezar a codear, pero útil para entender el "por qué".
-Ideal para arquitectos, tech leads, o cuando necesiten justificar decisiones.
-
-----
-
-<!-- .slide: data-background="#1a3a1a" data-background-transition="fade" -->
-
-### 🛡️ Patrones Enterprise
-
-<div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #1a3a1a 0%, #2a4a2a 100%); border-radius: 20px; border: 3px solid #2ecc71;">
-
-**🏗️ Patrones avanzados de arquitectura**
-
-<div style="margin: 30px 0; padding: 20px; background: rgba(46, 204, 113, 0.1); border-radius: 10px;">
-
-Patrones probados en **sistemas enterprise** de alto tráfico
-
-</div>
-
-**🎬 Contenido:**
-- Facade Pattern (ADR-0002)
-- Transactional Outbox Pattern (ADR-0049)
-- Circuit Breaker & Retry (Cockatiel)
-- Cache Stampede Guard (ADR-0004)
-- Feature Flags (Kill Switch)
-- **Caso de Estudio**: Sistema de Notificaciones completo
-- **Métricas Reales**: Performance, uptime, cobertura
-
-**⏱️ Duración**: ~30 minutos
-
-**📁 Comando**:
-```bash
-reveal-md enterprise-patterns.md --theme night
-```
-
-</div>
-
-Note:
-Esta es la presentación más técnica y avanzada.
-Muestra patrones que usamos en producción con tráfico real.
-Incluye el caso de estudio completo de notificaciones: desde API hasta Salesforce.
-También incluye métricas reales del sistema en producción.
-Es material avanzado - revisenlo cuando trabajen en features que usen estos patrones.
-
-----
-
-<!-- .slide: data-background="#3a1a1a" data-background-transition="fade" -->
-
-### 🔄 Developer Workflow
-
-<div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #3a1a1a 0%, #4a2a2a 100%); border-radius: 20px; border: 3px solid #e74c3c;">
-
-**💼 Flujo de trabajo diario del desarrollador**
-
-<div style="margin: 30px 0; padding: 20px; background: rgba(231, 76, 60, 0.1); border-radius: 10px;">
-
-Todo lo que necesitas para **commits, PRs y code review**
-
-</div>
-
-**🎬 Contenido:**
-- Conventional Commits (formato obligatorio)
-- AI-Assisted Commits (GitLens/Copilot)
-- Nomenclatura de branches
-- Pull Requests desde VS Code
-- Code Review y etiquetas (nit, blocker, etc.)
-- Validación en CI (enfoque BigTech)
-- CODEOWNERS automático
-- Branch Protection Rules
-
-**⏱️ Duración**: ~25 minutos
-
-**📁 Comando**:
-```bash
-reveal-md developer-workflow.md --theme night
-```
-
-</div>
-
-Note:
-Esta presentación cubre el flujo de trabajo que usarán TODOS LOS DÍAS.
-Es material esencial - deberían verlo completo en su primera semana.
-Incluye validación en CI sin hooks locales (enfoque Google/BigTech).
-También cubre CODEOWNERS para asignación automática de reviewers.
 
 ---
 

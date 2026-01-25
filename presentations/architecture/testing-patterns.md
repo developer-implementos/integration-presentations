@@ -26,21 +26,23 @@ Con tests: cambias codigo con confianza.
 
 ---
 
-## Agenda
+## 📋 Agenda
 
-1. **Por Que Testeamos** - Filosofia y beneficios
-2. **Piramide de Testing** - Unit, Integration, E2E
-3. **Unit Tests** - Vitest, mocks, AAA pattern
-4. **Integration Tests** - NestJS, MongoDB Memory
-5. **E2E Tests** - Playwright
-6. **Best Practices** - Patrones y anti-patrones
-7. **Comandos** - Referencia rapida
+1. **❓ Por Que Testeamos** - Filosofia y beneficios
+2. **📐 Piramide de Testing** - Unit, Integration, E2E
+3. **🧪 Unit Tests** - Vitest, mocks, AAA pattern
+4. **🔗 Integration Tests** - NestJS, MongoDB Memory
+5. **🎭 E2E Tests** - Playwright
+6. **✅ Best Practices** - Patrones y anti-patrones
+7. **⌨️ Comandos** - Referencia rapida
 
 ---
 
-## Por Que Testeamos
+## ❓ Por Que Testeamos
 
 > "El codigo sin tests es legacy code" - Michael Feathers
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 Tests no son opcionales en sistemas enterprise.
@@ -81,9 +83,11 @@ Las big techs tienen 80%+ de coverage obligatorio.
 
 ---
 
-## Piramide de Testing
+## 📐 Piramide de Testing
 
 > Muchos unit tests, pocos E2E
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -127,9 +131,11 @@ graph TB
 
 ---
 
-## Unit Tests
+## 🧪 Unit Tests
 
 > Testea UNA cosa a la vez
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -321,9 +327,11 @@ it('should include context in error', async () => {
 
 ---
 
-## Integration Tests
+## 🔗 Integration Tests
 
 > Testea modulos trabajando juntos
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -482,9 +490,11 @@ describe('InventoryController (Integration)', () => {
 
 ---
 
-## E2E Tests
+## 🎭 E2E Tests
 
 > Testea flujos completos como un usuario real
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -617,9 +627,11 @@ test.describe('Inventory Management', () => {
 
 ---
 
-## Best Practices
+## ✅ Best Practices
 
 > Patrones que evitan dolores de cabeza
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -759,9 +771,11 @@ it('should reject when insufficient stock', async () => {
 
 ---
 
-## Comandos
+## ⌨️ Comandos
 
 > Referencia rapida para el dia a dia
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -856,7 +870,7 @@ flowchart LR
 
 ---
 
-## Estructura de Archivos
+## 📁 Estructura de Archivos
 
 ----
 
@@ -892,7 +906,7 @@ apps/admin-e2e/src/
 
 ---
 
-## Resumen
+## 📝 Resumen
 
 ----
 

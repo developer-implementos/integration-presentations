@@ -22,6 +22,8 @@ revealOptions:
 
 > Mas alla del Cache-Aside basico
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 El cache es crucial para performance - puede reducir latencia de 100ms a 1ms.
 Pero cachear correctamente es dificil. Hay problemas sutiles que pueden causar bugs o inconsistencias.
@@ -65,6 +67,8 @@ Cache-Through: escribimos a cache y DB juntos, no hay inconsistencia.
 ## Stampede Protection
 
 > Evita que 1000 requests golpeen la DB simultaneamente
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -144,6 +148,8 @@ Resultado: El cache casi nunca expira "de verdad"
 
 > Escritura atomica a DB y Cache
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### El Problema: Cache Stale
@@ -186,6 +192,8 @@ await this.cacheService.invalidateByTag('products');
 ## Cache Coherence
 
 > Sincronizacion entre modulos
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -234,6 +242,8 @@ this.cacheEvents.subscribe('cache:invalidate', async (event) => {
 ## Feature Flags y Kill-Switch
 
 > Control dinamico sin redeploy
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 Los Kill-Switches son como interruptores de emergencia.

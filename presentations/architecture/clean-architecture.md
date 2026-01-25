@@ -25,20 +25,22 @@ Entender estas capas es clave para leer y modificar cualquier modulo.
 
 ---
 
-## Agenda
+## 📋 Agenda
 
-1. **Por que Clean Architecture** - El problema que resuelve
-2. **Las 5 Capas** - Domain, Application, Infrastructure, API, Config
-3. **Regla de Dependencia** - Quien depende de quien
-4. **Ejemplo Practico** - Seguir un request completo
-5. **Error Handling** - Sistema de errores estandarizado
-6. **Errores Comunes** - Lo que NO debes hacer
+1. **🏛️ Clean Architecture** - El problema que resuelve
+2. **📚 Las 5 Capas** - Domain, Application, Infrastructure, API, Config
+3. **🔗 Regla de Dependencia** - Quien depende de quien
+4. **🎯 Ejemplo Practico** - Seguir un request completo
+5. **🚨 Error Handling** - Sistema de errores estandarizado
+6. **⚠️ Errores Comunes** - Lo que NO debes hacer
 
 ---
 
-## Por que Clean Architecture?
+## 🏛️ Clean Architecture
 
 > Separar el "que hace" del "como lo hace"
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -54,7 +56,7 @@ class ProductController {
     if (!req.body.name) throw new Error('Name required');
 
     // Logica de negocio en el controller
-    const price = req.body.price * 1.19; // IVA hardcodeado
+    const price = req.body.price * 1.19; // Impuesto hardcodeado
 
     // Acceso a DB directo
     const result = await mongoose.model('Product').create({
@@ -70,10 +72,17 @@ class ProductController {
 }
 ```
 
-**Problemas:**
-- Imposible testear sin DB y Sendgrid reales
-- Cambiar de MongoDB a Firestore = reescribir todo
-- Logica de negocio esparcida en todos lados
+----
+
+<!-- .slide: data-background="#181818" data-background-transition="fade" -->
+
+### Problemas del Codigo Acoplado
+
+- **Imposible testear** sin DB y Sendgrid reales
+- **Cambiar de MongoDB a Firestore** = reescribir todo
+- **Logica de negocio esparcida** en todos lados
+
+> Este patron se repite en muchos proyectos legacy
 
 ----
 
@@ -124,7 +133,7 @@ graph TB
 
 ---
 
-## Las 5 Capas
+## 📚 Las 5 Capas
 
 > Estructura de un modulo en el proyecto
 
@@ -136,11 +145,11 @@ graph TB
 
 ```
 libs/inventory/
-├── domain/           # 💎 Reglas de negocio puras
-├── application/      # ⚙️ Casos de uso y facades
-├── infrastructure/   # 🔧 Implementaciones tecnicas
-├── api/              # 🎯 Controladores y DTOs
-└── config/           # ⚡ Configuracion del modulo
+├── domain/         # 💎 Reglas de negocio puras
+├── application/    # ⚙️ Casos de uso y facades
+├── infrastructure/ # 🔧 Implementaciones tecnicas
+├── api/            # 🎯 Controladores y DTOs
+└── config/         # ⚡ Configuracion del modulo
 ```
 
 Cada capa tiene un proposito especifico y **depende solo de capas inferiores**.
@@ -492,7 +501,7 @@ export class InventoryModule {}
 
 ---
 
-## Regla de Dependencia
+## 🔗 Regla de Dependencia
 
 > Las dependencias siempre van hacia adentro
 
@@ -528,12 +537,16 @@ graph LR
     style INFRA fill:#e74c3c,color:#fff
 ```
 
+<div style="font-size: 0.7em;">
+
 | Capa | Puede importar | NO puede importar |
 |------|----------------|-------------------|
 | Domain | Nada | Todo lo demas |
 | Application | Domain | API, Infrastructure |
 | Infrastructure | Domain | Application, API |
 | API | Application | Infrastructure* |
+
+</div>
 
 *Los controllers no deben importar repositories directamente
 
@@ -572,7 +585,7 @@ export class ReserveStockService {
 
 ---
 
-## Ejemplo Practico
+## 🎯 Ejemplo Practico
 
 > Seguir un request de reserva de stock
 
@@ -616,6 +629,8 @@ sequenceDiagram
 
 ### Donde Vive Cada Logica
 
+<div style="font-size: 0.65em;">
+
 | Logica | Capa | Ejemplo |
 |--------|------|---------|
 | Validar formato SKU | Domain (Value Object) | `SKU.create("ABC-123")` |
@@ -626,9 +641,11 @@ sequenceDiagram
 | Validar request HTTP | API (DTO) | `@IsNotEmpty()` |
 | Documentar endpoint | API (Swagger) | `@ApiOperation()` |
 
+</div>
+
 ---
 
-## Error Handling
+## 🚨 Error Handling
 
 > Sistema de errores estandarizado (RFC-0009)
 
@@ -670,6 +687,8 @@ Cada modulo tiene sus propios errores tipados que heredan de `DomainError`.
 
 ### Categorias de Error
 
+<div style="font-size: 0.7em;">
+
 | Categoria | HTTP | Cuando usar |
 |-----------|------|-------------|
 | `VALIDATION` | 400 | Datos de entrada invalidos |
@@ -678,6 +697,8 @@ Cada modulo tiene sus propios errores tipados que heredan de `DomainError`.
 | `CONFLICT` | 409 | Conflicto con estado actual |
 | `EXTERNAL` | 502 | Error en servicio externo |
 | `TECHNICAL` | 500 | Error de infraestructura |
+
+</div>
 
 La categoria determina automaticamente el HTTP status.
 
@@ -776,7 +797,7 @@ El frontend puede mostrar: "Solo hay 50 unidades disponibles". Logs buscables po
 
 ---
 
-## Errores Comunes
+## ⚠️ Errores Comunes
 
 > Lo que NO debes hacer
 
@@ -907,13 +928,15 @@ async getStock(@Param('sku') sku: string): Promise<StockResponseDto> {
 
 ---
 
-## Resumen
+## 📝 Resumen
 
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
 
 ### Las 5 Capas
+
+<div style="font-size: 0.7em;">
 
 | Capa | Responsabilidad | Depende de |
 |------|-----------------|------------|
@@ -922,6 +945,8 @@ async getStock(@Param('sku') sku: string): Promise<StockResponseDto> {
 | 🔧 Infrastructure | DB, APIs externas | Domain |
 | 🎯 API | HTTP, validacion | Application |
 | ⚡ Config | Wiring NestJS | Todas |
+
+</div>
 
 ----
 

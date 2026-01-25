@@ -22,6 +22,8 @@ revealOptions:
 
 > Esta es la pregunta clave que siempre nos hacen
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 Ya vieron la estructura del proyecto. Ahora pueden entender mejor por que elegimos esta arquitectura.
 Esta seccion es mas para contexto - no es necesario memorizarla, pero ayuda a entender las decisiones.
@@ -81,6 +83,8 @@ Dato importante: Shopify maneja BILLONES de dolares con un monolito. GitHub tamb
 ---
 
 ## Latencia Acumulada
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 Ahora veamos esto visualmente.
@@ -286,6 +290,8 @@ Es como la diferencia entre llamar a un colega por telefono vs. simplemente gira
 
 ## Costos de Infraestructura
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 Hablemos de dinero - algo que le importa mucho al negocio.
 A la izquierda ven microservicios: cada servicio necesita su propia instancia minima corriendo 24/7.
@@ -452,6 +458,8 @@ La diferencia puede ser de miles de dolares al mes en cloud.
 
 ## Consistencia de Datos
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 Este es un tema MUY importante para entender.
 A la izquierda: microservicios. Cuando Order crea un pedido, tiene que avisar a Inventory para que reserve stock.
@@ -571,6 +579,8 @@ Para sistemas de e-commerce donde el dinero esta involucrado, esto es critico.
 
 ## Complejidad de Despliegue
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 Este es un problema que NO ven en los tutoriales de microservicios.
 A la izquierda: cada servicio tiene su propio repo y pipeline. Se despliegan en tiempos diferentes.
@@ -686,6 +696,8 @@ Esto reduce MUCHO el estres de hacer releases.
 ---
 
 ## Depuracion y Trazabilidad
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 Ahora hablemos de cuando las cosas fallan - porque SIEMPRE fallan eventualmente.
@@ -826,6 +838,8 @@ Cuando esten depurando a las 3am, van a agradecer no tener que navegar entre 10 
 
 ## Resiliencia de Red
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 La red es el enemigo numero uno de los sistemas distribuidos.
 A la izquierda ven lo que pasa en microservicios: paquetes que se pierden, timeouts, retries...
@@ -939,6 +953,8 @@ Menos codigo de manejo de errores = menos bugs = mas tiempo para features.
 ---
 
 ## Mantenibilidad
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 Ultimo punto de comparacion: mantenibilidad del codigo a largo plazo.

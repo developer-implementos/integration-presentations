@@ -25,21 +25,23 @@ Tiempo estimado de setup: 30-60 minutos.
 
 ---
 
-## Agenda
+## 📋 Agenda
 
-1. **Prerequisitos** - Lo que necesitas instalado
-2. **Instalacion** - Clone, install, configure
-3. **Docker Compose** - Servicios locales
-4. **Variables de Entorno** - Configuracion
-5. **Comandos NX** - Tu dia a dia
-6. **Debugging** - VS Code configs
-7. **Troubleshooting** - Problemas comunes
+1. **🔧 Prerequisitos** - Lo que necesitas instalado
+2. **📥 Instalacion** - Clone, install, configure
+3. **🐳 Docker Compose** - Servicios locales
+4. **⚙️ Variables de Entorno** - Configuracion
+5. **🎯 Comandos NX** - Tu dia a dia
+6. **🐛 Debugging** - VS Code configs
+7. **🔥 Troubleshooting** - Problemas comunes
 
 ---
 
-## Prerequisitos
+## 🔧 Prerequisitos
 
 > Lo que necesitas instalado antes de empezar
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -56,6 +58,8 @@ git --version     # 2.40+
 code --version    # VS Code
 ```
 
+<div style="font-size: 0.7em;">
+
 | Software | Version Minima | Como instalar |
 |----------|----------------|---------------|
 | Node.js | 20 LTS | `nvm install 20` |
@@ -63,6 +67,8 @@ code --version    # VS Code
 | Docker Desktop | Latest | docker.com/desktop |
 | Git | 2.40+ | git-scm.com |
 | VS Code | Latest | code.visualstudio.com |
+
+</div>
 
 ----
 
@@ -77,6 +83,8 @@ code --version    # VS Code
 // VS Code preguntara si quieres instalar las recomendadas → "Yes"
 ```
 
+<div style="font-size: 0.7em;">
+
 | Extension | Para que |
 |-----------|----------|
 | `dbaeumer.vscode-eslint` | Linting en tiempo real |
@@ -86,15 +94,19 @@ code --version    # VS Code
 | `usernamehw.errorlens` | Errores inline |
 | `vitest.explorer` | Runner de tests |
 
+</div>
+
 Note:
 VS Code preguntara si quieres instalar las extensiones recomendadas.
 Dile que si - estan configuradas en .vscode/extensions.json
 
 ---
 
-## Instalacion Inicial
+## 📥 Instalacion Inicial
 
 > De cero a API corriendo
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -152,9 +164,11 @@ open http://localhost:3000/api/docs
 
 ---
 
-## Docker Compose
+## 🐳 Docker Compose
 
 > MongoDB, Redis y herramientas de admin
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -206,11 +220,15 @@ docker compose --profile tools up -d
 docker compose ps
 ```
 
+<div style="font-size: 0.7em;">
+
 | Servicio | Puerto | Descripcion |
 |----------|--------|-------------|
 | `mongo-db` | 27017 | MongoDB 7 |
 | `redis` | 6379 | Redis 7 Alpine |
 | `mongo-express` | 8081 | UI para MongoDB (profile: tools) |
+
+</div>
 
 ----
 
@@ -265,9 +283,11 @@ Mongo Express es opcional pero muy util para inspeccionar datos.
 
 ---
 
-## Variables de Entorno
+## ⚙️ Variables de Entorno
 
 > Configuracion del proyecto
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -306,6 +326,8 @@ SWAGGER_ENABLED=true
 
 ### Variables Clave
 
+<div style="font-size: 0.7em;">
+
 | Variable | Valor Local | Descripcion |
 |----------|-------------|-------------|
 | `DATABASE_URL` | `mongodb://...` | URI de MongoDB |
@@ -314,6 +336,8 @@ SWAGGER_ENABLED=true
 | `LOG_LEVEL` | `debug` | Ver todo en dev |
 | `LOG_PRETTY` | `true` | Logs legibles |
 | `SWAGGER_ENABLED` | `true` | Documentacion API |
+
+</div>
 
 ----
 
@@ -338,9 +362,11 @@ SWAGGER_ENABLED=true
 
 ---
 
-## Comandos NX
+## 🎯 Comandos NX
 
 > Tu dia a dia de desarrollo
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -430,9 +456,11 @@ pnpm nx affected -t build --dry-run
 
 ---
 
-## Debugging
+## 🐛 Debugging
 
 > Configuraciones de VS Code
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -510,9 +538,11 @@ this.logger.debug('Processing order', {
 
 ---
 
-## Troubleshooting
+## 🔥 Troubleshooting
 
 > Problemas comunes y soluciones
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -634,7 +664,9 @@ docker compose up -d mongo-db redis
 
 ---
 
-## Checklist del Primer Dia
+## ✅ Checklist del Primer Dia
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -658,13 +690,15 @@ Tiempo estimado: 30-60 minutos
 
 ---
 
-## Resumen
+## 📝 Resumen
 
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
 ### Comandos Esenciales
+
+<div style="font-size: 0.7em;">
 
 | Comando | Proposito |
 |---------|-----------|
@@ -675,11 +709,15 @@ Tiempo estimado: 30-60 minutos
 | `pnpm nx affected -t test` | Tests de cambios |
 | `pnpm nx graph` | Ver dependencias |
 
+</div>
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
 
 ### URLs Importantes
+
+<div style="font-size: 0.7em;">
 
 | URL | Que es |
 |-----|--------|
@@ -688,6 +726,8 @@ Tiempo estimado: 30-60 minutos
 | `http://localhost:3000/health` | Health check |
 | `http://localhost:4200` | Admin frontend |
 | `http://localhost:8081` | Mongo Express (con --profile tools) |
+
+</div>
 
 ---
 

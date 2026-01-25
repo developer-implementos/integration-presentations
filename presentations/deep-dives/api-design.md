@@ -20,6 +20,8 @@ revealOptions:
 
 > APIs son contratos - una vez publicadas, son dificiles de cambiar
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 Note:
 Las APIs son la cara publica de nuestro sistema.
 Partners y otros equipos dependen de ellas.
@@ -47,6 +49,8 @@ Por eso seguimos convenciones estrictas.
 ---
 
 ## Estructura de URLs
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -97,6 +101,8 @@ POST   /orders/{id}/cancel          # Accion especifica
 ---
 
 ## Versionado de APIs
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -149,6 +155,8 @@ export class AppModule {}
 ---
 
 ## Request/Response Design
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -279,6 +287,8 @@ export class ProductResponse {
 
 ## Paginacion
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Offset-based Pagination
@@ -344,6 +354,8 @@ async list(
 
 ## Filtrado y Ordenamiento
 
+⬇️ _Navega hacia abajo para ver detalles_
+
 ----
 
 ### Query Parameters
@@ -374,6 +386,8 @@ async list(
 ---
 
 ## Documentacion con OpenAPI
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -443,6 +457,8 @@ SwaggerModule.setup('docs', app, document);
 ---
 
 ## Headers Importantes
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 

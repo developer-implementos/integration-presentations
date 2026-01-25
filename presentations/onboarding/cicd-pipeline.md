@@ -25,19 +25,21 @@ Explica que pasa despues de hacer push y como llega el codigo a produccion.
 
 ---
 
-## Agenda
+## 📋 Agenda
 
-1. **GitHub Actions** - Nuestro pipeline
-2. **Nx Affected** - Optimizacion inteligente
-3. **Quality Gates** - SonarCloud
-4. **Checks** - Bloqueantes vs Warnings
-5. **Renovate** - Dependencias automaticas
+1. **🔧 GitHub Actions** - Nuestro pipeline
+2. **⚡ Nx Affected** - Optimizacion inteligente
+3. **🛡️ Quality Gates** - SonarCloud
+4. **✅ Checks** - Bloqueantes vs Warnings
+5. **📦 Renovate** - Dependencias automaticas
 
 ---
 
-## El Pipeline
+## 🚀 El Pipeline
 
 > Que pasa cuando haces `git push`
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 El pipeline de CI/CD es lo que hace que nuestro codigo llegue a produccion de forma segura.
@@ -45,9 +47,11 @@ Vamos a ver como funciona y que checks debe pasar un PR.
 
 ---
 
-## GitHub Actions
+## 🔧 GitHub Actions
 
 > El motor de nuestro CI/CD
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 CI/CD significa Continuous Integration / Continuous Deployment.
@@ -155,9 +159,11 @@ Si falla en cualquier estacion, el PR no puede mergearse.
 
 ---
 
-## Features Enterprise
+## ⚡ Features Enterprise
 
 > Optimizaciones que aceleran el desarrollo
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -236,9 +242,11 @@ Si otro dev ya compilo lo mismo, reutilizamos el resultado.
 
 ---
 
-## Quality Gates
+## 🛡️ Quality Gates
 
 > SonarCloud: el guardian de la calidad
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -292,9 +300,11 @@ Quality Gates son reglas que el codigo DEBE cumplir para poder mergearse.
 
 ---
 
-## Checks
+## ✅ Checks
 
 > Bloqueantes vs Warnings
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -356,9 +366,11 @@ pnpm format          # Arregla Prettier
 
 ---
 
-## Flujo Completo
+## 🔄 Flujo Completo
 
 > Push → Merge paso a paso
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -424,9 +436,11 @@ git push
 
 ---
 
-## Renovate
+## 📦 Renovate
 
 > Dependencias siempre actualizadas
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
 Renovate es un bot que mantiene las dependencias actualizadas automaticamente.
@@ -511,9 +525,11 @@ Bot que automatiza actualizaciones:
 
 ---
 
-## Comandos Utiles
+## ⌨️ Comandos Utiles
 
 > Tu referencia rapida
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
@@ -551,9 +567,11 @@ pnpm nx graph
 
 ---
 
-## Resumen
+## 📝 Resumen
 
 > Lo esencial de CI/CD
+
+⬇️ _Navega hacia abajo para ver detalles_
 
 ----
 
