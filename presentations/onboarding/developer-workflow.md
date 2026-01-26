@@ -67,7 +67,7 @@ CODE → BRANCH → COMMIT → PUSH → PR → REVIEW → MERGE
 | Paso | Herramienta | Regla |
 |------|-------------|-------|
 | Code | VS Code | Format on save |
-| Branch | Git | feature/#taskId o fix/#taskId |
+| Branch | Git | Desde `develop`: feature/#taskId |
 | Commit | Git | Conventional commits |
 | Push | Git | A tu branch, nunca a main |
 | PR | GitHub | Template obligatorio |
@@ -78,7 +78,7 @@ Note:
 Este ciclo se repite cientos de veces al dia en el equipo.
 La tabla explica cada paso:
 - Code: VS Code formatea automaticamente al guardar (Prettier)
-- Branch: Siempre crear una branch desde main antes de empezar (feature/#taskId)
+- Branch: Siempre crear una branch desde develop (feature/#taskId)
 - Commit: Mensajes con formato conventional commits (feat, fix, etc.)
 - Push: Subir tu branch a GitHub, NUNCA hacer push directo a main
 - PR: Crear Pull Request usando el template del repo
@@ -219,13 +219,15 @@ Pero tu eres responsable del mensaje final, asi que revisalo.
 
 ## 🌿 Branches
 
-> Una branch por feature, siempre desde main
+> Usamos **Git Flow**: features van a `develop`, releases a `main`
 
 ⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
+Usamos Git Flow - un modelo de branching con dos branches principales:
+- main: codigo en produccion, siempre estable
+- develop: integracion de features, aqui va tu trabajo
 Cada branch debe tener un proposito claro y un solo objetivo.
-Si tu branch hace muchas cosas, dividela en varias.
 PRs pequenos son mas faciles de revisar y aprobar rapidamente.
 Regla de oro: una branch = un ticket de ClickUp.
 
@@ -283,35 +285,41 @@ Tambien puedes usar el boton "Copy ID" en el menu del task.
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
-### Flujo de Branches
+### Flujo de Branches (Git Flow)
 
-<div style="display: flex; justify-content: center; transform: scale(1.4); margin: 40px 0; margin-left: 80px;">
+<div style="display: flex; justify-content: center; transform: scale(1.2); margin: 40px 0;">
 
 ```mermaid
 %%{init: {'theme': 'dark', 'gitGraph': {'mainBranchName': 'main'}}}%%
 gitGraph
+   commit id: "v1.0.0"
+   branch develop
    commit id: "initial"
    branch feature/868h4tr17
    commit id: "feat-endpoint"
    commit id: "add-tests"
+   checkout develop
+   merge feature/868h4tr17 id: "squash"
+   branch release/1.1.0
+   commit id: "bump-version"
    checkout main
-   merge feature/868h4tr17 id: "squash-1"
-   branch fix/86abcd123
-   commit id: "fix-bug"
-   checkout main
-   merge fix/86abcd123 id: "squash-2"
+   merge release/1.1.0 id: "v1.1.0" tag: "v1.1.0"
+   checkout develop
+   merge release/1.1.0
 ```
 
 </div>
 
 **Reglas:**
-- Siempre crear desde `main` actualizado
-- Una branch = un ticket/feature
-- Merge via PR (nunca directo a main)
+- Features y fixes: crear desde `develop`
+- Releases: de `develop` a `main`
+- Hotfixes: desde `main` (emergencias)
 
 Note:
-NUNCA hagas push directo a main - esta protegido.
-Siempre crea una branch y un PR, aunque sea un cambio pequeno.
+Git Flow tiene dos branches permanentes: main y develop.
+Tu trabajo diario va a develop - NUNCA directo a main.
+main solo recibe codigo via release branches o hotfixes.
+Esto asegura que main siempre tenga codigo estable de produccion.
 
 ----
 
@@ -322,11 +330,11 @@ Siempre crea una branch y un PR, aunque sea un cambio pequeno.
 ```bash
 # Opcion 1: Rebase (preferido)
 git fetch origin
-git rebase origin/main
+git rebase origin/develop
 
 # Opcion 2: Merge
 git fetch origin
-git merge origin/main
+git merge origin/develop
 
 # Despues de resolver conflictos
 git push --force-with-lease
@@ -750,8 +758,8 @@ Y recuerda: siempre puedes preguntar si tienes dudas.
 ### Tu Dia a Dia
 
 ```bash
-# 1. Crear branch (copia el #taskID de ClickUp)
-git checkout main && git pull
+# 1. Crear branch desde develop (copia el #taskID de ClickUp)
+git checkout develop && git pull
 git checkout -b feature/#868h4tr17-mi-feature
 
 # 2. Commits
@@ -779,7 +787,7 @@ git status              # Ver estado
 git diff                # Ver diferencias
 git log --oneline -10   # Ver historial
 git commit --amend      # Enmendar ultimo commit
-git rebase origin/main  # Actualizar branch
+git rebase origin/develop  # Actualizar branch
 ```
 
 Note:
