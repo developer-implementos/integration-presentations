@@ -498,6 +498,24 @@ Lee el error del check antes de pedir ayuda - generalmente es claro.
 Los errores mas comunes son: lint (formato), test (test roto), build (typo).
 Tip: haz click en "Details" en el check fallido para ver el log completo.
 
+----
+
+<!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
+
+### PR Aprobado - Listo para Merge
+
+Cuando tu PR tiene todas las aprobaciones y checks verdes:
+
+![PR Aprobado](../assets/images/pr_approved.png)
+
+**El boton "Squash and merge"** combina todos tus commits en uno solo con un mensaje limpio.
+
+Note:
+Este es el momento de la verdad - tu PR esta listo para merge!
+Verifica que todos los checks esten verdes antes de hacer click.
+El squash merge junta todos tus commits en uno - asi el historial de main queda limpio.
+Si tienes dudas sobre el mensaje del squash, editalo para que sea descriptivo.
+
 ---
 
 ## 👀 Code Review
