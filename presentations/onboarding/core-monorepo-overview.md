@@ -30,103 +30,14 @@ Vamos a ver cómo empezar rápidamente, conocer la estructura del sistema, y dó
 
 ## 📋 Agenda
 
-1. **🚀 Tu Primer Día** - Setup, comandos, testing básico
-2. **📁 Conoce el Sistema** - Estructura, módulos, arquitectura
-3. **🏛️ Clean Architecture** - Capas y organización
-4. **🎓 Guía de Onboarding** - Ruta recomendada de aprendizaje
+1. **📁 Conoce el Sistema** - Estructura, módulos, arquitectura
+2. **🏛️ Clean Architecture** - Capas y organización
+3. **🎓 Guía de Onboarding** - Ruta recomendada de aprendizaje
 
 Note:
-Esta presentación cubre lo esencial para empezar a contribuir.
-Primero veremos el setup y comandos básicos, luego la estructura del sistema,
-y finalmente la ruta recomendada de aprendizaje según tu rol.
-
----
-
-## 🚀 Tu Primer Día
-
-> Lo esencial para empezar a contribuir HOY
-
-⬇️ _Navega hacia abajo para ver detalles_
-
-Note:
-Esta es la parte más importante para ustedes: cómo empezar a contribuir.
-Vamos a ver el setup del proyecto, los comandos que usarán todos los días, y cómo escribir tests.
-No se preocupen si al principio parece mucho - todos empezamos así.
-
-
-----
-
-<!-- .slide: data-background="#181818" data-background-transition="fade" -->
-
-### Comandos de Testing Esenciales
-
-```bash
-# 1. Test de un proyecto específico
-pnpm nx test inventory-domain
-
-# 2. Tests afectados (el más común)
-pnpm nx affected -t test
-
-# 3. Watch mode (mientras desarrollas)
-pnpm nx test inventory-domain --watch
-
-# 4. Con cobertura
-pnpm nx test inventory-domain --coverage
-```
-
-**💡 Tip**: Usa `--watch` durante desarrollo para ver resultados en tiempo real
-
-Note:
-El comando más importante es affected - solo corre tests de lo que cambió.
-Watch mode es tu mejor amigo durante desarrollo activo.
-
-----
-
-<!-- .slide: data-background="#181818" data-background-transition="fade" -->
-
-### Patrón AAA: Arrange-Act-Assert
-
-```typescript
-it('should reserve stock when available', async () => {
-  // Arrange - Preparar datos y mocks
-  const input = { sku: 'SKU-001', qty: 10 };
-  mockRepo.findBySku.mockResolvedValue({ available: 100 });
-
-  // Act - Ejecutar lo que estás probando
-  const result = await service.reserveStock(input);
-
-  // Assert - Verificar el resultado
-  expect(result).toBe(expectedValue);
-});
-```
-
-<div style="display: flex; gap: 30px; justify-content: center; margin-top: 30px;">
-<div style="flex: 1; text-align: center; padding: 15px; background: #1a3a2f; border-radius: 10px;">
-
-**🎯 Arrange**
-
-Preparar datos, mocks y estado inicial
-
-</div>
-<div style="flex: 1; text-align: center; padding: 15px; background: #2a3a4f; border-radius: 10px;">
-
-**▶️ Act**
-
-Ejecutar el código bajo prueba
-
-</div>
-<div style="flex: 1; text-align: center; padding: 15px; background: #3a2a4f; border-radius: 10px;">
-
-**✅ Assert**
-
-Verificar el resultado esperado
-
-</div>
-</div>
-
-Note:
-El patrón AAA es fundamental para escribir tests claros.
-Arrange prepara todo, Act ejecuta UNA cosa, Assert verifica el resultado.
+Esta presentación es un overview del Integration Platform.
+Para setup y comandos, ver la presentación **Local Development**.
+Para testing, ver la presentación **Testing Patterns**.
 
 ---
 
