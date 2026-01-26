@@ -35,6 +35,10 @@ Tiempo estimado de setup: 30-60 minutos.
 6. **🐛 Debugging** - VS Code configs
 7. **🔥 Troubleshooting** - Problemas comunes
 
+Note:
+Esta agenda cubre todo lo necesario para el primer dia.
+Si algo falla, ve directo a Troubleshooting al final.
+
 ---
 
 ## 🔧 Prerequisitos
@@ -42,6 +46,10 @@ Tiempo estimado de setup: 30-60 minutos.
 > Lo que necesitas instalado antes de empezar
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Antes de clonar el proyecto, asegurate de tener todo instalado.
+Si te falta algo, el setup fallara con errores confusos.
 
 ----
 
@@ -69,6 +77,10 @@ code --version    # VS Code
 | VS Code | Latest | code.visualstudio.com |
 
 </div>
+
+Note:
+Usa nvm para manejar versiones de Node - te ahorrara problemas a futuro.
+NUNCA uses npm en este proyecto - siempre pnpm.
 
 ----
 
@@ -98,7 +110,8 @@ code --version    # VS Code
 
 Note:
 VS Code preguntara si quieres instalar las extensiones recomendadas.
-Dile que si - estan configuradas en .vscode/extensions.json
+Dile que si - estan configuradas en .vscode/extensions.json.
+Error comun: si no ves las recomendaciones, busca "Extensions: Show Recommended Extensions" en el command palette.
 
 ---
 
@@ -107,6 +120,10 @@ Dile que si - estan configuradas en .vscode/extensions.json
 > De cero a API corriendo
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Sigue estos pasos EN ORDEN.
+Si saltas un paso, probablemente tendras errores.
 
 ----
 
@@ -162,6 +179,10 @@ open http://localhost:3000/api/docs
 
 **Si algo falla, ve a la seccion de Troubleshooting**
 
+Note:
+Si el health check falla, revisa que Docker este corriendo y que los puertos no esten ocupados.
+Error comun: tener otra app usando el puerto 3000.
+
 ---
 
 ## 🐳 Docker Compose
@@ -169,6 +190,10 @@ open http://localhost:3000/api/docs
 > MongoDB, Redis y herramientas de admin
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Docker Compose levanta la infraestructura local.
+Sin esto, la API no puede conectarse a la base de datos.
 
 ----
 
@@ -203,6 +228,10 @@ flowchart LR
 
 **Nota:** API y Admin corren con `pnpm nx serve`, NO en Docker
 
+Note:
+La API corre FUERA de Docker para tener hot-reload rapido.
+Solo MongoDB y Redis van en Docker.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -229,6 +258,10 @@ docker compose ps
 | `mongo-express` | 8081 | UI para MongoDB (profile: tools) |
 
 </div>
+
+Note:
+El profile "tools" es opcional - solo usalo cuando necesites ver datos en MongoDB.
+No lo dejes corriendo todo el tiempo porque consume recursos.
 
 ----
 
@@ -259,6 +292,10 @@ docker exec -it mongo-db mongosh
 docker exec -it redis redis-cli
 ```
 
+Note:
+El comando "docker compose down -v" BORRA todos los datos.
+Usalo solo si quieres empezar de cero.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -288,6 +325,10 @@ Mongo Express es opcional pero muy util para inspeccionar datos.
 > Configuracion del proyecto
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Las variables de entorno controlan como se comporta la aplicacion.
+En desarrollo usamos .env.dev, en produccion las variables vienen del cloud.
 
 ----
 
@@ -320,6 +361,10 @@ SWAGGER_ENABLED=true
 
 **Importante:** `.env.dev` esta en `.gitignore` - nunca se commitea
 
+Note:
+NUNCA commitees archivos .env - contienen secrets.
+Si accidentalmente lo haces, avisa al equipo inmediatamente.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -338,6 +383,10 @@ SWAGGER_ENABLED=true
 | `SWAGGER_ENABLED` | `true` | Documentacion API |
 
 </div>
+
+Note:
+LOG_LEVEL=debug muestra TODO lo que pasa - muy util para entender errores.
+En produccion esta en "info" para no llenar los logs.
 
 ----
 
@@ -360,6 +409,10 @@ SWAGGER_ENABLED=true
 1. Revisa que copiaste `.env.example` a `.env.dev`
 2. Revisa que las variables obligatorias estan configuradas
 
+Note:
+El proyecto valida variables al arrancar - si falta algo, no inicia.
+Esto previene errores en runtime que serian mas dificiles de debuggear.
+
 ---
 
 ## 🎯 Comandos NX
@@ -367,6 +420,10 @@ SWAGGER_ENABLED=true
 > Tu dia a dia de desarrollo
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Nx es el gestor del monorepo - todos los comandos pasan por el.
+Memoriza los comandos basicos porque los usaras todo el tiempo.
 
 ----
 
@@ -389,6 +446,10 @@ pnpm nx serve notification-worker
 ```
 
 **Hot-reload**: Al guardar un archivo, se recompila automaticamente
+
+Note:
+Hot-reload significa que no tienes que reiniciar el servidor cada vez que cambias codigo.
+Guarda el archivo y ve los cambios en segundos.
 
 ----
 
@@ -454,6 +515,10 @@ pnpm nx test inventory-domain --coverage
 
 Ver presentacion [Testing Patterns](testing-patterns.md) para mas detalle
 
+Note:
+El comando affected es magico: solo corre tests de lo que cambio.
+Usalo siempre antes de hacer push para no romper el CI.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -473,6 +538,10 @@ pnpm nx typecheck integration-api
 # ANTES DE CADA COMMIT (lo que corre CI)
 pnpm nx affected -t lint,test
 ```
+
+Note:
+Siempre corre lint y test antes de hacer push.
+Si fallan en tu maquina, fallaran en CI y bloquearan tu PR.
 
 ----
 
@@ -496,6 +565,10 @@ pnpm nx affected -t build --dry-run
 
 **Tip:** `pnpm nx graph` es muy util para entender dependencias
 
+Note:
+El grafo de dependencias te ayuda a entender como se relacionan los modulos.
+Si tu cambio afecta muchos proyectos, quizas estas modificando algo demasiado central.
+
 ---
 
 ## 🐛 Debugging
@@ -503,6 +576,10 @@ pnpm nx affected -t build --dry-run
 > Configuraciones de VS Code
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Saber debuggear es esencial - te ahorra horas de console.log.
+VS Code tiene todo configurado, solo tienes que usarlo.
 
 ----
 
@@ -534,6 +611,10 @@ El proyecto incluye configs de debug en `.vscode/launch.json`:
 }
 ```
 
+Note:
+Estas configuraciones ya estan en el proyecto.
+Solo tienes que ir a Run and Debug y seleccionar la correcta.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -552,6 +633,10 @@ El proyecto incluye configs de debug en `.vscode/launch.json`:
 2. Ir a Run and Debug
 3. Seleccionar "Debug Current Test File"
 4. Click en Play o F5
+
+Note:
+Debuggear tests es la forma mas rapida de entender bugs.
+Puedes ver el estado de las variables en cada linea.
 
 ----
 
@@ -578,6 +663,10 @@ this.logger.debug('Processing order', {
 // Condition: order.total > 1000
 ```
 
+Note:
+Los breakpoints condicionales son muy utiles para bugs que solo pasan con ciertos datos.
+No tienes que pausar en cada iteracion de un loop.
+
 ---
 
 ## 🔥 Troubleshooting
@@ -585,6 +674,10 @@ this.logger.debug('Processing order', {
 > Problemas comunes y soluciones
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Si algo falla, revisa esta seccion antes de preguntar.
+El 90% de los problemas tienen solucion aqui.
 
 ----
 
@@ -601,6 +694,10 @@ lsof -ti:3000 | xargs kill -9
 # Solucion 2: Usar otro puerto
 PORT=3001 pnpm nx serve integration-api
 ```
+
+Note:
+El puerto ocupado es el problema mas comun en el primer dia.
+Generalmente es porque dejaste otra terminal corriendo.
 
 ----
 
@@ -624,6 +721,10 @@ docker exec -it mongo-db mongosh
 # DATABASE_URL=mongodb://test_user:test_password@localhost:27017/...
 ```
 
+Note:
+Si MongoDB no conecta, primero verifica que Docker este corriendo.
+Luego revisa que el container este "healthy" con docker compose ps.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -646,6 +747,10 @@ pnpm install
 node --version  # Debe ser v20+
 ```
 
+Note:
+"Cannot find module" casi siempre se resuelve borrando node_modules y reinstalando.
+Es un problema de cache, no de tu codigo.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -662,6 +767,10 @@ pnpm nx reset
 rm -rf node_modules/.cache
 pnpm nx reset
 ```
+
+Note:
+Si despues de cambiar de branch ves errores raros, es probable que el cache de Nx este corrupto.
+"pnpm nx reset" lo limpia y resuelve el problema.
 
 ----
 
@@ -681,6 +790,10 @@ cp apps/integration-api/.env.example apps/integration-api/.env.dev
 # 3. Verificar variables obligatorias
 grep -E "DATABASE_URL|JWT_SECRET" apps/integration-api/.env.dev
 ```
+
+Note:
+Si copiaste el .env.example y sigue fallando, revisa que no haya espacios extra.
+Las variables de entorno son sensibles al formato.
 
 ----
 
@@ -704,11 +817,19 @@ docker compose down --rmi local
 docker compose up -d mongo-db redis
 ```
 
+Note:
+El reset completo de Docker es el ultimo recurso.
+Solo usalo si nada mas funciona porque borra TODOS los datos.
+
 ---
 
 ## ✅ Checklist del Primer Dia
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Usa este checklist para verificar que todo funciona.
+Si todos los items estan marcados, estas listo para empezar a contribuir.
 
 ----
 
@@ -730,9 +851,17 @@ docker compose up -d mongo-db redis
 Tiempo estimado: 30-60 minutos
 ```
 
+Note:
+Si tardas mas de una hora, pide ayuda.
+Es normal que el primer setup tenga problemas, no te frustres.
+
 ---
 
 ## 📝 Resumen
+
+Note:
+Estos son los comandos y URLs que usaras todos los dias.
+Guarda esta slide como referencia rapida.
 
 ----
 
@@ -753,6 +882,10 @@ Tiempo estimado: 30-60 minutos
 
 </div>
 
+Note:
+Estos 6 comandos cubren el 90% de tu trabajo diario.
+El mas importante es "affected" - usalo antes de cada push.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -770,6 +903,10 @@ Tiempo estimado: 30-60 minutos
 | `http://localhost:8081` | Mongo Express (con --profile tools) |
 
 </div>
+
+Note:
+Swagger en /api/docs es tu mejor amigo para probar endpoints.
+Tiene ejemplos de requests y respuestas.
 
 ---
 

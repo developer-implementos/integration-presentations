@@ -33,6 +33,10 @@ Es material esencial que usaran todos los dias.
 4. **👀 Code Review** - Como revisar y ser revisado
 5. **✅ Validacion de Codigo** - CI valida automaticamente
 
+Note:
+Este workflow es OBLIGATORIO - no es opcional ni sugerencia.
+El CI rechaza commits que no siguen estas reglas.
+
 ---
 
 ## 🔄 El Ciclo Diario
@@ -64,6 +68,10 @@ CODE → COMMIT → PUSH → PR → REVIEW → MERGE
 | Review | GitHub | CODEOWNERS |
 | Merge | GitHub | Squash merge |
 
+Note:
+Este ciclo se repite cientos de veces al dia en el equipo.
+Si todos seguimos las mismas reglas, el historial de Git es limpio y util.
+
 ---
 
 ## 📝 Conventional Commits
@@ -75,6 +83,7 @@ CODE → COMMIT → PUSH → PR → REVIEW → MERGE
 Note:
 Los conventional commits son OBLIGATORIOS.
 El CI rechaza commits que no siguen el formato.
+Si tu commit es rechazado, revisa el mensaje antes de pedir ayuda.
 
 ----
 
@@ -143,6 +152,10 @@ Si afecta varios modulos, omitir scope:
 feat: add global search across modules
 ```
 
+Note:
+El scope ayuda a filtrar commits en el historial.
+Usa el nombre de la carpeta en libs/ como scope.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -162,6 +175,10 @@ BREAKING CHANGE: tokens now use JWT instead of opaque.
 ```
 
 **Breaking change = version mayor (1.0 → 2.0)**
+
+Note:
+Los breaking changes son serios - rompen compatibilidad.
+Antes de agregar un "!" consulta con el equipo.
 
 ----
 
@@ -191,6 +208,10 @@ GitLens y GitHub Copilot estan configurados para generar commits en español:
 
 **Ya configurado** en `.vscode/settings.json` - solo usa el boton ✨
 
+Note:
+La AI genera un borrador - SIEMPRE revisalo antes de aceptar.
+A veces el scope esta mal o el mensaje es demasiado generico.
+
 ---
 
 ## 🌿 Branches
@@ -198,6 +219,10 @@ GitLens y GitHub Copilot estan configurados para generar commits en español:
 > Una branch por feature, siempre desde main
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Cada branch debe tener un proposito claro.
+Si tu branch hace muchas cosas, dividela en varias.
 
 ----
 
@@ -221,6 +246,10 @@ my-branch        # Sin tipo ni ticket
 feature/test     # Sin ticket
 CORE-123         # Sin descripcion
 ```
+
+Note:
+El numero de ticket es obligatorio para trazabilidad.
+Usa el nombre del ticket en Jira como base para la descripcion.
 
 ----
 
@@ -251,6 +280,10 @@ gitGraph
 - Siempre crear desde `main` actualizado
 - Una branch = un ticket/feature
 - Merge via PR (nunca directo a main)
+
+Note:
+NUNCA hagas push directo a main - esta protegido.
+Siempre crea una branch y un PR, aunque sea un cambio pequeno.
 
 ----
 
@@ -283,6 +316,10 @@ force-with-lease es mas seguro que force.
 
 ⬇️ _Navega hacia abajo para ver detalles_
 
+Note:
+El PR es tu oportunidad de explicar tu trabajo.
+Un buen PR hace que el review sea rapido y facil.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -298,6 +335,10 @@ gh pr create --title "feat(inventory): add bulk import"
 # 2. Click "Compare & pull request"
 # 3. Llenar template
 ```
+
+Note:
+gh CLI es mas rapido que la UI web para crear PRs.
+Aprende los comandos basicos de gh - te ahorraran tiempo.
 
 ----
 
@@ -362,6 +403,10 @@ Revisar codigo directamente en el editor con syntax highlighting:
 
 **Extension**: `GitHub Pull Requests and Issues` (ya en recomendadas)
 
+Note:
+Revisar PRs en VS Code es mas comodo que en el navegador.
+Puedes ver el codigo con syntax highlighting y navegar entre archivos.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -385,6 +430,10 @@ CORE-123
 - [ ] Lint pasa sin errores
 ```
 
+Note:
+Llena el template completo - no lo dejes vacio.
+Un PR sin descripcion sera rechazado o tardara mas en ser revisado.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -400,6 +449,10 @@ Antes de merge, tu PR debe pasar:
 | `build` | Compila sin errores | ✅ |
 | `sonar` | Quality gate | ✅ |
 | `review` | Aprobacion CODEOWNERS | ✅ |
+
+Note:
+Si un check falla, el merge esta bloqueado.
+Lee el error del check antes de pedir ayuda - generalmente es claro.
 
 ---
 
@@ -426,6 +479,10 @@ Tambien reconoce el buen trabajo con "praise:".
 3. **SEGURIDAD** - Input validation? No secrets?
 4. **ESTILO** - Sigue los patrones del proyecto?
 
+Note:
+El code review no es para criticar - es para mejorar el codigo.
+Se especifico y constructivo en tus comentarios.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -439,6 +496,10 @@ Tambien reconoce el buen trabajo con "praise:".
 | `question:` | Necesito entender | ⚠️ Depende |
 | `nit:` | Nitpicking menor | ❌ No |
 | `praise:` | Buen trabajo! | ❌ No |
+
+Note:
+Usa las etiquetas para que el autor sepa si es bloqueante o no.
+"blocking:" DEBE corregirse. "nit:" es solo una sugerencia.
 
 ----
 
@@ -455,6 +516,10 @@ nit: Prefiero `const` sobre `let` aqui
 
 praise: Excelente manejo del edge case!
 ```
+
+Note:
+No olvides el "praise:" - reconocer buen trabajo motiva al equipo.
+Un review solo con criticas es desmoralizante.
 
 ----
 
@@ -473,11 +538,19 @@ praise: Excelente manejo del edge case!
 
 Tu PR necesita approval del CODEOWNER del codigo que modificaste.
 
+Note:
+CODEOWNERS protege codigo critico de cambios sin supervision.
+Si modificas libs/core/ necesitas aprobacion de un tech lead.
+
 ---
 
 ## ✅ Validacion de Codigo
 
 > CI valida todo - sin hooks locales (enfoque BigTech)
+
+Note:
+No usamos pre-commit hooks porque son lentos y molestos.
+CI valida todo despues del push - es mas rapido para el developer.
 
 ----
 
@@ -510,6 +583,10 @@ flowchart LR
 
 **No hay pre-commit hooks** - commits inmediatos, CI valida despues
 
+Note:
+Los commits son instantaneos - CI corre en paralelo mientras sigues trabajando.
+Si falla, arreglas y vuelves a pushear.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -528,6 +605,10 @@ flowchart LR
 ```
 
 Al guardar: Prettier formatea + ESLint corrige = menos errores en CI
+
+Note:
+Format on save es tu mejor amigo - el codigo se formatea automaticamente.
+Si no funciona, verifica que las extensiones esten instaladas.
 
 ----
 
@@ -577,6 +658,10 @@ Para entender el pipeline completo de CI/CD:
 - Deploy automatico a Cloud Run
 - Nx affected y cache distribuido
 
+Note:
+Si quieres entender mas sobre CI/CD, ve la presentacion dedicada.
+Por ahora solo necesitas saber que CI valida tu codigo.
+
 ---
 
 ## 📖 Resumen
@@ -584,6 +669,10 @@ Para entender el pipeline completo de CI/CD:
 > Tu dia a dia en 4 pasos
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Este resumen es tu guia de referencia rapida.
+Guardalo o imprimelo para tu primer dia.
 
 ----
 
@@ -606,6 +695,10 @@ gh pr create
 # 4. Responder review y merge
 ```
 
+Note:
+Estos 4 pasos son tu rutina diaria.
+Si algo falla, revisa esta presentacion antes de pedir ayuda.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -619,6 +712,10 @@ git log --oneline -10   # Ver historial
 git commit --amend      # Enmendar ultimo commit
 git rebase origin/main  # Actualizar branch
 ```
+
+Note:
+git status y git diff son tus mejores amigos para entender que cambio.
+Usalos antes de cada commit para no incluir archivos por accidente.
 
 ---
 

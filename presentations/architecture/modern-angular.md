@@ -34,6 +34,10 @@ Si vienes de versiones anteriores, esta presentacion es obligatoria.
 5. **🗄️ Signal Store** - Estado global reactivo
 6. **🔀 Migracion** - De clasico a moderno
 
+Note:
+Angular ha cambiado mucho desde la version 17.
+Si vienes de versiones anteriores, esta presentacion te actualizara.
+
 ---
 
 ## 📡 Signals vs RxJS
@@ -41,6 +45,10 @@ Si vienes de versiones anteriores, esta presentacion es obligatoria.
 > El cambio mas importante de Angular moderno
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Signals simplifican el manejo de estado en Angular.
+Si RxJS te parecia complicado, vas a amar Signals.
 
 ----
 
@@ -74,6 +82,10 @@ export class OldComponent {
 - Muchos operadores que aprender
 - Facil crear memory leaks
 - Verbose para casos simples
+
+Note:
+Este codigo RxJS es lo que NO queremos escribir mas.
+Es funcional pero demasiado complejo para algo tan simple.
 
 ----
 
@@ -111,6 +123,10 @@ export class ModernComponent {
 - Sin memory leaks
 - Change detection mas eficiente
 
+Note:
+Nota como el codigo es mucho mas corto y facil de entender.
+No hay subscripciones que manejar ni operadores que memorizar.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -140,6 +156,10 @@ effect(() => {
 });
 ```
 
+Note:
+Memoriza: signal() para crear, computed() para derivar, effect() para side effects.
+Estos 3 cubren el 95% de los casos.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -157,6 +177,10 @@ effect(() => {
 | Estado global | Signal Store | NgRx |
 
 **Regla:** Signals para estado, RxJS para streams de eventos
+
+Note:
+Esta tabla es tu guia de decision.
+HTTP y WebSockets siguen usando RxJS - no cambio eso.
 
 ----
 
@@ -191,6 +215,10 @@ export class ProductComponent {
 }
 ```
 
+Note:
+toSignal() convierte Observables a Signals.
+Usalo cuando quieras consumir datos de HTTP como Signal.
+
 ---
 
 ## 🔄 Control Flow Moderno
@@ -198,6 +226,10 @@ export class ProductComponent {
 > @if, @for, @switch en lugar de *ngIf, *ngFor
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+El nuevo control flow es mas legible y mas rapido.
+Parece JavaScript normal, no directivas magicas.
 
 ----
 
@@ -234,6 +266,10 @@ export class ProductComponent {
 - Menos ng-templates
 - Mejor rendimiento
 
+Note:
+Nota como @if/@else if/@else es mucho mas claro que *ngIf con templates.
+Puedes leer el template como codigo normal.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -262,6 +298,10 @@ export class ProductComponent {
 - `track` es obligatorio (mejor performance por defecto)
 - `@empty` para listas vacias (antes requeria *ngIf adicional)
 
+Note:
+track es OBLIGATORIO en @for - no es opcional.
+Esto previene bugs de rendimiento que eran comunes con *ngFor.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -284,6 +324,10 @@ export class ProductComponent {
 | `$even` | true si indice es par |
 | `$odd` | true si indice es impar |
 | `$count` | Total de elementos |
+
+Note:
+Estas variables de contexto son las mismas que en *ngFor.
+$index es la mas usada para mostrar numeros de fila.
 
 ----
 
@@ -325,6 +369,10 @@ export class ProductComponent {
 
 ⬇️ _Navega hacia abajo para ver detalles_
 
+Note:
+Standalone components eliminan la necesidad de NgModules.
+Cada componente declara sus propias dependencias - mucho mas simple.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -357,6 +405,10 @@ export class ProductModule {}
 })
 export class ProductListComponent {}
 ```
+
+Note:
+Este codigo viejo requiere un modulo separado solo para declarar componentes.
+Es mucho boilerplate para algo que deberia ser simple.
 
 ----
 
@@ -391,6 +443,10 @@ export class ProductListComponent {
 - Tree-shaking mas efectivo
 - Mas facil de entender y testear
 
+Note:
+El imports array muestra exactamente que usa este componente.
+No hay modulos "magicos" que importan cosas en segundo plano.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -415,6 +471,10 @@ export { ProductCardComponent } from './product-card/product-card.component';
 ```
 
 **No hay `products.module.ts`** - Cada componente se importa directamente.
+
+Note:
+Esta estructura es mas simple: cada feature es un folder con componentes.
+No hay modulo que configure - solo imports directos.
 
 ----
 
@@ -447,6 +507,10 @@ export const routes: Routes = [
 
 **loadComponent** carga un componente, **loadChildren** carga rutas hijas.
 
+Note:
+Lazy loading funciona igual pero mas simple.
+loadComponent carga UN componente, loadChildren carga rutas completas.
+
 ---
 
 ## 📥 Modern Inputs/Outputs
@@ -454,6 +518,10 @@ export const routes: Routes = [
 > input() y output() en lugar de decoradores
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Los nuevos inputs y outputs son funciones, no decoradores.
+Son mas type-safe y se integran mejor con signals.
 
 ----
 
@@ -496,6 +564,10 @@ export class ProductCardComponent {
 }
 ```
 
+Note:
+input.required() hace que TypeScript marque error si no pasas el input.
+Es mas seguro que @Input() con non-null assertion (!).
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -521,6 +593,10 @@ readonly disabled = input(false, {
 // En el template, llamar como signal
 // {{ count() }} no {{ count }}
 ```
+
+Note:
+IMPORTANTE: los inputs son signals, hay que llamarlos con ().
+Si olvidas los parentesis, veras [object Signal] en el template.
 
 ----
 
@@ -563,6 +639,10 @@ export class ProductCardComponent {
 />
 ```
 
+Note:
+El uso en el template es identico al clasico.
+Solo cambia la declaracion dentro del componente.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -599,6 +679,10 @@ export class ProductCardComponent {
 }
 ```
 
+Note:
+Este es el patron completo: inputs como signals, outputs para eventos.
+El template usa @if y emite eventos con output.emit().
+
 ---
 
 ## 🗄️ Signal Store
@@ -606,6 +690,10 @@ export class ProductCardComponent {
 > Estado global reactivo sin NgRx boilerplate
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Signal Store es una alternativa ligera a NgRx.
+Mucho menos boilerplate pero igual de poderoso para la mayoria de casos.
 
 ----
 
@@ -646,6 +734,10 @@ export class ProductStore {
 }
 ```
 
+Note:
+Compare esto con NgRx: un archivo vs 4+ archivos.
+Todo el estado, selectors y actions en un solo lugar.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -682,6 +774,10 @@ export class ProductStore {
     active: this._products().filter(p => p.active).length,
   }));
 ```
+
+Note:
+Estado privado (_products) + selectors publicos (products).
+Esto encapsula el estado y expone solo lo necesario.
 
 ----
 
@@ -725,6 +821,10 @@ export class ProductStore {
 }
 ```
 
+Note:
+Las actions son metodos normales que modifican el estado.
+No hay actions, reducers, effects separados - todo en un lugar.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -766,6 +866,10 @@ export class ProductListComponent implements OnInit {
 }
 ```
 
+Note:
+El componente inyecta el store y usa sus signals directamente.
+No hay async pipe ni subscripciones - solo signals.
+
 ---
 
 ## 🔀 Migracion
@@ -773,6 +877,10 @@ export class ProductListComponent implements OnInit {
 > De Angular clasico a moderno
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Si tienes codigo Angular viejo, puedes migrarlo gradualmente.
+No tienes que reescribir todo - lo nuevo y lo viejo pueden coexistir.
 
 ----
 
@@ -802,6 +910,10 @@ INPUTS/OUTPUTS
 [ ] @Output() EventEmitter → output()
 [ ] Agregar () cuando se lea el input en template
 ```
+
+Note:
+Este checklist es tu guia de migracion.
+Ve paso a paso, no intentes cambiar todo de una vez.
 
 ----
 
@@ -833,6 +945,10 @@ export class CounterComponent {
   }
 }
 ```
+
+Note:
+Este es un componente clasico tipico.
+Nota: @Input con !, ngOnInit para inicializar, EventEmitter.
 
 ----
 
@@ -872,6 +988,10 @@ export class CounterComponent {
 }
 ```
 
+Note:
+El codigo migrado es mas limpio y type-safe.
+El effect() reemplaza ngOnInit para inicializar el count.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -902,9 +1022,17 @@ await TestBed.configureTestingModule({
 }).compileComponents();
 ```
 
+Note:
+El CLI de Angular tiene comandos de migracion automatica.
+Usalos para convertir componentes existentes sin errores.
+
 ---
 
 ## 📝 Resumen
+
+Note:
+Esta tabla es tu referencia rapida para las diferencias.
+Consultala cuando tengas dudas sobre la sintaxis moderna.
 
 ----
 
@@ -923,6 +1051,10 @@ await TestBed.configureTestingModule({
 | Outputs | @Output() | output() |
 | Modulos | NgModule | standalone: true |
 
+Note:
+La columna "Moderno" es lo que debes usar en codigo nuevo.
+La columna "Clasico" sigue funcionando pero no es el patron preferido.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -938,6 +1070,10 @@ await TestBed.configureTestingModule({
 6. RxJS solo para HTTP y streams complejos
 7. Signal Store para estado global
 ```
+
+Note:
+Estas 7 reglas resumen Angular moderno.
+Siguelas y tu codigo sera limpio, rapido y facil de mantener.
 
 ---
 

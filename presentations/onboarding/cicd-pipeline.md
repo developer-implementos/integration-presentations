@@ -33,6 +33,10 @@ Explica que pasa despues de hacer push y como llega el codigo a produccion.
 4. **✅ Checks** - Bloqueantes vs Warnings
 5. **📦 Renovate** - Dependencias automaticas
 
+Note:
+No necesitas entender todo el CI/CD al principio.
+Lo importante es saber que pasa cuando haces push y como leer los errores.
+
 ---
 
 ## 🚀 El Pipeline
@@ -43,7 +47,8 @@ Explica que pasa despues de hacer push y como llega el codigo a produccion.
 
 Note:
 El pipeline de CI/CD es lo que hace que nuestro codigo llegue a produccion de forma segura.
-Vamos a ver como funciona y que checks debe pasar un PR.
+Cada push dispara automaticamente estos checks.
+Si fallan, el merge esta bloqueado.
 
 ---
 
@@ -54,8 +59,8 @@ Vamos a ver como funciona y que checks debe pasar un PR.
 ⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
-CI/CD significa Continuous Integration / Continuous Deployment.
-Es el proceso automatizado que verifica nuestro codigo cada vez que hacemos push.
+GitHub Actions es gratis para repositorios publicos y tiene limites generosos para privados.
+Es nuestra herramienta principal para automatizacion.
 
 ----
 
@@ -157,6 +162,10 @@ Si falla en cualquier estacion, el PR no puede mergearse.
 
 **Tiempo tipico**: ~3 minutos (con cache)
 
+Note:
+Los jobs corren en paralelo para ahorrar tiempo.
+Si uno falla, los otros siguen corriendo para darte todos los errores de una vez.
+
 ---
 
 ## ⚡ Features Enterprise
@@ -164,6 +173,10 @@ Si falla en cualquier estacion, el PR no puede mergearse.
 > Optimizaciones que aceleran el desarrollo
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Estas optimizaciones hacen que el CI sea rapido incluso en un monorepo grande.
+Sin ellas, cada push tardaria 15+ minutos.
 
 ----
 
@@ -248,6 +261,10 @@ Si otro dev ya compilo lo mismo, reutilizamos el resultado.
 
 ⬇️ _Navega hacia abajo para ver detalles_
 
+Note:
+Quality Gates aseguran que el codigo nuevo cumple estandares minimos.
+No puedes mergear si tu codigo tiene bugs criticos o coverage muy bajo.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -272,8 +289,8 @@ Si otro dev ya compilo lo mismo, reutilizamos el resultado.
 ```
 
 Note:
-Quality Gates son reglas que el codigo DEBE cumplir para poder mergearse.
-80% coverage significa que al menos 80% del codigo nuevo debe tener tests.
+Estos criterios aplican al codigo NUEVO, no al codigo existente.
+Si tu PR tiene 70% coverage, no pasa aunque el proyecto tenga 90%.
 
 ----
 
@@ -306,6 +323,10 @@ Quality Gates son reglas que el codigo DEBE cumplir para poder mergearse.
 
 ⬇️ _Navega hacia abajo para ver detalles_
 
+Note:
+Es importante distinguir entre checks bloqueantes y warnings.
+Los bloqueantes DEBEN pasar. Los warnings puedes ignorar (con cuidado).
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -327,6 +348,10 @@ pnpm lint:fix        # Arregla errores de ESLint
 pnpm test:affected   # Corre tests
 ```
 
+Note:
+Si CI falla, corre estos comandos localmente para ver el mismo error.
+El 99% de las veces el problema es obvio cuando lo ves local.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -346,6 +371,10 @@ Puedes mergear, pero deberias revisar:
 pnpm format          # Arregla Prettier
 ```
 
+Note:
+Los warnings no bloquean pero deberias revisarlos.
+Si el bundle crecio 10%, probablemente agregaste una dependencia grande sin querer.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -364,6 +393,10 @@ pnpm format          # Arregla Prettier
 └────────────────────────┴────────────────────────┘
 ```
 
+Note:
+Esta tabla es tu referencia para saber si un check rojo bloquea o no.
+Los de la izquierda DEBEN pasar, los de la derecha son informativos.
+
 ---
 
 ## 🔄 Flujo Completo
@@ -371,6 +404,10 @@ pnpm format          # Arregla Prettier
 > Push → Merge paso a paso
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Este es el flujo completo que sigue tu codigo desde push hasta merge.
+Entenderlo te ayuda a debuggear cuando algo falla.
 
 ----
 
@@ -398,6 +435,10 @@ pnpm format          # Arregla Prettier
 └─────────────────────────────────────────────────────┘
 ```
 
+Note:
+Todo el proceso toma ~3 minutos con cache.
+Si tarda mucho mas, probablemente el cache esta frio o hay muchos cambios.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -419,6 +460,10 @@ git add . && git commit -m "fix: resolve CI errors"
 git push
 ```
 
+Note:
+Siempre lee el log del check que fallo.
+El error suele ser claro: "Test failed at line X" o "ESLint error in file Y".
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -434,6 +479,10 @@ git push
 
 **Pro tip**: Corre `pnpm test:affected` localmente antes de push
 
+Note:
+Si siempre corres test:affected antes de push, rara vez fallaras en CI.
+Los 2 minutos locales te ahorran 10 minutos de espera.
+
 ---
 
 ## 📦 Renovate
@@ -444,6 +493,7 @@ git push
 
 Note:
 Renovate es un bot que mantiene las dependencias actualizadas automaticamente.
+Veras PRs de Renovate regularmente - son seguras si pasan CI.
 
 ----
 
@@ -459,6 +509,10 @@ Bot que automatiza actualizaciones:
 | **Docker images** | Base images, distroless |
 | **GitHub Actions** | Versiones de actions |
 | **Security patches** | CVEs criticos |
+
+Note:
+Renovate no solo actualiza npm packages.
+Tambien actualiza Docker images, GitHub Actions, y mas.
 
 ----
 
@@ -508,6 +562,10 @@ Bot que automatiza actualizaciones:
 
 **Estrategia**: Patches auto-merge, majors requieren review
 
+Note:
+Esta configuracion esta en renovate.json en la raiz del proyecto.
+No la modifiques sin consultar al equipo.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -523,6 +581,10 @@ Bot que automatiza actualizaciones:
 
 > Usamos Renovate por su superior soporte para monorepos
 
+Note:
+Si ves un PR de Renovate con tests pasando, puedes aprobarlo con confianza.
+El bot ya verifico que la actualizacion no rompe nada.
+
 ---
 
 ## ⌨️ Comandos Utiles
@@ -530,6 +592,10 @@ Bot que automatiza actualizaciones:
 > Tu referencia rapida
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Estos comandos te ayudan a replicar localmente lo que hace CI.
+Si CI falla, usa estos comandos para ver el mismo error.
 
 ----
 
@@ -548,6 +614,10 @@ pnpm typecheck       # Verifica tipos TypeScript
 pnpm nx build <app>  # Build especifico
 ```
 
+Note:
+lint:fix arregla automaticamente muchos errores de ESLint.
+Corre esto antes de push para evitar errores triviales en CI.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -565,6 +635,10 @@ pnpm nx affected -t lint,test,build
 pnpm nx graph
 ```
 
+Note:
+pnpm nx graph abre un navegador con el grafo de dependencias.
+Muy util para entender por que un cambio afecta tantos proyectos.
+
 ---
 
 ## 📝 Resumen
@@ -572,6 +646,10 @@ pnpm nx graph
 > Lo esencial de CI/CD
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Este resumen cubre lo esencial que necesitas saber.
+Guarda esta slide para referencia cuando algo falle en CI.
 
 ----
 
@@ -586,6 +664,10 @@ pnpm nx graph
 | **Quality Gate** | 80% coverage, 0 bugs criticos |
 | **Bloqueantes** | lint, test, build, sonar |
 | **Renovate** | Deps actualizadas automaticamente |
+
+Note:
+El concepto mas importante es Nx Affected - solo corre lo necesario.
+Si entiendes esto, entiendes por que el CI es rapido.
 
 ----
 
@@ -605,6 +687,10 @@ git push
 # 5. Si falla, lee logs y arregla
 # 6. Cuando todo pasa → merge!
 ```
+
+Note:
+Este flujo se vuelve automatico despues de unos dias.
+Valida local, push, espera CI, merge. Asi de simple.
 
 ---
 

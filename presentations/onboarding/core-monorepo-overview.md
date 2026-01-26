@@ -208,7 +208,8 @@ Ahora que ya pueden correr el proyecto, vamos a entender cómo está organizado.
 > **Monolito Modular** que centraliza la lógica de negocio crítica de Implementos
 
 Note:
-Es como un edificio de departamentos: todos viven en el mismo edificio, pero cada departamento tiene su propia cocina, baño y entrada.
+Es como un edificio de departamentos: todos viven en el mismo edificio, pero cada departamento tiene su propia cocina, bano y entrada.
+Esta analogia es clave: los modulos son independientes pero comparten infraestructura.
 
 ----
 
@@ -277,8 +278,9 @@ Esta organización hace muy fácil encontrar dónde está cada cosa.
 **Principio**: Cada módulo es **independiente** y se comunica a través de **facades**
 
 Note:
-Cada módulo es dueño de una parte del dominio de negocio.
-Los módulos no se llaman directamente - usan facades para mantener bajo acoplamiento.
+Cada modulo es dueno de una parte del dominio de negocio.
+Los modulos no se llaman directamente - usan facades para mantener bajo acoplamiento.
+Si necesitas datos de otro modulo, usa su facade, nunca accedas directamente a su codigo interno.
 
 ---
 
@@ -289,15 +291,20 @@ Los módulos no se llaman directamente - usan facades para mantener bajo acoplam
 ⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
-Ahora vamos a entender cómo está organizado el código dentro de cada módulo.
-Clean Architecture separa el código en capas con responsabilidades claras.
-
+Clean Architecture es el patron que usamos para organizar el codigo.
+Entender esto es fundamental para leer y modificar cualquier modulo.
+No te preocupes si parece complejo - se vuelve natural con la practica.
 
 ----
 
 ### 🏛️ Clean Architecture
 
 ## Capas del Sistema
+
+Note:
+Este diagrama es tu mapa mental del sistema.
+Memoriza las capas: API arriba, Domain en el centro.
+Las flechas muestran quien puede llamar a quien.
 
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#3498db', 'primaryTextColor': '#fff', 'primaryBorderColor': '#2980b9', 'lineColor': '#ecf0f1', 'secondaryColor': '#2c3e50', 'tertiaryColor': '#34495e', 'fontSize': '16px' }}}%%
@@ -384,8 +391,9 @@ Note:
 Esta es la estructura de CADA módulo.
 Domain es el corazón - no depende de nada externo.
 Application orquesta use cases.
-Infrastructure implementa detalles técnicos.
-API expone todo a través de HTTP.
+Infrastructure implementa detalles tecnicos.
+API expone todo a traves de HTTP.
+Cuando busques donde esta algo, piensa en que capa pertenece.
 
 ----
 
@@ -447,7 +455,8 @@ El GlobalExceptionFilter los convierte automáticamente a respuestas HTTP estruc
 
 Note:
 Esta es la ruta recomendada para nuevos desarrolladores.
-Dependiendo de tu rol y experiencia, puedes ajustar el orden.
+No tienes que aprender todo de una vez - sigue el plan semana a semana.
+Lo mas importante es poder contribuir codigo, no memorizar arquitectura.
 
 ----
 
@@ -613,7 +622,8 @@ No todos necesitan ver todo al mismo tiempo.
 Juniors: enfóquense en workflow y poder contribuir.
 Mid-level: profundicen en arquitectura y patrones.
 Seniors: entiendan el "por qué" y contribuyan a decisiones.
-Architects: visión completa y evolución del sistema.
+Architects: vision completa y evolucion del sistema.
+Si eres junior, no te agobies con Enterprise Patterns al principio.
 
 ----
 
@@ -638,10 +648,10 @@ Architects: visión completa y evolución del sistema.
 - **Email**: tech-leads@implementos.cl
 
 Note:
-Estos recursos están disponibles para profundizar.
-Los RFCs explican propuestas y el "por qué" de decisiones.
+Estos recursos estan disponibles para profundizar.
+Los RFCs explican propuestas y el "por que" de decisiones.
 Los ADRs documentan decisiones tomadas y sus trade-offs.
-Si tienen dudas, pregunten al equipo - estamos para ayudar.
+No necesitas leerlos todos - consultalos cuando trabajes en un area especifica.
 
 ---
 

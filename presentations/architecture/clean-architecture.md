@@ -34,6 +34,10 @@ Entender estas capas es clave para leer y modificar cualquier modulo.
 5. **🚨 Error Handling** - Sistema de errores estandarizado
 6. **⚠️ Errores Comunes** - Lo que NO debes hacer
 
+Note:
+Esta presentacion es fundamental para entender como escribir codigo en el proyecto.
+Tomate tu tiempo para entender las capas - las usaras todos los dias.
+
 ---
 
 ## 🏛️ Clean Architecture
@@ -41,6 +45,10 @@ Entender estas capas es clave para leer y modificar cualquier modulo.
 > Separar el "que hace" del "como lo hace"
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Clean Architecture resuelve el problema del codigo spaghetti.
+El objetivo es que puedas cambiar la base de datos sin tocar la logica de negocio.
 
 ----
 
@@ -72,6 +80,11 @@ class ProductController {
 }
 ```
 
+Note:
+Este codigo es lo que NO queremos.
+Todo esta junto: validacion, logica, base de datos, email.
+Si falla algo, es casi imposible saber donde esta el bug.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -83,6 +96,10 @@ class ProductController {
 - **Logica de negocio esparcida** en todos lados
 
 > Este patron se repite en muchos proyectos legacy
+
+Note:
+Si has trabajado en proyectos legacy, probablemente reconoces esto.
+El problema crece con el tiempo - cada cambio rompe algo inesperado.
 
 ----
 
@@ -131,11 +148,20 @@ graph TB
 - Puedes testear cada capa por separado
 - Cambiar la DB no afecta la logica de negocio
 
+Note:
+Este es el modelo que usamos.
+Nota como cada capa solo habla con la de abajo.
+El controller no sabe nada de MongoDB - solo conoce el facade.
+
 ---
 
 ## 📚 Las 5 Capas
 
 > Estructura de un modulo en el proyecto
+
+Note:
+Cada modulo en libs/ sigue exactamente esta estructura.
+Cuando abras cualquier modulo, encontraras estas 5 carpetas.
 
 ----
 
@@ -153,6 +179,10 @@ libs/inventory/
 ```
 
 Cada capa tiene un proposito especifico y **depende solo de capas inferiores**.
+
+Note:
+Esta estructura es obligatoria - no inventemos estructuras diferentes.
+Si no sabes donde va algo, pregunta antes de crear nuevas carpetas.
 
 ----
 
@@ -180,6 +210,10 @@ domain/
 - TypeScript puro (sin NestJS, sin decoradores)
 - Sin imports de librerias externas
 - 100% testeable con tests unitarios simples
+
+Note:
+Domain es el corazon del sistema - aqui viven las reglas de negocio.
+Si ves @Injectable() o imports de NestJS aqui, algo esta mal.
 
 ----
 
@@ -223,6 +257,10 @@ export class SKU {
 }
 ```
 
+Note:
+La diferencia clave: Entity tiene ID, Value Object se compara por valor.
+Stock tiene ID unico. SKU "ABC-123" es igual a otro SKU "ABC-123".
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -248,6 +286,10 @@ application/
 - Orquestar llamadas al dominio
 - Coordinar transacciones
 - Emitir eventos de aplicacion
+
+Note:
+Application orquesta pero NO contiene logica de negocio.
+La logica va en Domain. Application solo coordina llamadas.
 
 ----
 
@@ -324,6 +366,10 @@ export class StockFacade {
 - Simplifica la API publica del modulo
 - Oculta complejidad interna
 
+Note:
+El Facade es la "puerta de entrada" a un modulo.
+Otros modulos solo conocen el Facade, no los servicios internos.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -350,6 +396,10 @@ infrastructure/
 - Clientes HTTP para VTEX, Salesforce, etc.
 - Publishers de Pub/Sub
 - Redis cache
+
+Note:
+Infrastructure sabe COMO hacer las cosas: como guardar en MongoDB, como llamar a VTEX.
+Domain solo sabe QUE necesita, no COMO se implementa.
 
 ----
 
@@ -424,6 +474,10 @@ api/
 - Transformar DTOs
 - Manejar errores HTTP
 
+Note:
+API es el punto de entrada HTTP - aqui van los decoradores de NestJS.
+Esta capa es "delgada": recibe, valida, llama al Facade, retorna.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -457,6 +511,10 @@ export class StockController {
 - Recibe el request
 - Llama al facade
 - Retorna la respuesta
+
+Note:
+El controller NO debe tener logica de negocio.
+Si tu controller tiene mas de 10 lineas por metodo, algo esta mal.
 
 ----
 
@@ -499,11 +557,19 @@ config/
 export class InventoryModule {}
 ```
 
+Note:
+Config es el "pegamento" - conecta interfaces con implementaciones.
+Nota como StockRepositoryPort (interface) se conecta a StockRepository (implementacion).
+
 ---
 
 ## 🔗 Regla de Dependencia
 
 > Las dependencias siempre van hacia adentro
+
+Note:
+Esta es LA regla mas importante de Clean Architecture.
+Si la rompes, pierdes todos los beneficios del patron.
 
 ----
 
@@ -550,6 +616,10 @@ graph LR
 
 *Los controllers no deben importar repositories directamente
 
+Note:
+Esta tabla es tu referencia rapida.
+Si Domain importa algo de Infrastructure, estas rompiendo la regla.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -583,11 +653,20 @@ export class ReserveStockService {
 
 **Beneficio:** Puedes cambiar MongoDB por Firestore sin tocar Application ni Domain.
 
+Note:
+Inversion de Dependencias es clave para la testeabilidad.
+En tests usas mocks, en produccion usas la implementacion real.
+El servicio no sabe la diferencia porque solo conoce la interface.
+
 ---
 
 ## 🎯 Ejemplo Practico
 
 > Seguir un request de reserva de stock
+
+Note:
+Vamos a seguir un request real a traves de todas las capas.
+Este ejercicio es muy util para entender como fluye el codigo.
 
 ----
 
@@ -623,6 +702,10 @@ sequenceDiagram
     Controller-->>Client: 200 OK
 ```
 
+Note:
+Sigue las flechas: el request baja por las capas, la respuesta sube.
+Nota que Entity valida las reglas - no el Controller ni el Repository.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -643,11 +726,19 @@ sequenceDiagram
 
 </div>
 
+Note:
+Esta tabla es tu guia cuando no sepas donde poner algo.
+Si la logica es de negocio, va en Domain. Si es tecnica, va en Infrastructure.
+
 ---
 
 ## 🚨 Error Handling
 
 > Sistema de errores estandarizado (RFC-0009)
+
+Note:
+El manejo de errores es parte critica de la arquitectura.
+Errores bien definidos ayudan al debugging y al frontend.
 
 ----
 
@@ -681,6 +772,10 @@ graph TB
 
 Cada modulo tiene sus propios errores tipados que heredan de `DomainError`.
 
+Note:
+La jerarquia de errores permite atrapar errores especificos o genericos.
+Puedes atrapar InsufficientStock o cualquier InventoryError.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -701,6 +796,10 @@ Cada modulo tiene sus propios errores tipados que heredan de `DomainError`.
 </div>
 
 La categoria determina automaticamente el HTTP status.
+
+Note:
+Elegir la categoria correcta es importante: BUSINESS_RULE vs VALIDATION.
+BUSINESS_RULE es para reglas de negocio, VALIDATION es para datos invalidos.
 
 ----
 
@@ -735,6 +834,10 @@ async reserveStock(sku: string, quantity: number): Promise<void> {
 }
 ```
 
+Note:
+Siempre incluye context en el error: sku, requested, available.
+Esto hace que el debugging sea mucho mas facil.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -764,6 +867,10 @@ El `GlobalExceptionFilter` convierte DomainError a respuesta HTTP:
 - Codigo unico para manejar programaticamente
 - Mensaje claro para mostrar al usuario
 - Detalles para debugging
+
+Note:
+El GlobalExceptionFilter convierte DomainError a JSON automaticamente.
+No tienes que hacer try/catch en cada controller.
 
 ----
 
@@ -795,11 +902,19 @@ Que fallo exactamente? Como lo arreglo?
 
 El frontend puede mostrar: "Solo hay 50 unidades disponibles". Logs buscables por codigo de error.
 
+Note:
+Este es el valor de errores estructurados: el frontend sabe exactamente que paso.
+Puede mostrar un mensaje util al usuario en vez de "Error 400".
+
 ---
 
 ## ⚠️ Errores Comunes
 
 > Lo que NO debes hacer
+
+Note:
+Estos son errores reales que hemos visto en code reviews.
+Aprende de ellos para no repetirlos.
 
 ----
 
@@ -835,6 +950,10 @@ export class StockController {
 }
 ```
 
+Note:
+Si tu controller hace mas que recibir y delegar, estas haciendo algo mal.
+Toda la logica debe estar en Application o Domain.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -868,6 +987,10 @@ await stock.reserve(qty);
 await this.repo.save(stock);
 ```
 
+Note:
+Entity es logica pura - no sabe nada de bases de datos.
+El Service coordina: carga del repo, ejecuta logica, guarda en repo.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -895,6 +1018,10 @@ export class ReserveStockService {
 **Por que importa?** Con la interface, puedes:
 - Usar un mock en tests
 - Cambiar de MongoDB a Firestore sin tocar el service
+
+Note:
+Este error rompe la testeabilidad.
+Si importas la clase concreta, necesitas MongoDB real para testear.
 
 ----
 
@@ -926,9 +1053,17 @@ async getStock(@Param('sku') sku: string): Promise<StockResponseDto> {
 - Puedes cambiar la entidad sin romper la API
 - Evitas exponer datos sensibles por accidente
 
+Note:
+Exponer entidades directamente es un error de seguridad.
+Puedes exponer campos que no deberian ser publicos.
+
 ---
 
 ## 📝 Resumen
+
+Note:
+Estas tablas son tu referencia rapida.
+Consultalas cuando tengas dudas sobre donde poner algo.
 
 ----
 
@@ -948,6 +1083,10 @@ async getStock(@Param('sku') sku: string): Promise<StockResponseDto> {
 
 </div>
 
+Note:
+Domain no depende de NADA - es TypeScript puro.
+Las otras capas pueden depender de Domain pero nunca al reves.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -963,6 +1102,10 @@ Antes de escribir codigo, preguntate:
 [ ] ¿Maneja HTTP request? → API
 [ ] ¿Configura el modulo? → Config
 ```
+
+Note:
+Este checklist te ayuda a decidir donde va cada cosa.
+Usalo hasta que se vuelva automatico.
 
 ---
 

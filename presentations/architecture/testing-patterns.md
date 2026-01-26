@@ -36,6 +36,10 @@ Con tests: cambias codigo con confianza.
 6. **✅ Best Practices** - Patrones y anti-patrones
 7. **⌨️ Comandos** - Referencia rapida
 
+Note:
+Testing es una habilidad que toma tiempo dominar.
+No te frustres si al principio parece dificil - todos pasamos por eso.
+
 ---
 
 ## ❓ Por Que Testeamos
@@ -46,7 +50,8 @@ Con tests: cambias codigo con confianza.
 
 Note:
 Tests no son opcionales en sistemas enterprise.
-Las big techs tienen 80%+ de coverage obligatorio.
+Sin tests, cada cambio puede romper algo sin que te des cuenta.
+Con tests, tienes una red de seguridad.
 
 ----
 
@@ -61,6 +66,10 @@ Las big techs tienen 80%+ de coverage obligatorio.
 | "Funciona en mi maquina" | Comportamiento verificable |
 | Regresiones constantes | Proteccion contra regresiones |
 | Debug manual tedioso | Feedback inmediato |
+
+Note:
+La columna "Sin Tests" describe muchos proyectos legacy.
+El miedo a cambiar codigo es un sintoma de falta de tests.
 
 ----
 
@@ -81,6 +90,10 @@ Las big techs tienen 80%+ de coverage obligatorio.
 
 **Regla**: Domain y Application son criticos - ahi esta la logica de negocio
 
+Note:
+Domain tiene el coverage mas alto porque ahi estan las reglas de negocio.
+Un bug en Domain puede afectar todo el sistema.
+
 ---
 
 ## 📐 Piramide de Testing
@@ -88,6 +101,10 @@ Las big techs tienen 80%+ de coverage obligatorio.
 > Muchos unit tests, pocos E2E
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+La piramide te dice cuantos tests de cada tipo deberias tener.
+70% unit, 20% integration, 10% E2E es la proporcion ideal.
 
 ----
 
@@ -115,6 +132,10 @@ graph TB
     style UNIT fill:#27ae60,color:#fff
 ```
 
+Note:
+Unit tests son rapidos y especificos - te dicen exactamente que fallo.
+E2E tests son lentos pero prueban flujos completos.
+
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
@@ -129,6 +150,10 @@ graph TB
 
 **Regla**: Si puedes testearlo con unit test, NO uses integration
 
+Note:
+Esta regla es clave: unit tests son mas rapidos y faciles de mantener.
+Solo usa integration cuando NECESITAS probar interacciones entre componentes.
+
 ---
 
 ## 🧪 Unit Tests
@@ -136,6 +161,10 @@ graph TB
 > Testea UNA cosa a la vez
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Unit tests son el pan de cada dia - escribiras muchos.
+Son rapidos, especificos y faciles de debuggear.
 
 ----
 
@@ -216,6 +245,10 @@ it('should calculate discount correctly', () => {
 - Un solo `expect` principal por test
 - Nombre: `should [accion] when [condicion]`
 
+Note:
+El patron AAA hace tests faciles de leer y mantener.
+Si no puedes separar claramente Arrange, Act, Assert, el test es muy complejo.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -246,6 +279,10 @@ expect(mockFn).toHaveBeenCalledTimes(2);
 // 4. Reset entre tests (automatico con clearMocks: true)
 vi.clearAllMocks();
 ```
+
+Note:
+Vitest es como Jest pero mas rapido.
+La API es casi identica - si sabes Jest, sabes Vitest.
 
 ----
 
@@ -333,6 +370,10 @@ it('should include context in error', async () => {
 
 ⬇️ _Navega hacia abajo para ver detalles_
 
+Note:
+Integration tests son mas lentos pero prueban que todo funciona junto.
+Usalos para probar queries de DB, transacciones, etc.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -346,6 +387,10 @@ it('should include context in error', async () => {
 | APIs externas (mockeadas) | Calculos, transformaciones |
 | Transacciones complejas | Value Objects |
 | Queries complejas | Validaciones simples |
+
+Note:
+Esta tabla es tu guia para decidir unit vs integration.
+Si involucra DB o multiples servicios, es integration.
 
 ----
 
@@ -391,6 +436,10 @@ describe('StockRepository (Integration)', () => {
   });
 });
 ```
+
+Note:
+MongoDB Memory Server levanta una instancia real de MongoDB en memoria.
+Es rapido porque no escribe a disco y se borra entre tests.
 
 ----
 
@@ -496,6 +545,10 @@ describe('InventoryController (Integration)', () => {
 
 ⬇️ _Navega hacia abajo para ver detalles_
 
+Note:
+E2E tests usan un navegador real para interactuar con tu app.
+Son lentos pero prueban todo el stack: frontend, API, DB.
+
 ----
 
 <!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
@@ -536,6 +589,10 @@ test.describe('Inventory Management', () => {
   });
 });
 ```
+
+Note:
+Playwright espera automaticamente a que los elementos esten visibles.
+No necesitas agregar waits manuales como en Selenium.
 
 ----
 
@@ -625,6 +682,10 @@ test.describe('Inventory Management', () => {
 - Mantenimiento centralizado
 - Tests mas legibles
 
+Note:
+Page Objects encapsulan la logica de interaccion con cada pagina.
+Si cambia un selector, lo arreglas en UN lugar.
+
 ---
 
 ## ✅ Best Practices
@@ -632,6 +693,10 @@ test.describe('Inventory Management', () => {
 > Patrones que evitan dolores de cabeza
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Estos patrones vienen de anos de experiencia.
+Aprende de los errores de otros - es mas barato.
 
 ----
 
@@ -652,6 +717,10 @@ it('should return cached value when cache hit', () => { ... });
 it('should call database when cache miss', () => { ... });
 it('should retry 3 times when external service fails', () => { ... });
 ```
+
+Note:
+Un buen nombre de test es documentacion.
+Si el test falla, el nombre te dice exactamente que deberia pasar.
 
 ----
 
@@ -682,6 +751,10 @@ expect(error.message).toBe('Error processing order #123 for user admin@test.com'
 expect(error.message).toContain('Error processing order');
 expect(error.message).toMatch(/order #\d+/);
 ```
+
+Note:
+Tests fragiles fallan por razones irrelevantes.
+Verifica lo que importa, no detalles de implementacion.
 
 ----
 
@@ -724,6 +797,10 @@ it('should increase quantity when releasing', async () => {
   expect((await repo.findBySku('A')).qty).toBe(95);
 });
 ```
+
+Note:
+Tests pequenos y enfocados son mas faciles de debuggear.
+Si un test falla, sabes exactamente que funcionalidad esta rota.
 
 ----
 
@@ -769,6 +846,10 @@ it('should reject when insufficient stock', async () => {
 });
 ```
 
+Note:
+Las factories te ahorran escribir el mismo codigo una y otra vez.
+Solo cambias lo que importa para cada test.
+
 ---
 
 ## ⌨️ Comandos
@@ -776,6 +857,10 @@ it('should reject when insufficient stock', async () => {
 > Referencia rapida para el dia a dia
 
 ⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Estos comandos son tu toolkit diario para testing.
+Memoriza los mas comunes: test, affected, watch.
 
 ----
 
@@ -802,6 +887,10 @@ pnpm nx test inventory-domain --coverage
 # E2E
 pnpm nx e2e admin-e2e
 ```
+
+Note:
+--watch es tu mejor amigo durante desarrollo.
+Corre los tests automaticamente cuando guardas el archivo.
 
 ----
 
@@ -834,6 +923,10 @@ pnpm nx e2e admin-e2e --ui
 # E2E solo Chrome
 pnpm nx e2e admin-e2e --project=chromium
 ```
+
+Note:
+--ui de Playwright abre una interfaz grafica para ver los tests.
+Muy util para debuggear E2E que fallan.
 
 ----
 
@@ -868,9 +961,17 @@ flowchart LR
 - `affected` solo corre tests de lo que cambio
 - Si un test falla en CI pero pasa local: `pnpm nx reset`
 
+Note:
+El tip de "pnpm nx reset" resuelve muchos problemas de cache.
+Si algo raro pasa, prueba eso primero.
+
 ---
 
 ## 📁 Estructura de Archivos
+
+Note:
+Saber donde van los tests es tan importante como saber escribirlos.
+Sigue la convencion del proyecto para mantener consistencia.
 
 ----
 
@@ -904,9 +1005,17 @@ apps/admin-e2e/src/
 
 **Convencion:** Mismo nombre que archivo + `.spec.ts`
 
+Note:
+Los tests van en __tests__ dentro de cada lib.
+E2E tests van en apps/*-e2e/ porque prueban la app completa.
+
 ---
 
 ## 📝 Resumen
+
+Note:
+Este resumen es tu referencia rapida para testing.
+Consultalo cuando tengas dudas sobre que tipo de test escribir.
 
 ----
 
@@ -924,6 +1033,10 @@ apps/admin-e2e/src/
 - Un bug = un test (nunca fixear sin test)
 - Coverage > 80% en Domain/Application
 - Tests rapidos primero (unit > integration > e2e)
+
+Note:
+"Un bug = un test" es una regla de oro.
+Antes de fixear un bug, escribe un test que lo reproduzca.
 
 ----
 
@@ -943,6 +1056,10 @@ pnpm nx test proyecto --coverage  # Verificar coverage
 - **Naming**: `should [resultado] when [condicion]`
 - **Factories**: Para crear test data consistente
 - **Page Objects**: Para E2E mantenibles
+
+Note:
+Estos 4 patrones cubren el 90% de lo que necesitas.
+Dominalos y tus tests seran faciles de leer y mantener.
 
 ---
 
