@@ -394,6 +394,48 @@ pnpm nx serve notification-worker
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
+### Anatomía de un Comando Nx
+
+> Entendiendo la sintaxis para no confundirse
+
+```text
+pnpm nx <target> <project> [options]
+        ───┬────  ───┬───   ───┬───
+           │         │         └─ Opciones (--watch, --coverage)
+           │         └─ Proyecto (integration-api, admin)
+           └─ Target (serve, test, build, lint)
+```
+
+Note:
+Este diagrama muestra la estructura básica de un comando Nx.
+Siempre es: nx + qué quieres hacer + en qué proyecto.
+Las opciones van al final y son opcionales.
+
+----
+
+<!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
+
+### ⚠️ Error Común en Nx
+
+```bash
+# ❌ INCORRECTO (sintaxis antigua)
+pnpm nx serve:integration-api
+
+# ✅ CORRECTO
+pnpm nx serve integration-api
+```
+
+> Siempre separar con **espacios**, nunca con `:`
+
+Note:
+Este es un error MUY común para nuevos desarrolladores.
+La sintaxis es: nx + target + project (separados por espacio).
+Si ven documentación con `:` probablemente está desactualizada.
+
+----
+
+<!-- .slide: data-background="#181818" data-background-transition="fade" -->
+
 ### Testing
 
 ```bash

@@ -625,4 +625,4 @@ git rebase origin/main  # Actualizar branch
 # 🙏 Gracias
 
 Note:
-Si tienen dudas sobre el workflow, pregunten en Slack #dev-help.
+Si tienen dudas sobre el workflow, pregunten al equipo.

@@ -79,7 +79,7 @@ pnpm nx serve integration-api
 
 Note:
 Estos son los pasos para configurar el proyecto en su máquina.
-Es importante seguirlos en orden - si algo falla, pregunten en Slack.
+Es importante seguirlos en orden - si algo falla, pregunten al equipo.
 El comando más importante es pnpm install - instala todas las dependencias.
 NUNCA modifiquen el archivo .env directamente - usen el ejemplo.
 
@@ -113,49 +113,6 @@ pnpm nx serve integration-api arranca el servidor local.
 pnpm nx test <proyecto> corre los tests.
 pnpm nx affected -t test es mágico: solo corre tests de lo que cambió.
 Memoricen estos - se vuelven segunda naturaleza rápido.
-
-----
-
-<!-- .slide: data-background="#181818" data-background-transition="fade" -->
-
-### Anatomía de un Comando Nx
-
-> Entendiendo la sintaxis para no confundirse
-
-```text
-pnpm nx <target> <project> [options]
-        ───┬────  ───┬───   ───┬───
-           │         │         └─ Opciones (--watch, --coverage)
-           │         └─ Proyecto (integration-api, admin)
-           └─ Target (serve, test, build, lint)
-```
-
-Note:
-Este diagrama muestra la estructura básica de un comando Nx.
-Siempre es: nx + qué quieres hacer + en qué proyecto.
-Las opciones van al final y son opcionales.
-
-----
-
-<!-- .slide: data-background="#181818" data-background-transition="fade" -->
-
-### ⚠️ Error Común en Nx
-
-```bash
-# ❌ INCORRECTO (sintaxis antigua)
-pnpm nx serve:integration-api
-
-# ✅ CORRECTO
-pnpm nx serve integration-api
-```
-
-> Siempre separar con **espacios**,<br>
-> nunca con `:`
-
-Note:
-Este es un error MUY común para nuevos desarrolladores.
-La sintaxis es: nx + target + project (separados por espacio).
-Si ven documentación con `:` probablemente está desactualizada.
 
 ----
 
@@ -306,12 +263,16 @@ Esta organización hace muy fácil encontrar dónde está cada cosa.
 
 ### Módulos de Negocio (Bounded Contexts)
 
+<div style="font-size: 0.7em;">
+
 | Módulo | Responsabilidad | Ejemplos de Endpoints |
 |--------|----------------|----------------------|
 | **Inventory** | Gestión de stock en tiempo real | `/api/inventory/stock/:sku` |
 | **Pricing** | Cálculo de precios y descuentos | `/api/pricing/calculate` |
 | **Catalogue** | Catálogo maestro de productos | `/api/catalogue/products` |
 | **Notifications** | Notificaciones multi-canal async | `/v1/notifications/order-confirmed` |
+
+</div>
 
 **Principio**: Cada módulo es **independiente** y se comunica a través de **facades**
 
@@ -673,7 +634,6 @@ Architects: visión completa y evolución del sistema.
 - [Cockatiel (Resilience)](https://github.com/connor4312/cockatiel)
 
 **Ayuda y Soporte**:
-- **Slack**: #core-monorepo
 - **GitHub**: Issues para bugs/features
 - **Email**: tech-leads@implementos.cl
 
@@ -681,7 +641,7 @@ Note:
 Estos recursos están disponibles para profundizar.
 Los RFCs explican propuestas y el "por qué" de decisiones.
 Los ADRs documentan decisiones tomadas y sus trade-offs.
-Si tienen dudas, pregunten en Slack - estamos para ayudar.
+Si tienen dudas, pregunten al equipo - estamos para ayudar.
 
 ---
 
@@ -700,7 +660,7 @@ Si tienen dudas, pregunten en Slack - estamos para ayudar.
 
 - 📺 Ver presentaciones según tu rol
 - 📖 Leer ADRs relacionados a tu trabajo
-- 💬 Preguntar en Slack sin miedo
+- 💬 Preguntar al equipo sin miedo
 - 🔄 Contribuir mejoras a la documentación
 
 </div>
@@ -710,39 +670,6 @@ El objetivo es que puedan contribuir de forma efectiva.
 Las presentaciones están diseñadas para ser material de referencia.
 Vuelvan a ellas cuando trabajen en áreas específicas.
 Y recuerden: todos empezamos sin saber - pregunten sin miedo.
-
----
-
-### 🎓 Sistema de Presentaciones Modulares
-
-<div style="font-size: 0.8em;">
-
-```
-
-├── core-monorepo-overview.md          # 👈 Esta presentación (índice)
-├── why-modular-monolith.md            # 🎯 Decisiones arquitectónicas
-├── enterprise-patterns.md             # 🛡️ Patrones avanzados + caso de estudio
-└── developer-workflow.md              # 🔄 Workflow diario (commits, PRs, CI)
-```
-
-**Beneficios de la modularización**:
-- ✅ Presentaciones más cortas y enfocadas
-- ✅ Fácil actualización de contenido específico
-- ✅ Reutilización en diferentes contextos
-- ✅ Onboarding progresivo por rol
-
-**Convenciones**:
-- Cada presentación es **standalone** (no requiere ver otras)
-- Usa **reveal-md** para visualización
-- Incluye **speaker notes** detalladas
-- Sigue **principios de UX**: navegación clara, visual, progresiva
-
-</div>
-
-Note:
-Hemos modularizado las presentaciones para hacerlas más mantenibles.
-Cada una es independiente y enfocada en un tema específico.
-Esto permite onboarding personalizado según rol y experiencia.
 
 ---
 

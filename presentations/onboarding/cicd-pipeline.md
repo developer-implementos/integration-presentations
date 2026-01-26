@@ -612,4 +612,4 @@ git push
 
 Note:
 Si tienen dudas sobre CI/CD, revisen los logs de GitHub Actions.
-Siempre pueden preguntar en Slack #dev-help.
+Siempre pueden preguntar al equipo.

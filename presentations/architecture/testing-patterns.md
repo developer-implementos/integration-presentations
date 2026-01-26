@@ -949,4 +949,4 @@ pnpm nx test proyecto --coverage  # Verificar coverage
 # 🙏 Gracias
 
 Note:
-Si tienen dudas sobre testing, pregunten en Slack #dev-help.
+Si tienen dudas sobre testing, pregunten al equipo.
