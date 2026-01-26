@@ -387,8 +387,23 @@ La extension **GitHub Pull Requests** permite crear PRs sin salir del editor:
 Note:
 Esta es la forma mas comoda de crear PRs sin salir de VS Code.
 La extension ya esta en las recomendadas del workspace - solo instalala.
-El template se carga automaticamente - solo completa la descripcion.
 Si no ves el boton "Create Pull Request", asegurate de haber hecho push primero.
+
+----
+
+<!-- .slide: data-background="#181818" data-background-transition="fade" -->
+
+### Crear PR - Formulario
+
+![Crear PR](../assets/images/gh-pr-create-pr.png)
+
+**Tip**: El titulo debe seguir conventional commits: `type(scope): descripcion`
+
+Note:
+Este es el formulario que aparece al crear un PR desde VS Code.
+El titulo es IMPORTANTE porque al hacer squash merge, se convierte en el commit final en main.
+Usa conventional commits: feat, fix, docs, refactor, etc.
+La descripcion puede usar el template del repo o escribir libre.
 
 ----
 
