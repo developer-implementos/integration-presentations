@@ -382,28 +382,7 @@ Con el tiempo, iras descubriendo cual es tu flujo preferido.
 
 La extension **GitHub Pull Requests** permite crear PRs sin salir del editor:
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  Source Control (Ctrl+Shift+G)                              │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  ☰ BRANCHES                                           │  │
-│  │    ├─ main                                            │  │
-│  │    └─ feature/CORE-123-bulk-import  ←  tu branch      │  │
-│  │                                                       │  │
-│  │  [Create Pull Request]  ← Click aqui                  │  │
-│  └───────────────────────────────────────────────────────┘  │
-│                            ↓                                │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  Title: feat(inventory): add bulk import              │  │
-│  │  Base: main  ←  Into: feature/CORE-123                │  │
-│  │  Description: [___________________________]           │  │
-│  │                                                       │  │
-│  │  [Create]                                             │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-```
-
-<!-- INSERT_IMAGE: screenshot-create-pr-vscode.png -->
+![GitHub PR Extension](../assets/images/gh-pr-extension.png)
 
 Note:
 Esta es la forma mas comoda de crear PRs sin salir de VS Code.
