@@ -58,66 +58,6 @@ No se preocupen si al principio parece mucho - todos empezamos así.
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
-### Setup Local
-
-```bash
-# Clonar
-git clone https://github.com/developer-implementos/core.git
-
-# Instalar dependencias
-pnpm install
-
-# Configurar variables de entorno
-cp apps/integration-api/.env.example apps/integration-api/.env
-
-# Levantar MongoDB
-docker-compose up -d
-
-# Iniciar desarrollo
-pnpm nx serve integration-api
-```
-
-Note:
-Estos son los pasos para configurar el proyecto en su máquina.
-Es importante seguirlos en orden - si algo falla, pregunten al equipo.
-El comando más importante es pnpm install - instala todas las dependencias.
-NUNCA modifiquen el archivo .env directamente - usen el ejemplo.
-
-----
-
-<!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
-
-### Comandos Útiles
-
-```bash
-# Desarrollo
-pnpm nx serve integration-api     # Iniciar API
-pnpm nx serve admin        # Iniciar Admin
-
-# Testing
-pnpm nx test <proyecto>    # Tests unitarios
-pnpm nx e2e admin-e2e      # Tests E2E
-
-# Calidad
-pnpm nx lint <proyecto>    # Linting
-pnpm nx affected -t test   # Solo tests afectados
-
-# Build
-pnpm nx build integration-api     # Build producción
-pnpm nx graph            # Grafo dependencias
-```
-
-Note:
-Estos comandos los van a usar todos los días.
-pnpm nx serve integration-api arranca el servidor local.
-pnpm nx test <proyecto> corre los tests.
-pnpm nx affected -t test es mágico: solo corre tests de lo que cambió.
-Memoricen estos - se vuelven segunda naturaleza rápido.
-
-----
-
-<!-- .slide: data-background="#181818" data-background-transition="fade" -->
-
 ### Comandos de Testing Esenciales
 
 ```bash
