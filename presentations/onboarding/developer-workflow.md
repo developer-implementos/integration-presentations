@@ -253,6 +253,15 @@ feature/868h4tr17   # Sin # (no linkea automatico)
 ```
 
 Note:
+IMPORTANTE: El task ID va SOLO en el nombre de la branch, NO en los commits.
+
+Por que? Porque cuando creas un PR desde esta branch, GitHub detecta el #taskId y ClickUp lo vincula automaticamente. Asi:
+- La branch tiene el ID: feature/#868h4tr17-add-bulk-import
+- Los commits quedan limpios: feat(pricing): add bulk import endpoint
+- El PR queda vinculado al task de ClickUp automaticamente
+
+Esto es lo que hacen Google, Meta y otras BigTech: el tracking es via branches y PRs, los commits se mantienen limpios con solo el mensaje descriptivo.
+
 El # antes del ID es OBLIGATORIO para que ClickUp vincule automaticamente.
 El ID lo encuentras en la URL del task o con el boton "Copy ID" en ClickUp.
 
