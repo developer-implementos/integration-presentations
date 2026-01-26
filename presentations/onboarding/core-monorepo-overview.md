@@ -148,14 +148,7 @@ No te preocupes si parece complejo - se vuelve natural con la practica.
 
 ----
 
-### 🏛️ Clean Architecture
-
 ## Capas del Sistema
-
-Note:
-Este diagrama es tu mapa mental del sistema.
-Memoriza las capas: API arriba, Domain en el centro.
-Las flechas muestran quien puede llamar a quien.
 
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#3498db', 'primaryTextColor': '#fff', 'primaryBorderColor': '#2980b9', 'lineColor': '#ecf0f1', 'secondaryColor': '#2c3e50', 'tertiaryColor': '#34495e', 'fontSize': '16px' }}}%%
@@ -201,12 +194,11 @@ graph TB
 > **Regla de Dependencia**: Las capas internas NO conocen las externas
 
 Note:
-Clean Architecture organiza el código en capas como una cebolla.
-En el centro está el Dominio - la lógica de negocio pura.
-Luego Aplicación - los casos de uso que orquestan el dominio.
-Después Infraestructura - bases de datos, APIs externas, etc.
-Y finalmente API - los endpoints que exponen todo al mundo exterior.
+Este diagrama es tu mapa mental del sistema - memoriza las capas.
+API arriba, Domain en el centro. Las flechas muestran quien puede llamar a quien.
+Clean Architecture organiza el codigo en capas como una cebolla.
 La regla de oro: las dependencias siempre van hacia adentro, NUNCA hacia afuera.
+En tests y code reviews, verifica que esta regla se cumpla.
 
 ----
 

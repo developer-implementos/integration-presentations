@@ -20,8 +20,9 @@ revealOptions:
 ### Tu dia a dia: del codigo al merge
 
 Note:
-Esta presentacion cubre el flujo de trabajo diario.
-Es material esencial que usaran todos los dias.
+Bienvenidos! Esta presentacion cubre el flujo de trabajo diario.
+No te preocupes si parece mucho al principio - con practica se vuelve automatico.
+Todos pasamos por la curva de aprendizaje. Pregunta cuando tengas dudas.
 
 ---
 
@@ -36,6 +37,8 @@ Es material esencial que usaran todos los dias.
 Note:
 Este workflow es OBLIGATORIO - no es opcional ni sugerencia.
 El CI rechaza commits que no siguen estas reglas.
+Pero no te asustes - las herramientas te ayudan a seguir el formato.
+Si algo falla, el error te dice exactamente que corregir.
 
 ---
 
@@ -48,6 +51,8 @@ El CI rechaza commits que no siguen estas reglas.
 Note:
 Este es el flujo que van a seguir todos los dias.
 Cada paso tiene reglas especificas que vamos a ver.
+La primera semana puede parecer lento, pero pronto sera natural.
+Tip: ten esta presentacion abierta mientras trabajas los primeros dias.
 
 ----
 
@@ -107,9 +112,11 @@ chore(deps): update nestjs to v11
 ```
 
 Note:
-type = que tipo de cambio es
-scope = que modulo afecta
-description = que hiciste (imperativo, minusculas)
+type = que tipo de cambio es (feat, fix, docs, etc)
+scope = que modulo afecta (inventory, pricing, etc)
+description = que hiciste (imperativo, minusculas, en ingles)
+Tip: si no sabes que type usar, 90% de las veces es "feat" o "fix".
+La descripcion debe completar la frase "This commit will..."
 
 ----
 
@@ -177,8 +184,10 @@ BREAKING CHANGE: tokens now use JWT instead of opaque.
 **Breaking change = version mayor (1.0 → 2.0)**
 
 Note:
-Los breaking changes son serios - rompen compatibilidad.
-Antes de agregar un "!" consulta con el equipo.
+Los breaking changes son serios - rompen compatibilidad para otros.
+Antes de agregar un "!" SIEMPRE consulta con el equipo.
+Como junior, probablemente no necesites hacer breaking changes.
+Si crees que necesitas uno, pregunta a un senior primero.
 
 ----
 
@@ -211,6 +220,8 @@ GitLens y GitHub Copilot estan configurados para generar commits en español:
 Note:
 La AI genera un borrador - SIEMPRE revisalo antes de aceptar.
 A veces el scope esta mal o el mensaje es demasiado generico.
+Tip: usar la AI es totalmente aceptable - no es "hacer trampa".
+Pero tu eres responsable del mensaje final, asi que revisalo.
 
 ---
 
@@ -221,8 +232,10 @@ A veces el scope esta mal o el mensaje es demasiado generico.
 ⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
-Cada branch debe tener un proposito claro.
+Cada branch debe tener un proposito claro y un solo objetivo.
 Si tu branch hace muchas cosas, dividela en varias.
+PRs pequenos son mas faciles de revisar y aprobar rapidamente.
+Regla de oro: una branch = un ticket de ClickUp.
 
 ----
 
@@ -231,25 +244,49 @@ Si tu branch hace muchas cosas, dividela en varias.
 ### Nomenclatura
 
 ```bash
-# Patron: <type>/<ticket>-<descripcion-corta>
+# Patron: <type>/#<clickup-id>-<descripcion-corta>
 
-feature/CORE-123-add-bulk-import
-fix/CORE-456-pricing-decimal
-refactor/CORE-789-extract-validation
-docs/CORE-101-api-examples
+feature/#868h4tr17-add-bulk-import
+fix/#86abcd123-pricing-decimal
+refactor/#86xyz789-extract-validation
+docs/#86abc456-api-examples
 ```
 
 **NO hacer:**
 
 ```bash
-my-branch        # Sin tipo ni ticket
-feature/test     # Sin ticket
-CORE-123         # Sin descripcion
+my-branch           # Sin tipo ni ticket
+feature/test        # Sin ticket
+feature/868h4tr17   # Sin # (no linkea automatico)
 ```
 
 Note:
-El numero de ticket es obligatorio para trazabilidad.
-Usa el nombre del ticket en Jira como base para la descripcion.
+El # antes del ID es OBLIGATORIO para que ClickUp vincule automaticamente.
+El ID lo encuentras en la URL del task o con el boton "Copy ID" en ClickUp.
+
+----
+
+<!-- .slide: data-background="#181818" data-background-transition="fade" -->
+
+### Donde Encontrar el Task ID
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  ClickUp Task                                               │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │  URL: app.clickup.com/t/868h4tr17  ← Task ID          │  │
+│  │                         ─────────                     │  │
+│  │                                                       │  │
+│  │  [Copy ID]  ← Click para copiar                       │  │
+│  └───────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Tip**: El boton "Copy ID" copia el ID con el `#` incluido
+
+Note:
+El ID esta en la URL del task despues de /t/.
+Tambien puedes usar el boton "Copy ID" en el menu del task.
 
 ----
 
@@ -263,15 +300,15 @@ Usa el nombre del ticket en Jira como base para la descripcion.
 %%{init: {'theme': 'dark', 'gitGraph': {'mainBranchName': 'main'}}}%%
 gitGraph
    commit id: "initial"
-   branch feature/CORE-123
+   branch feature/#868h4tr17
    commit id: "feat-endpoint"
    commit id: "add-tests"
    checkout main
-   merge feature/CORE-123 id: "squash-1"
-   branch fix/CORE-456
+   merge feature/#868h4tr17 id: "squash-1"
+   branch fix/#86abcd123
    commit id: "fix-bug"
    checkout main
-   merge fix/CORE-456 id: "squash-2"
+   merge fix/#86abcd123 id: "squash-2"
 ```
 
 </div>
@@ -305,8 +342,10 @@ git push --force-with-lease
 ```
 
 Note:
-Rebase mantiene el historial mas limpio.
-force-with-lease es mas seguro que force.
+Rebase mantiene el historial mas limpio, pero puede ser confuso al inicio.
+Si tienes conflictos y no sabes resolverlos, pide ayuda antes de hacer force.
+force-with-lease es mas seguro que force - evita sobrescribir trabajo de otros.
+Tip: si te confundes con rebase, puedes usar merge - ambos funcionan.
 
 ---
 
@@ -317,8 +356,10 @@ force-with-lease es mas seguro que force.
 ⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
-El PR es tu oportunidad de explicar tu trabajo.
+El PR es tu oportunidad de explicar tu trabajo al equipo.
 Un buen PR hace que el review sea rapido y facil.
+No tengas miedo de crear PRs - es la forma normal de trabajar.
+Tu primer PR puede tomar varios intentos - es completamente normal.
 
 ----
 
@@ -338,7 +379,9 @@ gh pr create --title "feat(inventory): add bulk import"
 
 Note:
 gh CLI es mas rapido que la UI web para crear PRs.
-Aprende los comandos basicos de gh - te ahorraran tiempo.
+Pero si prefieres usar la UI web o VS Code, esta perfectamente bien.
+Usa la herramienta con la que te sientas mas comodo al principio.
+Con el tiempo, iras descubriendo cual es tu flujo preferido.
 
 ----
 
@@ -370,6 +413,12 @@ La extension **GitHub Pull Requests** permite crear PRs sin salir del editor:
 ```
 
 <!-- INSERT_IMAGE: screenshot-create-pr-vscode.png -->
+
+Note:
+Esta es la forma mas comoda de crear PRs sin salir de VS Code.
+La extension ya esta en las recomendadas del workspace - solo instalala.
+El template se carga automaticamente - solo completa la descripcion.
+Si no ves el boton "Create Pull Request", asegurate de haber hecho push primero.
 
 ----
 
@@ -422,17 +471,19 @@ Breve descripcion del cambio.
 - [ ] Nueva feature
 - [ ] Refactor
 
-## Ticket
-CORE-123
+## ClickUp Task
+#868h4tr17
 
 ## Checklist
 - [ ] Tests agregados/actualizados
 - [ ] Lint pasa sin errores
 ```
 
+**Importante**: El `#taskID` en el PR linkea automaticamente con ClickUp
+
 Note:
-Llena el template completo - no lo dejes vacio.
-Un PR sin descripcion sera rechazado o tardara mas en ser revisado.
+El # antes del task ID hace que ClickUp vincule el PR automaticamente.
+Puedes ponerlo en el titulo o en la descripcion - ambos funcionan.
 
 ----
 
@@ -451,8 +502,10 @@ Antes de merge, tu PR debe pasar:
 | `review` | Aprobacion CODEOWNERS | ✅ |
 
 Note:
-Si un check falla, el merge esta bloqueado.
+Si un check falla, el merge esta bloqueado - pero no entres en panico.
 Lee el error del check antes de pedir ayuda - generalmente es claro.
+Los errores mas comunes son: lint (formato), test (test roto), build (typo).
+Tip: haz click en "Details" en el check fallido para ver el log completo.
 
 ---
 
@@ -463,8 +516,10 @@ Lee el error del check antes de pedir ayuda - generalmente es claro.
 ⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
+El code review no es un examen - es una oportunidad de aprender.
 No solo busques errores - busca oportunidades de mejora.
 Tambien reconoce el buen trabajo con "praise:".
+Como junior, el feedback en tus PRs te ayudara a crecer rapidamente.
 
 ----
 
@@ -480,8 +535,10 @@ Tambien reconoce el buen trabajo con "praise:".
 4. **ESTILO** - Sigue los patrones del proyecto?
 
 Note:
-El code review no es para criticar - es para mejorar el codigo.
+El code review no es para criticar - es para mejorar el codigo juntos.
 Se especifico y constructivo en tus comentarios.
+Si recibes feedback, no lo tomes personal - todos recibimos feedback.
+Si no entiendes un comentario, pregunta - es mejor clarificar que asumir.
 
 ----
 
@@ -499,7 +556,9 @@ Se especifico y constructivo en tus comentarios.
 
 Note:
 Usa las etiquetas para que el autor sepa si es bloqueante o no.
-"blocking:" DEBE corregirse. "nit:" es solo una sugerencia.
+"blocking:" DEBE corregirse antes del merge. "nit:" es solo una sugerencia.
+Si recibes un "nit:", puedes ignorarlo si tienes buena razon - no es obligatorio.
+Como junior, enfocate primero en los "blocking:" - son los importantes.
 
 ----
 
@@ -541,6 +600,8 @@ Tu PR necesita approval del CODEOWNER del codigo que modificaste.
 Note:
 CODEOWNERS protege codigo critico de cambios sin supervision.
 Si modificas libs/core/ necesitas aprobacion de un tech lead.
+Esto no es para frenarte - es para asegurar que alguien con contexto revise.
+Como junior, es normal que tus PRs requieran mas aprobaciones - es parte del proceso.
 
 ---
 
@@ -551,6 +612,8 @@ Si modificas libs/core/ necesitas aprobacion de un tech lead.
 Note:
 No usamos pre-commit hooks porque son lentos y molestos.
 CI valida todo despues del push - es mas rapido para el developer.
+Esto significa que puedes hacer commits rapidos y el CI te avisa si hay errores.
+No te preocupes si CI falla - simplemente corrige y haz push de nuevo.
 
 ----
 
@@ -637,9 +700,10 @@ await Promise.all(arr.map((n) => process(n)));
 ```
 
 Note:
-Estas son las reglas mas importantes.
+Estas son las reglas mas importantes que atrapan bugs reales.
 Si ven errores de floating promises, SIEMPRE agregar await.
-forEach con async es un error comun - usar Promise.all.
+forEach con async es un error MUY comun - usa Promise.all en su lugar.
+Tip: ESLint te marcara estos errores en rojo en VS Code antes de commitear.
 
 ----
 
@@ -671,8 +735,10 @@ Por ahora solo necesitas saber que CI valida tu codigo.
 ⬇️ _Navega hacia abajo para ver detalles_
 
 Note:
-Este resumen es tu guia de referencia rapida.
-Guardalo o imprimelo para tu primer dia.
+Este resumen es tu guia de referencia rapida para el dia a dia.
+Guardalo o imprimelo para tener a mano tu primera semana.
+No necesitas memorizar todo - con practica se vuelve automatico.
+Y recuerda: siempre puedes preguntar si tienes dudas.
 
 ----
 
@@ -681,23 +747,23 @@ Guardalo o imprimelo para tu primer dia.
 ### Tu Dia a Dia
 
 ```bash
-# 1. Crear branch
+# 1. Crear branch (copia el #taskID de ClickUp)
 git checkout main && git pull
-git checkout -b feature/CORE-123-mi-feature
+git checkout -b feature/#868h4tr17-mi-feature
 
 # 2. Commits
 git commit -m "feat(modulo): descripcion"
 
 # 3. Push y PR
-git push -u origin feature/CORE-123-mi-feature
-gh pr create
+git push -u origin feature/#868h4tr17-mi-feature
+gh pr create --title "feat(modulo): descripcion #868h4tr17"
 
 # 4. Responder review y merge
 ```
 
 Note:
-Estos 4 pasos son tu rutina diaria.
-Si algo falla, revisa esta presentacion antes de pedir ayuda.
+El #taskID en el nombre de branch Y en el PR title asegura el link con ClickUp.
+Copia el ID directamente desde ClickUp con "Copy ID".
 
 ----
 
@@ -716,10 +782,15 @@ git rebase origin/main  # Actualizar branch
 Note:
 git status y git diff son tus mejores amigos para entender que cambio.
 Usalos antes de cada commit para no incluir archivos por accidente.
+git log te ayuda a ver que han hecho otros - util para aprender patrones.
+Tip: VS Code Source Control (Ctrl+Shift+G) muestra todo esto visualmente.
 
 ---
 
 # 🙏 Gracias
 
 Note:
-Si tienen dudas sobre el workflow, pregunten al equipo.
+Felicitaciones por completar esta presentacion!
+Si tienen dudas sobre el workflow, pregunten al equipo - todos fuimos nuevos alguna vez.
+Recuerden: equivocarse es parte del aprendizaje - lo importante es preguntar cuando no sabes.
+Pueden volver a esta presentacion cuando necesiten refrescar algun concepto.
