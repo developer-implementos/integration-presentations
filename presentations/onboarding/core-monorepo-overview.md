@@ -220,7 +220,7 @@ core/
 ├── apps/
 │   ├── admin/             # Panel administrativo
 │   ├── admin-e2e/           # Tests E2E con Playwright
-│   ├── integration-api/            # API principal
+│   ├── integration-api/     # API principal
 │   ├── notification-worker/ # Procesador async
 │   ├── report-worker/       # Generador de reportes
 │   └── sync-worker/         # Sincronización con ERP

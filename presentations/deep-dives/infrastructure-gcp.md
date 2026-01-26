@@ -844,6 +844,61 @@ También permite cumplir con regulaciones locales de datos.
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
+### Estructura Organizacional GCP
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2', 'primaryColor': '#2c3e50'}}}%%
+graph TB
+    subgraph ORG["🏢 Organization: Implementos"]
+        direction TB
+        subgraph FOLDER["📁 Folder: Implementos Core"]
+            direction LR
+            subgraph CL["🇨🇱 Chile"]
+                CL_QA[QA Chile]
+                CL_PROD[Prod Chile]
+            end
+            subgraph PE["🇵🇪 Peru"]
+                PE_QA[QA Peru]
+                PE_PROD[Prod Peru]
+            end
+            subgraph ES["🇪🇸 Spain"]
+                ES_QA[QA Spain]
+                ES_PROD[Prod Spain]
+            end
+        end
+        MGT[🔧 Management Project]
+    end
+
+    subgraph SHARED["☁️ Shared Resources"]
+        AR["📦 Artifact Registry<br/>(Image Storage)"]
+        TF["💾 TF State Bucket"]
+        SA["🔐 Service Accounts"]
+    end
+
+    MGT --> AR
+    MGT --> TF
+    MGT --> SA
+
+    style CL_QA fill:#f1c40f,color:#000
+    style CL_PROD fill:#2ecc71,color:#000
+    style PE_QA fill:#f1c40f,color:#000
+    style PE_PROD fill:#2ecc71,color:#000
+    style ES_QA fill:#f1c40f,color:#000
+    style ES_PROD fill:#2ecc71,color:#000
+    style MGT fill:#3498db,color:#fff
+```
+
+Note:
+Esta es la jerarquía de GCP para Implementos.
+Tenemos una Organización principal que contiene un Folder "Implementos Core".
+Dentro del folder, cada país tiene sus proyectos de QA y Producción.
+El proyecto Management contiene recursos compartidos: Artifact Registry para imágenes Docker, bucket para el estado de Terraform, y Service Accounts.
+Los colores: amarillo es QA, verde es producción, azul es management.
+
+----
+
+<!-- .slide: data-background="#181818" data-background-transition="fade" -->
+
 ### Arquitectura Multi-País
 
 ```mermaid
