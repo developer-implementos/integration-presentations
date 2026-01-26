@@ -61,21 +61,29 @@ Tip: ten esta presentacion abierta mientras trabajas los primeros dias.
 ### Ciclo de Desarrollo
 
 ```text
-CODE → COMMIT → PUSH → PR → REVIEW → MERGE
+CODE → BRANCH → COMMIT → PUSH → PR → REVIEW → MERGE
 ```
 
 | Paso | Herramienta | Regla |
 |------|-------------|-------|
 | Code | VS Code | Format on save |
+| Branch | Git | feature/#taskId o fix/#taskId |
 | Commit | Git | Conventional commits |
-| Push | Git | Branch feature/* |
+| Push | Git | A tu branch, nunca a main |
 | PR | GitHub | Template obligatorio |
-| Review | GitHub | CODEOWNERS |
+| Review | GitHub | CODEOWNERS approval |
 | Merge | GitHub | Squash merge |
 
 Note:
 Este ciclo se repite cientos de veces al dia en el equipo.
-Si todos seguimos las mismas reglas, el historial de Git es limpio y util.
+La tabla explica cada paso:
+- Code: VS Code formatea automaticamente al guardar (Prettier)
+- Branch: Siempre crear una branch desde main antes de empezar (feature/#taskId)
+- Commit: Mensajes con formato conventional commits (feat, fix, etc.)
+- Push: Subir tu branch a GitHub, NUNCA hacer push directo a main
+- PR: Crear Pull Request usando el template del repo
+- Review: Un CODEOWNER debe aprobar antes del merge
+- Merge: Usamos squash merge para mantener el historial limpio
 
 ---
 
@@ -197,7 +205,7 @@ Si crees que necesitas uno, pregunta a un senior primero.
 
 GitLens y GitHub Copilot estan configurados para generar commits en español:
 
-![AI-Assisted Commits](../../assets/images/ai-commit.png)
+![AI-Assisted Commits](../assets/images/ai-commit.png)
 
 **Ya configurado** en `.vscode/settings.json` - solo usa el boton ✨
 
@@ -254,7 +262,7 @@ El ID lo encuentras en la URL del task o con el boton "Copy ID" en ClickUp.
 
 ### Donde Encontrar el Task ID
 
-![ClickUp Task ID](../../assets/images/clickup-task-id.png)
+![ClickUp Task ID](../assets/images/clickup-task-id.png)
 
 **Tip**: El boton "Copy ID" copia el ID con el `#` incluido
 
