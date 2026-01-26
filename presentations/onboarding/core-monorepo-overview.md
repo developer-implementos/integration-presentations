@@ -1,5 +1,5 @@
 ---
-title: Integration Monorepo - Arquitectura Enterprise
+title: Integration Platform - Arquitectura Enterprise
 theme: black
 highlightTheme: monokai
 revealOptions:
@@ -15,14 +15,14 @@ revealOptions:
     theme: dark
 ---
 
-# 🏗️ Integration Monorepo
+# 🏗️ Integration Platform
 
 ## Arquitectura Enterprise
 
 ### Implementos
 
 Note:
-Bienvenidos a esta presentación sobre nuestro Integration Monorepo.
+Bienvenidos a esta presentación sobre nuestro Integration Platform.
 Esta es la presentación principal que sirve como índice y punto de entrada al sistema de presentaciones modulares.
 Vamos a ver cómo empezar rápidamente, conocer la estructura del sistema, y dónde encontrar información detallada sobre temas específicos.
 
@@ -203,7 +203,7 @@ Ahora que ya pueden correr el proyecto, vamos a entender cómo está organizado.
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
-### ¿Qué es el Integration Monorepo?
+### ¿Qué es el Integration Platform?
 
 > **Monolito Modular** que centraliza la lógica de negocio crítica de Implementos
 
@@ -428,7 +428,19 @@ async reserveStock(sku: string, quantity: number): Promise<void> {
 }
 ```
 
-**Resultado automático en HTTP**:
+Note:
+El manejo de errores está estandarizado.
+Definimos errores custom que extienden DomainError.
+El código de error incluye contexto útil para debugging.
+
+----
+
+<!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
+
+### Resultado Automático en HTTP
+
+> El `GlobalExceptionFilter` convierte DomainError a respuesta HTTP
+
 ```json
 {
   "success": false,
@@ -440,10 +452,15 @@ async reserveStock(sku: string, quantity: number): Promise<void> {
 }
 ```
 
+**Beneficios:**
+- Código único para manejar programáticamente
+- Mensaje claro para mostrar al usuario
+- Detalles para debugging
+
 Note:
-El manejo de errores está estandarizado.
-Definimos errores custom que extienden DomainError.
-El GlobalExceptionFilter los convierte automáticamente a respuestas HTTP estructuradas.
+El GlobalExceptionFilter convierte DomainError a JSON automáticamente.
+No tienes que hacer try/catch en cada controller.
+El frontend puede usar el código de error para mostrar mensajes específicos.
 
 ---
 
@@ -464,31 +481,21 @@ Lo mas importante es poder contribuir codigo, no memorizar arquitectura.
 
 ### 📅 Semana 1: Fundamentos
 
-<div style="text-align: left; padding: 30px; background: #1e1e1e; border-radius: 10px;">
-
-**Día 1-2: Setup y Primeros Pasos**
+**Día 1-2: Setup**
 - ✅ Setup local completo
-- ✅ Esta presentación: "Tu Primer Día" + "Conoce el Sistema"
+- ✅ Ver: "Tu Primer Día" + "Conoce el Sistema"
 - ✅ Correr comandos básicos (serve, test, build)
-- ✅ Explorar estructura de carpetas
 
-**Día 3-4: Developer Workflow**
-- 📺 Ver presentación: **Developer Workflow** (completa)
-- ✅ Hacer tu primer commit siguiendo Conventional Commits
-- ✅ Crear una branch de práctica
-- ✅ Abrir tu primer PR (aunque sea trivial)
-
-**Día 5: Testing**
-- ✅ Escribir tu primer test usando patrón AAA
-- ✅ Correr tests en watch mode
-- ✅ Ver cobertura de tests
-
-</div>
+**Día 3-5: Developer Workflow**
+- 📺 Ver presentación: **Developer Workflow**
+- ✅ Hacer tu primer commit (Conventional Commits)
+- ✅ Abrir tu primer PR
+- ✅ Escribir tu primer test (patrón AAA)
 
 Note:
 La primera semana es práctica y operacional.
-No se preocupen por entender TODO - enfóquense en poder contribuir.
-El objetivo es que al final de la semana puedan hacer commits y PRs siguiendo las convenciones.
+Enfóquense en poder contribuir - no en memorizar todo.
+Al final de la semana deben poder hacer commits y PRs.
 
 ----
 
@@ -496,60 +503,53 @@ El objetivo es que al final de la semana puedan hacer commits y PRs siguiendo la
 
 ### 📅 Semana 2: Arquitectura
 
-<div style="text-align: left; padding: 30px; background: #1e1e1e; border-radius: 10px;">
+**Día 1-2: Contexto**
+- 📺 Ver: **Por Qué Monolito Modular**
+- 📖 Leer: ADR-0001
 
-**Día 1-2: Contexto Arquitectónico**
-- 📺 Ver presentación: **Por Qué Monolito Modular**
-- 📖 Leer: ADR-0001 (Monolito Modular)
-- 🤔 Entender el "por qué" de nuestras decisiones
-
-**Día 3-4: Clean Architecture**
+**Día 3-5: Clean Architecture**
 - ✅ Revisar "Clean Architecture" en esta presentación
-- ✅ Explorar código de un módulo (inventory o pricing)
-- ✅ Identificar las 4 capas en el código real
-- ✅ Crear una entidad simple siguiendo el patrón
-
-**Día 5: Hands-on**
-- ✅ Implementar un endpoint simple end-to-end
-- ✅ Controller → Use Case → Domain Service → Repository
-- ✅ Escribir tests para cada capa
-
-</div>
+- ✅ Explorar código de un módulo (inventory)
+- ✅ Identificar las 5 capas en código real
+- ✅ Implementar un endpoint end-to-end
 
 Note:
 La segunda semana profundiza en arquitectura.
-Al final deberían poder implementar un endpoint completo siguiendo los patrones.
-No memoricen todo - usen el código existente como referencia.
+Al final deben poder implementar un endpoint completo.
+Usen el código existente como referencia.
 
 ----
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
-### 📅 Semana 3-4: Patrones Avanzados
+### 📅 Semana 3: Patrones Enterprise
 
-<div style="text-align: left; padding: 30px; background: #1e1e1e; border-radius: 10px;">
-
-**Semana 3: Patrones Enterprise**
 - 📺 Ver presentación: **Enterprise Patterns**
-- 📖 Estudiar patrones según necesidad:
-  - Si trabajas en integraciones → Facade Pattern
-  - Si trabajas en async → Transactional Outbox
-  - Si trabajas en external APIs → Circuit Breaker
-  - Si trabajas en cache → Stampede Guard
-- ✅ Implementar una feature usando uno de estos patrones
-
-**Semana 4: Caso de Estudio**
-- 📺 Ver: Caso de Estudio de Notificaciones (en Enterprise Patterns)
-- 🔍 Analizar el flujo completo en el código
-- 📖 Leer RFCs relacionados (RFC-0008, RFC-0014)
-- ✅ Contribuir mejoras al sistema de notificaciones
-
-</div>
+- 📖 Estudiar según tu área:
+  - Integraciones → Facade Pattern
+  - Async → Transactional Outbox
+  - APIs externas → Circuit Breaker
+  - Cache → Stampede Guard
+- ✅ Implementar feature usando un patrón
 
 Note:
-Las semanas 3 y 4 son para patrones avanzados.
-No necesitan memorizar todo - es material de referencia.
-Vuelvan a estas presentaciones cuando trabajen en features que usen estos patrones.
+Semana 3 es para patrones avanzados.
+Estudia solo los patrones relevantes a tu trabajo actual.
+
+----
+
+<!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
+
+### 📅 Semana 4: Caso de Estudio
+
+- 📺 Ver: Caso de Estudio de Notificaciones
+- 🔍 Analizar flujo completo en el código
+- 📖 Leer RFCs: RFC-0008, RFC-0014
+- ✅ Contribuir mejoras al sistema
+
+Note:
+Semana 4 es opcional para juniors.
+Es material de referencia para cuando trabajen en features complejas.
 
 ----
 
@@ -629,15 +629,24 @@ Si eres junior, no te agobies con Enterprise Patterns al principio.
 
 <!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
-### 📚 Recursos Adicionales
+### 📚 Documentación Interna
 
-**Documentación Interna**:
 - 📁 `docs/architecture/rfcs/` - Request for Comments (35)
 - 📁 `docs/architecture/adrs/` - Architecture Decision Records (67)
 - 📁 `docs/guides/` - Guías de desarrollo
 - 📁 `docs/operations/` - Runbooks operacionales
 
-**Referencias Externas**:
+Note:
+Los RFCs explican propuestas y el "por que" de decisiones.
+Los ADRs documentan decisiones tomadas y sus trade-offs.
+No necesitas leerlos todos - consultalos cuando trabajes en un area especifica.
+
+----
+
+<!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
+
+### 🔗 Referencias Externas
+
 - [NestJS Documentation](https://docs.nestjs.com/)
 - [Nx Documentation](https://nx.dev/)
 - [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
@@ -648,23 +657,44 @@ Si eres junior, no te agobies con Enterprise Patterns al principio.
 - **Email**: tech-leads@implementos.cl
 
 Note:
-Estos recursos estan disponibles para profundizar.
-Los RFCs explican propuestas y el "por que" de decisiones.
-Los ADRs documentan decisiones tomadas y sus trade-offs.
-No necesitas leerlos todos - consultalos cuando trabajes en un area especifica.
+Estos son los recursos externos más relevantes para el stack.
+NestJS y Nx son la base del proyecto.
+Clean Architecture es el patrón que seguimos.
 
 ---
 
 ## 🚀 Próximos Pasos
 
-<div style="text-align: center; padding: 40px;">
+> Tu camino para empezar a contribuir
+
+⬇️ _Navega hacia abajo para ver detalles_
+
+Note:
+Estos son los pasos recomendados según tu situación.
+Si eres nuevo, sigue el plan día a día.
+
+----
+
+<!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
 
 ### Para Nuevos Desarrolladores
+
+<div style="text-align: left; padding: 30px; background: #1e1e1e; border-radius: 10px;">
 
 1. **Completa el setup** (Día 1)
 2. **Ve Developer Workflow** (Día 3)
 3. **Haz tu primer commit** (Día 4-5)
 4. **Explora una feature completa** (Semana 2)
+
+</div>
+
+Note:
+El objetivo es que puedan contribuir de forma efectiva.
+No te apures - es mejor ir paso a paso.
+
+----
+
+<!-- .slide: data-background="#181818" data-background-transition="fade" -->
 
 ### Para Todos
 
@@ -673,10 +703,7 @@ No necesitas leerlos todos - consultalos cuando trabajes en un area especifica.
 - 💬 Preguntar al equipo sin miedo
 - 🔄 Contribuir mejoras a la documentación
 
-</div>
-
 Note:
-El objetivo es que puedan contribuir de forma efectiva.
 Las presentaciones están diseñadas para ser material de referencia.
 Vuelvan a ellas cuando trabajen en áreas específicas.
 Y recuerden: todos empezamos sin saber - pregunten sin miedo.
