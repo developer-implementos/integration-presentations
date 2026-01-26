@@ -652,10 +652,6 @@ No necesitas leerlos todos - consultalos cuando trabajes en un area especifica.
 - [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [Cockatiel (Resilience)](https://github.com/connor4312/cockatiel)
 
-**Ayuda y Soporte**:
-- **GitHub**: Issues para bugs/features
-- **Email**: tech-leads@implementos.cl
-
 Note:
 Estos son los recursos externos más relevantes para el stack.
 NestJS y Nx son la base del proyecto.
