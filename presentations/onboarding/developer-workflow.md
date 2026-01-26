@@ -382,34 +382,28 @@ Con el tiempo, iras descubriendo cual es tu flujo preferido.
 
 La extension **GitHub Pull Requests** permite crear PRs sin salir del editor:
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  Source Control (Ctrl+Shift+G)                              │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  ☰ BRANCHES                                           │  │
-│  │    ├─ main                                            │  │
-│  │    └─ feature/CORE-123-bulk-import  ←  tu branch      │  │
-│  │                                                       │  │
-│  │  [Create Pull Request]  ← Click aqui                  │  │
-│  └───────────────────────────────────────────────────────┘  │
-│                            ↓                                │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  Title: feat(inventory): add bulk import              │  │
-│  │  Base: main  ←  Into: feature/CORE-123                │  │
-│  │  Description: [___________________________]           │  │
-│  │                                                       │  │
-│  │  [Create]                                             │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-```
-
-<!-- INSERT_IMAGE: screenshot-create-pr-vscode.png -->
+![GitHub PR Extension](../assets/images/gh-pr-extension.png)
 
 Note:
 Esta es la forma mas comoda de crear PRs sin salir de VS Code.
 La extension ya esta en las recomendadas del workspace - solo instalala.
-El template se carga automaticamente - solo completa la descripcion.
 Si no ves el boton "Create Pull Request", asegurate de haber hecho push primero.
+
+----
+
+<!-- .slide: data-background="#181818" data-background-transition="fade" -->
+
+### Crear PR - Formulario
+
+![Crear PR](../assets/images/gh-pr-create-pr.png)
+
+**Tip**: El titulo debe seguir conventional commits: `type(scope): descripcion`
+
+Note:
+Este es el formulario que aparece al crear un PR desde VS Code.
+El titulo es IMPORTANTE porque al hacer squash merge, se convierte en el commit final en main.
+Usa conventional commits: feat, fix, docs, refactor, etc.
+La descripcion puede usar el template del repo o escribir libre.
 
 ----
 
@@ -497,6 +491,24 @@ Si un check falla, el merge esta bloqueado - pero no entres en panico.
 Lee el error del check antes de pedir ayuda - generalmente es claro.
 Los errores mas comunes son: lint (formato), test (test roto), build (typo).
 Tip: haz click en "Details" en el check fallido para ver el log completo.
+
+----
+
+<!-- .slide: data-background="#1c1c1c" data-background-transition="fade" -->
+
+### PR Aprobado - Listo para Merge
+
+Cuando tu PR tiene todas las aprobaciones y checks verdes:
+
+![PR Aprobado](../assets/images/pr_approved.png)
+
+**El boton "Squash and merge"** combina todos tus commits en uno solo con un mensaje limpio.
+
+Note:
+Este es el momento de la verdad - tu PR esta listo para merge!
+Verifica que todos los checks esten verdes antes de hacer click.
+El squash merge junta todos tus commits en uno - asi el historial de main queda limpio.
+Si tienes dudas sobre el mensaje del squash, editalo para que sea descriptivo.
 
 ---
 
