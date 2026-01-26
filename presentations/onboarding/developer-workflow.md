@@ -197,23 +197,7 @@ Si crees que necesitas uno, pregunta a un senior primero.
 
 GitLens y GitHub Copilot estan configurados para generar commits en español:
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  Source Control (Ctrl+Shift+G)                              │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │ Message: [________________] [✨ Generate]             │  │
-│  └───────────────────────────────────────────────────────┘  │
-│                            ↓                                │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │ feat(inventory): agregar endpoint de importacion      │  │
-│  │                                                       │  │
-│  │ Cambios:                                              │  │
-│  │ - Crear BulkImportController con validacion          │  │
-│  │ - Implementar BulkImportService con batch processing │  │
-│  │ - Agregar tests unitarios para edge cases            │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-```
+![AI-Assisted Commits](../../assets/images/ai-commit.png)
 
 **Ya configurado** en `.vscode/settings.json` - solo usa el boton ✨
 
@@ -270,17 +254,7 @@ El ID lo encuentras en la URL del task o con el boton "Copy ID" en ClickUp.
 
 ### Donde Encontrar el Task ID
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  ClickUp Task                                               │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  URL: app.clickup.com/t/868h4tr17  ← Task ID          │  │
-│  │                         ─────────                     │  │
-│  │                                                       │  │
-│  │  [Copy ID]  ← Click para copiar                       │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-```
+![ClickUp Task ID](../../assets/images/clickup-task-id.png)
 
 **Tip**: El boton "Copy ID" copia el ID con el `#` incluido
 
@@ -300,15 +274,15 @@ Tambien puedes usar el boton "Copy ID" en el menu del task.
 %%{init: {'theme': 'dark', 'gitGraph': {'mainBranchName': 'main'}}}%%
 gitGraph
    commit id: "initial"
-   branch feature/#868h4tr17
+   branch feature/868h4tr17
    commit id: "feat-endpoint"
    commit id: "add-tests"
    checkout main
-   merge feature/#868h4tr17 id: "squash-1"
-   branch fix/#86abcd123
+   merge feature/868h4tr17 id: "squash-1"
+   branch fix/86abcd123
    commit id: "fix-bug"
    checkout main
-   merge fix/#86abcd123 id: "squash-2"
+   merge fix/86abcd123 id: "squash-2"
 ```
 
 </div>
