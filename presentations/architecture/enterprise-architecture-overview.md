@@ -1283,7 +1283,7 @@ graph TD
     D --> E[Email / SMS / WSP / Push]
     C -->|falla max 10 intentos| F[Dead Letter Queue]
     F -->|cada 5 min| G[Notification Retry Worker]
-    G -->|reintento backoff<br/>5→10→20→30→30 min| C
+    G -->|reintento backoff| C
 
     style A fill:#3498db,color:#fff
     style B fill:#27ae60,color:#fff
@@ -1293,18 +1293,26 @@ graph TD
     style G fill:#9b59b6,color:#fff
 ```
 
-**Resiliencia del Notification Worker:**
-- Circuit breaker separado para auth SFMC y delivery
-- Token refresh proactivo con mutex (evita thundering herd)
-- Clasificación de errores: retryable vs non-retryable
-- Máximo 5 reintentos por notificación
-
-
 Note:
 Flujo: Integration API publica en Pub/Sub, worker recibe via push HTTP,
 se autentica con SFMC via OAuth2, y dispara un Journey.
 Si falla, Pub/Sub reintenta 10 veces. Despues va a DLQ.
 Retry worker cada 5 min con backoff exponencial.
+
+----
+
+### Notification Worker — Resiliencia
+
+- **Circuit breaker** separado para auth SFMC y delivery
+- **Token refresh** proactivo con mutex (evita thundering herd)
+- **Clasificación de errores**: retryable vs non-retryable
+- **Máximo 5 reintentos** por notificación con backoff: 5→10→20→30→30 min
+- **Dead Letter Queue** captura mensajes que agotan reintentos
+
+Note:
+Cada componente tiene su propio circuit breaker.
+Si SFMC auth cae, el delivery circuit breaker sigue independiente.
+Token refresh usa mutex para evitar que N workers pidan token al mismo tiempo.
 
 ---
 
@@ -1327,33 +1335,37 @@ Modulos CRUD-ish NO tienen capa de dominio (RFC-0062 arquitectura pragmatica).
 ### Las 5 Capas
 
 <div style="text-align: center;">
-<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-  <!-- Layer 5: Config (outermost) -->
-  <rect x="20" y="20" width="560" height="360" rx="15" fill="none" stroke="#95a5a6" stroke-width="2"/>
-  <text x="300" y="50" text-anchor="middle" fill="#95a5a6" font-size="12" font-weight="bold">Config — Bootstrap del módulo</text>
+<svg width="600" height="350" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="10" width="560" height="330" rx="15" fill="none" stroke="#95a5a6" stroke-width="2"/>
+  <text x="300" y="35" text-anchor="middle" fill="#95a5a6" font-size="12" font-weight="bold">Config — Bootstrap del módulo</text>
 
-  <!-- Layer 4: API -->
-  <rect x="50" y="60" width="500" height="290" rx="12" fill="none" stroke="#3498db" stroke-width="2"/>
-  <text x="300" y="85" text-anchor="middle" fill="#3498db" font-size="12" font-weight="bold">API — Controllers, DTOs, Swagger</text>
+  <rect x="50" y="45" width="500" height="270" rx="12" fill="none" stroke="#3498db" stroke-width="2"/>
+  <text x="300" y="65" text-anchor="middle" fill="#3498db" font-size="12" font-weight="bold">API — Controllers, DTOs, Swagger</text>
 
-  <!-- Layer 3: Infrastructure -->
-  <rect x="80" y="100" width="440" height="220" rx="10" fill="none" stroke="#e67e22" stroke-width="2"/>
-  <text x="300" y="122" text-anchor="middle" fill="#e67e22" font-size="12" font-weight="bold">Infrastructure — Repos, Adapters, Schemas</text>
+  <rect x="80" y="80" width="440" height="210" rx="10" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <text x="300" y="100" text-anchor="middle" fill="#e67e22" font-size="12" font-weight="bold">Infrastructure — Repos, Adapters, Schemas</text>
 
-  <!-- Layer 2: Application -->
-  <rect x="120" y="140" width="360" height="150" rx="8" fill="none" stroke="#2ecc71" stroke-width="2"/>
-  <text x="300" y="162" text-anchor="middle" fill="#2ecc71" font-size="12" font-weight="bold">Application — Facades, Services, Ports</text>
+  <rect x="120" y="115" width="360" height="150" rx="8" fill="none" stroke="#2ecc71" stroke-width="2"/>
+  <text x="300" y="135" text-anchor="middle" fill="#2ecc71" font-size="12" font-weight="bold">Application — Facades, Services, Ports</text>
 
-  <!-- Layer 1: Domain (innermost) -->
-  <rect x="170" y="180" width="260" height="80" rx="8" fill="#1a252f" stroke="#e74c3c" stroke-width="3"/>
-  <text x="300" y="210" text-anchor="middle" fill="#e74c3c" font-size="14" font-weight="bold">Domain</text>
-  <text x="300" y="235" text-anchor="middle" fill="#bdc3c7" font-size="10">Entities, Value Objects, Events</text>
-  <text x="300" y="250" text-anchor="middle" fill="#7f8c8d" font-size="9">CERO dependencias externas</text>
+  <rect x="170" y="155" width="260" height="80" rx="8" fill="#1a252f" stroke="#e74c3c" stroke-width="3"/>
+  <text x="300" y="185" text-anchor="middle" fill="#e74c3c" font-size="14" font-weight="bold">Domain</text>
+  <text x="300" y="210" text-anchor="middle" fill="#bdc3c7" font-size="10">Entities, Value Objects, Events</text>
+  <text x="300" y="225" text-anchor="middle" fill="#7f8c8d" font-size="9">CERO dependencias externas</text>
 
-  <!-- Dependency arrows (pointing inward) -->
-  <text x="540" y="200" fill="#7f8c8d" font-size="9" transform="rotate(-90, 540, 200)">Dependencias →</text>
+  <text x="540" y="180" fill="#7f8c8d" font-size="9" transform="rotate(-90, 540, 180)">Dependencias →</text>
 </svg>
 </div>
+
+Note:
+La capa de Domain no tiene dependencias externas — es TypeScript puro.
+Application define los puertos (interfaces) y la logica de orquestacion.
+Infrastructure implementa los puertos con tecnologias concretas.
+API expone los endpoints HTTP. Config solo hace wiring de dependencias.
+
+----
+
+### Regla de Dependencia
 
 <div style="font-size: 0.7em;">
 
@@ -1367,12 +1379,13 @@ Modulos CRUD-ish NO tienen capa de dominio (RFC-0062 arquitectura pragmatica).
 
 </div>
 
+> Las dependencias siempre apuntan **hacia adentro** — Domain no sabe que existe NestJS, Mongoose ni HTTP
+
 Note:
-La capa de Domain no tiene dependencias externas — es TypeScript puro.
-Application define los puertos (interfaces) y la lógica de orquestación.
-Infrastructure implementa los puertos con tecnologías concretas.
-API expone los endpoints HTTP.
-Config solo hace wiring de dependencias (NestJS modules).
+Regla fundamental: las capas externas dependen de las internas, nunca al reves.
+Domain es TypeScript puro. Application define puertos (interfaces).
+Infrastructure implementa esos puertos con Mongoose, HTTP, etc.
+Esto permite testear la logica de negocio sin DB ni framework.
 
 ----
 
@@ -1460,39 +1473,28 @@ Si una capa falla, las demás siguen protegiendo.
 
 ### Autenticación Unificada (RFC-0051)
 
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.65em;">
 
 ```typescript
 // UnifiedAuthGuard — Global APP_GUARD, evaluado en CADA request
-
-// 1. ¿Es endpoint público? (@Public)
-//    → Best-effort: intenta validar token, no falla si no hay
-
-// 2. ¿Trae API Key? (header X-API-Key)
-//    → Valida contra Redis (SHA-256 hashed)
-//    → Extrae scopes del API Key
-//    → Construye ClientContext { type: 'api-key', scopes: [...] }
-
-// 3. ¿Trae JWT? (Authorization: Bearer)
-//    → Valida firma + expiración
-//    → Verifica blacklist en Redis (fail-closed)
-//    → Construye ClientContext { type: 'jwt', roles: [...] }
-
-// 4. ¿Trae ambos? (API Key + JWT)
-//    → 400 Bad Request (ambigüedad)
-
-// 5. ¿No trae nada?
-//    → 401 Unauthorized
+// 1. @Public → Best-effort (no falla si no hay token)
+// 2. X-API-Key → Valida SHA-256 en Redis → ClientContext { scopes }
+// 3. Bearer JWT → Valida firma + blacklist (fail-closed) → ClientContext { roles }
+// 4. Ambos headers → 400 Bad Request (ambigüedad)
+// 5. Ninguno → 401 Unauthorized
 ```
 
 </div>
 
+<div style="font-size: 0.6em;">
+
 | Tipo | Header | Método | Uso |
 |------|--------|--------|-----|
-| **Humanos** | `Authorization: Bearer <jwt>` | JWT firmado | Frontend, Admin, Caja |
-| **Máquinas** | `X-API-Key: vtx_live_...` | API Key hasheada | ERP, VTEX, Partners |
+| **Humanos** | `Authorization: Bearer` | JWT firmado | Frontend, Admin, Caja |
+| **Máquinas** | `X-API-Key: vtx_live_...` | API Key SHA-256 | ERP, VTEX, Partners |
 | **Gateway** | `x-consumer-id` | Pre-validado | API Gateway corporativo |
 
+</div>
 
 Note:
 UnifiedAuthGuard evalua CADA request. JWT para humanos, API Key para maquinas.
@@ -1503,25 +1505,20 @@ Blacklist en Redis es fail-closed: si Redis cae, se rechazan todos.
 
 ### Rate Limiting Multi-Nivel
 
-<div style="font-size: 0.75em;">
-
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
-graph TD
-    R((Request)) --> G["Nivel 1: GLOBAL<br/>1000 req/s total"]
-    G --> IP["Nivel 2: POR IP<br/>100 req/min por IP"]
-    IP --> AK["Nivel 3: POR API KEY<br/>vtex: 5000 · erp: 1000 · test: 100"]
-    AK --> APP((Aplicación))
+%%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}, 'flowchart': {'nodeSpacing': 5, 'rankSpacing': 20}}}%%
+flowchart LR
+    R((Req)) --> G["GLOBAL<br/>1000 req/s"]
+    G --> IP["POR IP<br/>100 req/min"]
+    IP --> AK["POR API KEY<br/>vtex 5000 · erp 1000"]
+    AK --> APP((App))
 
-    style G fill:#c0392b,color:#fff
-    style IP fill:#e74c3c,color:#fff
-    style AK fill:#d35400,color:#fff
+    style G fill:#c0392b,color:#fff,font-size:10px
+    style IP fill:#e74c3c,color:#fff,font-size:10px
+    style AK fill:#d35400,color:#fff,font-size:10px
 ```
 
-**Storage**: Redis distribuido (no in-memory) → consistente en todas las instancias
-
-</div>
-
+> **Storage**: Redis distribuido — consistente en todas las instancias
 
 Note:
 3 niveles: Global (1000 req/s), por IP (100 req/min), por API Key (configurable).
@@ -1674,6 +1671,14 @@ COPY --from=builder /app/dist ./dist
 CMD ["dist/apps/integration-api/main.js"]
 ```
 
+Note:
+3 stages: Builder compila con Nx, Deps instala solo produccion, Runtime usa Distroless.
+Distroless no tiene shell ni package manager — si alguien entra al container, no puede hacer nada.
+
+----
+
+### Docker: Decisiones de Seguridad
+
 <div style="font-size: 0.7em;">
 
 | Aspecto | Decisión |
@@ -1683,53 +1688,67 @@ CMD ["dist/apps/integration-api/main.js"]
 | **Shell** | No tiene (attack surface mínimo) |
 | **Timezones** | Santiago, Lima, Madrid, UTC |
 | **Secrets** | BuildKit secrets (no build args) |
+| **Scanning** | Trivy CVE en cada build CI |
 
 </div>
 
+> Si alguien logra entrar al contenedor, **no hay shell** — attack surface mínimo
 
 Note:
-3 stages: Builder compila, Deps instala produccion, Runtime usa Distroless.
-Distroless no tiene shell ni package manager. Usuario non-root UID 65532.
-Trivy escanea CVEs en cada build.
+Google Distroless tiene 90% menos CVEs que Alpine.
+Non-root UID 65532 por defecto. Sin shell, sin package manager.
+Trivy escanea vulnerabilidades en cada build del CI.
 
 ----
 
-### Inventario GCP — Recursos Desplegados
+### Inventario GCP — Compute & Messaging
 
 <div style="font-size: 0.6em;">
 
-| Servicio GCP | Recurso | Detalle |
-|-------------|---------|---------|
+| Servicio | Recurso | Detalle |
+|----------|---------|---------|
 | **Cloud Run Services** | `integration-api` | API principal (2 vCPU, 1Gi, min=1, max=10) |
 | | `notification-worker` | Push subscriber SFMC (2 vCPU, 1Gi) |
 | **Cloud Run Jobs** | `sync-worker` | Sync ERP Dynamics AX |
-| | `notification-retry-worker` | Recovery de notificaciones fallidas |
+| | `notification-retry-worker` | Recovery notificaciones fallidas |
 | | `report-worker` | Reportes inventory/sales/pricing |
 | | `pickup-reminder-worker` | Recordatorio 24h retiro |
 | **Cloud Pub/Sub** | `notification-worker` | Topic + push subscription |
 | | `notification-worker-dlq` | Dead Letter Queue |
 | **Cloud Scheduler** | `notification-retry-scheduler` | Cada 5 min |
 | | `pickup-reminder-hourly` | Cada hora |
+
+</div>
+
+Note:
+2 Cloud Run Services (integration-api y notification-worker).
+4 Cloud Run Jobs (sync, retry, report, pickup-reminder).
+Pub/Sub con DLQ para notificaciones. Cloud Scheduler para tareas periodicas.
+
+----
+
+### Inventario GCP — Data, Security & CI
+
+<div style="font-size: 0.6em;">
+
+| Servicio | Recurso | Detalle |
+|----------|---------|---------|
 | **Memorystore Redis** | `integration-cache` | Redis 7.2, 1GB (workers) |
 | | `shared-cache` | Redis 7.2, 1GB (integration-api) |
 | **Firestore** | `integration` | Native mode, southamerica-east1 |
 | **Secret Manager** | 33 secrets | Credenciales, tokens, API keys |
 | **Artifact Registry** | `integration` | 10 imágenes Docker (~8GB) |
-| | `platform-images` | Base images Node.js |
 | **VPC** | `integration` | Peered con Omnichannel + Direct Egress |
 | **GCS** | `integration-nx-cache` | Nx remote cache para CI |
-| | `terraform-state` | Estado de Terraform |
-| **Workload Identity** | `github-actions-pool` | OIDC → SA (zero secrets en CI) |
+| **Workload Identity** | `github-actions-pool` | OIDC → SA (zero secrets) |
 
 </div>
 
-> **3 proyectos GCP**: `integration-management` (CI/CD, imágenes), `integration-prod-cl` (PROD Chile), `integration-dev` (QA Chile)
-
+> **3 proyectos GCP**: `integration-management` (CI/CD), `integration-prod-cl` (PROD), `integration-dev` (QA)
 
 Note:
-Tabla con todos los recursos GCP en produccion Chile.
-2 Services, 4 Jobs, 2 Redis 1GB, 1 Firestore, 33 secrets.
-3 proyectos GCP separados para aislamiento.
+2 Redis Memorystore de 1GB. 1 Firestore native mode. 33 secrets en Secret Manager.
+3 proyectos GCP separados para aislamiento por entorno.
 
 ----
 
@@ -1790,13 +1809,21 @@ Cada instancia maneja 100 req concurrentes. Si se supera, Cloud Run crea otra.
 
 </div>
 
+Note:
+QA: scale-to-zero (5-15 USD/mes). Prod: min=1 siempre caliente, max=10.
+Cada instancia 2 vCPU, 1Gi, 100 req concurrentes. CPU Boost para cold starts.
+
+----
+
+### Cloud Run — Auto-Scaling en Acción
+
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
 graph TD
     T((Tráfico)) --> LB[Cloud Run Load Balancer]
-    LB --> I1["Instance 1<br/>(warm, min=1)"]
-    LB --> I2["Instance 2<br/>(auto-scale)"]
-    LB --> I3["Instance N<br/>(max=10)"]
+    LB --> I1["Instance 1 - warm min=1"]
+    LB --> I2["Instance 2 - auto-scale"]
+    LB --> I3["Instance N - max=10"]
 
     style T fill:#f1c40f,color:#2c3e50
     style LB fill:#4285f4,color:#fff
@@ -1805,10 +1832,12 @@ graph TD
     style I3 fill:#2ecc71,color:#fff
 ```
 
+> Cada instancia maneja **100 req concurrentes** — si se supera, Cloud Run crea otra automáticamente
+
 Note:
-Cloud Run escala automáticamente de 1 a 10 instancias según la carga.
-En QA se usa scale-to-zero para ahorrar costos. En producción siempre hay al menos 1 instancia caliente.
-Cada instancia maneja hasta 100 requests concurrentes antes de que se cree otra.
+Cloud Run escala automaticamente de 1 a 10 instancias segun la carga.
+Siempre hay al menos 1 instancia caliente en produccion.
+Si una instancia llega a 100 req concurrentes, se crea otra.
 
 ----
 
@@ -1984,18 +2013,18 @@ Grafana Cloud es nuestra plataforma de observabilidad - logs, metricas y traces.
 
 ### Patrones de Resiliencia
 
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.55em;">
 
 | Patrón | Implementación | Qué Protege |
 |--------|---------------|-------------|
-| **Circuit Breaker** | Cockatiel (lib) | Evita cascada de fallos a servicios externos |
-| **Retry + Backoff** | Exponential (5→10→20→30s) | Recuperación automática ante fallos transitorios |
-| **Timeout** | Por request (60s prod) | Evita requests colgados |
-| **Bulkhead** | Concurrency limit por módulo | Aísla fallos entre módulos |
-| **Cache Stampede** | Singleflight + Probabilistic | Evita thundering herd en cache miss |
+| **Circuit Breaker** | Cockatiel | Cascada de fallos a externos |
+| **Retry + Backoff** | Exponential 5→10→20→30s | Fallos transitorios |
+| **Timeout** | 60s por request (prod) | Requests colgados |
+| **Bulkhead** | Concurrency limit | Aísla fallos entre módulos |
+| **Cache Stampede** | Singleflight + Probabilistic | Thundering herd en cache miss |
 | **Dead Letter Queue** | Pub/Sub DLQ | Mensajes fallidos no se pierden |
-| **Transactional Outbox** | DB + Event en misma transacción | Consistencia evento + persistencia |
-| **Graceful Degradation** | Conditional module loading | Si una DB falla, otros módulos siguen |
+| **Transactional Outbox** | DB + Event atómico | Consistencia evento + persistencia |
+| **Graceful Degradation** | Conditional module loading | Si DB falla, otros módulos siguen |
 
 </div>
 
@@ -2006,7 +2035,7 @@ El Cache Stampede protege contra N requests simultáneos a un mismo recurso.
 
 ----
 
-### Circuit Breaker
+### Circuit Breaker — Estados
 
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2'}}}%%
@@ -2022,6 +2051,14 @@ stateDiagram-v2
     HALF_OPEN: Permite 1 request de prueba
 ```
 
+Note:
+3 estados: Closed (normal), Open (fail-fast), Half-Open (probando).
+5 errores consecutivos lo abren. Despues de 30s deja pasar 1 request de prueba.
+
+----
+
+### Circuit Breaker — Implementación
+
 ```typescript
 const circuitBreaker = new CircuitBreakerPolicy({
   halfOpenAfter: 30_000,      // 30s antes de probar de nuevo
@@ -2034,11 +2071,11 @@ const result = await circuitBreaker.execute(() =>
 );
 ```
 
+> Librería: **Cockatiel** — lightweight, TypeScript nativo
 
 Note:
-3 estados: Closed (normal), Open (fail-fast), Half-Open (probando).
-5 errores consecutivos lo abren. Despues de 30s deja pasar 1 request.
-Usamos Cockatiel, no Hystrix ni opossum.
+Usamos Cockatiel, libreria TypeScript nativa y lightweight.
+Cada integracion externa tiene su propio circuit breaker independiente.
 
 ----
 
@@ -2129,23 +2166,23 @@ Boundaries preparados para extraer cualquier modulo como microservicio.
 
 ### Decisiones Arquitectónicas Documentadas
 
-<div style="font-size: 0.7em;">
+<div style="font-size: 0.55em;">
 
 > 50+ ADRs y 20+ RFCs documentan cada decisión
 
 | # | Decisión | Por qué |
 |---|----------|---------|
 | ADR-0001 | Flat Module Structure | Simplicidad sobre jerarquía |
-| ADR-0002 | Facade Pattern | Boundaries explícitos entre módulos |
-| ADR-0003 | Cloud Pub/Sub over BullMQ | Zero-ops, GCP nativo |
+| ADR-0002 | Facade Pattern | Boundaries explícitos |
+| ADR-0003 | Pub/Sub over BullMQ | Zero-ops, GCP nativo |
 | ADR-0007 | Fastify over Express | 2x más rápido |
 | ADR-0021 | Terraform IaC | Reproducibilidad multi-país |
-| RFC-0001 | Migración a Monolito Modular | Reduce complejidad operacional |
+| RFC-0001 | Monolito Modular | Reduce complejidad operacional |
 | RFC-0051 | Auth Convergence | Un solo modelo de seguridad |
 | RFC-0045 | VTEX External Seller | Integración marketplace |
-| RFC-0062 | Pragmatic Architecture | Complejidad proporcional al módulo |
+| RFC-0062 | Pragmatic Architecture | Complejidad proporcional |
 
-Cada decisión tiene: contexto, opciones evaluadas, decisión tomada, consecuencias.
+Cada decisión tiene: contexto, opciones evaluadas, decisión, consecuencias.
 
 </div>
 
@@ -2157,37 +2194,49 @@ RFC-0062 arquitectura pragmatica (no sobre-ingenierar CRUD).
 
 ---
 
-## Resumen Ejecutivo
+## Resumen Ejecutivo — Plataforma
 
-<div style="font-size: 0.7em;">
+<div style="font-size: 0.6em;">
 
 | Dimensión | Implementación |
 |-----------|---------------|
 | **Patrón** | Monolito Modular (extractable a microservicios) |
 | **Stack** | NestJS 11 + Fastify + TypeScript strict |
-| **Multi-País** | Adapter Pattern + Proyecto GCP aislado por país |
+| **Multi-País** | Adapter Pattern + GCP aislado por país |
 | **Integraciones** | VTEX Seller, Salesforce MC, Webpay, Niubiz, MercadoPago, Khipu |
-| **Workers** | 5 Cloud Run workers: notif, notif-retry, sync, report, pickup-reminder |
-| **Seguridad** | 8 capas (WAF → Auth → RBAC → Validation → Redaction) |
+| **Workers** | 5 Cloud Run: notif, retry, sync, report, pickup-reminder |
+| **Seguridad** | 8 capas (TLS → Auth → RBAC → Validation → Redaction) |
+| **Auth** | JWT (humanos) + API Key (M2M) |
+
+</div>
+
+Note:
+Primera parte del resumen ejecutivo — arquitectura y negocio.
+Monolito modular con boundaries estrictos. Multi-pais con adapter pattern.
+
+----
+
+### Resumen Ejecutivo — Infraestructura
+
+<div style="font-size: 0.6em;">
+
+| Dimensión | Implementación |
+|-----------|---------------|
 | **Deploy** | GCP Cloud Run, auto-scaling, zero-ops |
 | **CI/CD** | GitHub Actions + Nx affected + matrix multi-país |
 | **Resiliencia** | Circuit Breaker, Retry, Timeout, DLQ, Outbox |
 | **Observabilidad** | Pino + OpenTelemetry + Grafana Cloud + Sentry |
 | **IaC** | Terraform 5-phase bootstrap |
 | **Containers** | Distroless, non-root, Trivy scanning |
-| **Auth** | JWT (humanos) + API Key (M2M), zero-trust |
 | **Decisiones** | 50+ ADRs + 20+ RFCs documentados |
 
 </div>
 
 > **Filosofía**: Enterprise-grade con pragmatismo — complejidad proporcional al problema
 
-
 Note:
-Resumen ejecutivo para cerrar. Puntos mas impactantes:
-1. Monolito modular con boundaries tan estrictos como microservicios.
-2. Multi-pais con adapter pattern.
-3. 50+ ADRs y 20+ RFCs documentan cada decision.
+Segunda parte — infraestructura y operaciones.
+Todo GCP managed, zero-ops, Terraform IaC. 50+ ADRs documentan cada decision.
 4. Todo GCP managed, zero-ops, Terraform IaC.
 
 ---
