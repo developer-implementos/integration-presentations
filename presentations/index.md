@@ -25,7 +25,7 @@ Material de capacitación para el equipo
 </p>
 
 <div style="display: flex; justify-content: center; gap: 15px; margin-top: 50px;">
-<span style="background: #3b82f6; padding: 8px 16px; border-radius: 20px; font-size: 0.7em;">17 Presentaciones</span>
+<span style="background: #3b82f6; padding: 8px 16px; border-radius: 20px; font-size: 0.7em;">18 Presentaciones</span>
 <span style="background: #10b981; padding: 8px 16px; border-radius: 20px; font-size: 0.7em;">5 Categorías</span>
 <span style="background: #8b5cf6; padding: 8px 16px; border-radius: 20px; font-size: 0.7em;">~8h Contenido</span>
 </div>
@@ -54,7 +54,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 <div style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); padding: 20px 25px; border-radius: 16px; text-align: left;">
 <h3 style="margin: 0; font-size: 0.95em;">🏗️ Arquitectura</h3>
 <p style="color: #ddd6fe; font-size: 0.6em; margin: 8px 0 0 0; line-height: 1.4;">Clean Architecture y patrones</p>
-<span style="font-size: 0.55em; color: #c4b5fd;">4 presentaciones • ~2.5h</span>
+<span style="font-size: 0.55em; color: #c4b5fd;">5 presentaciones • ~3.5h</span>
 </div>
 
 <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px 25px; border-radius: 16px; text-align: left;">
@@ -190,6 +190,17 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 <p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Signals, Control Flow, Standalone Components</p>
 </div>
 <span style="background: #8b5cf6; color: #fff; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">60 min</span>
+</div>
+</a>
+
+<a href="architecture/enterprise-architecture-overview.html" style="text-decoration: none;">
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #f1c40f;">
+<span style="font-size: 1.4em;">🌐</span>
+<div style="text-align: left; flex: 1;">
+<h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Enterprise Architecture Overview</h4>
+<p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 0.6em;">Visión completa: multi-país, integraciones, infra GCP, CI/CD</p>
+</div>
+<span style="background: #f1c40f; color: #2c3e50; padding: 3px 10px; border-radius: 10px; font-size: 0.55em;">60 min</span>
 </div>
 </a>
 
