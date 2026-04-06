@@ -35,7 +35,7 @@ export function draw(d, C) {
   d.box(590, 120, 200, 60, 'ERP Cloud (Peru)', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 12 });
   d.note(690, 165, 'config: PE', { anchor: 'middle', size: 9 });
 
-  d.box(590, 205, 200, 60, 'ERP Cloud (Espana)', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 12 });
+  d.box(590, 205, 200, 60, 'ERP Cloud (España)', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 12 });
   d.note(690, 250, 'config: ES', { anchor: 'middle', size: 9 });
 
   // Arrows

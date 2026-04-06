@@ -39,7 +39,7 @@ export function draw(d, C) {
 
   // ACL Spain
   d.rect(440, 270, 180, 100, { fill: C.blueFill, stroke: C.blueStroke });
-  d.text(530, 288, 'ACL Espana', { size: 12, anchor: 'middle', weight: 'bold', color: C.blueStroke });
+  d.text(530, 288, 'ACL España', { size: 12, anchor: 'middle', weight: 'bold', color: C.blueStroke });
   d.box(450, 298, 160, 28, 'GiraAdapter', { fill: C.blueFill, stroke: C.blueStroke, fontSize: 10 });
   d.box(450, 332, 160, 28, 'Gira (API)', { fill: C.darkFill, stroke: C.darkStroke, fontSize: 10 });
 

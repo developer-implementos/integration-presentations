@@ -53,7 +53,7 @@ export function draw(d, C) {
   // Countries below
   d.box(300, 240, 90, 38, 'Chile', { fill: C.redFill, stroke: C.redStroke, fontSize: 13 });
   d.box(405, 240, 90, 38, 'Peru', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 13 });
-  d.box(510, 240, 90, 38, 'Espana', { fill: C.blueFill, stroke: C.blueStroke, fontSize: 13 });
+  d.box(510, 240, 90, 38, 'España', { fill: C.blueFill, stroke: C.blueStroke, fontSize: 13 });
 
   d.arrow(430, 200, 345, 240, { stroke: C.yellowStroke });
   d.arrow(430, 200, 450, 240, { stroke: C.yellowStroke });

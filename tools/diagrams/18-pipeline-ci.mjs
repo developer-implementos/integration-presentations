@@ -38,7 +38,7 @@ export function draw(d, C) {
   d.note(20, 295, '5. Deploy Multi-Pais (matrix paralelo)', { size: 10, color: C.yellowStroke });
   d.box(100, 308, 190, 30, 'Chile (CL)', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 12 });
   d.box(305, 308, 190, 30, 'Peru (PE)', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 12 });
-  d.box(510, 308, 190, 30, 'Espana (ES)', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 12 });
+  d.box(510, 308, 190, 30, 'España (ES)', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 12 });
   d.arrow(400, 345, 400, 370, { stroke: C.textLight });
 
   // Stage 6: Smoke Tests

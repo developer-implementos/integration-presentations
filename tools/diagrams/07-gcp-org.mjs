@@ -29,7 +29,7 @@ export function draw(d, C) {
 
   // Spain
   d.rect(40, 236, 180, 75, { fill: C.yellowFill, stroke: C.darkStroke, strokeWidth: 1.5 });
-  d.note(130, 251, 'Espana', { size: 12, anchor: 'middle', color: C.textDark });
+  d.note(130, 251, 'España', { size: 12, anchor: 'middle', color: C.textDark });
   d.box(50, 259, 75, 35, 'QA', { fill: C.yellowFill, stroke: C.yellowStroke, fontSize: 11 });
   d.box(135, 259, 75, 35, 'Prod', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 11 });
 
