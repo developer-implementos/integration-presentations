@@ -327,7 +327,7 @@ De arriba a abajo: consumidores, seguridad, API, workers, datos.
 
 ----
 
-### Beneficio: Desacoplamiento del ERP
+### Beneficio
 
 ![](../assets/excalidraw-detailed/desacoplamiento.svg)
 
