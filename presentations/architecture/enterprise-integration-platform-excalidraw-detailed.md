@@ -101,7 +101,7 @@ Note:
 
 ----
 
-### La Solución: Plataforma Composable y Modular
+### La Solución
 
 ![](../assets/excalidraw-detailed/la-solucion.svg)
 
