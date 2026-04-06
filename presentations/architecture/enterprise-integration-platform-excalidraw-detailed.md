@@ -94,22 +94,7 @@ Note:
 
 </div>
 
-```mermaid
-%%{init: {'theme': 'default', 'themeVariables': {'lineColor': '#5dade2'}, 'flowchart': {'nodeSpacing': 8, 'rankSpacing': 25, 'useMaxWidth': true, 'padding': 3}}}%%
-flowchart LR
-    CL1(ERP Chile) --> INT1(Integración ad-hoc)
-    CL2(WMS Chile) --> INT1
-    PE1(ERP Peru) --> INT2(Integración ad-hoc)
-    PE2(CRM Peru) --> INT2
-    INT1 --> APP1(Apps)
-    INT2 --> APP2(Apps)
-    style CL1 fill:#e74c3c,color:#fff,font-size:10px
-    style CL2 fill:#e74c3c,color:#fff,font-size:10px
-    style PE1 fill:#d35400,color:#fff,font-size:10px
-    style PE2 fill:#d35400,color:#fff,font-size:10px
-    style INT1 fill:#7f8c8d,color:#fff,font-size:10px
-    style INT2 fill:#7f8c8d,color:#fff,font-size:10px
-```
+![](../assets/excalidraw-detailed/el-problema.svg)
 
 Note:
 Integraciones ad-hoc, no escalable, no intercambiable.
