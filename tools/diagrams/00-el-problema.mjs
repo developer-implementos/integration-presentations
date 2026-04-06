@@ -24,8 +24,8 @@ export function draw(d, C) {
   d.box(440, 85, 80, 45, 'Apps', { fill: C.blueFill, stroke: C.blueStroke, fontSize: 13 });
 
   // --- Peru ---
-  d.box(20, 195, 130, 45, 'ERP Peru', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 13 });
-  d.box(20, 255, 130, 45, 'CRM Peru', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 13 });
+  d.box(20, 195, 130, 45, 'ERP Perú', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 13 });
+  d.box(20, 255, 130, 45, 'CRM Perú', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 13 });
   d.arrow(150, 217, 220, 240, { stroke: C.darkStroke });
   d.arrow(150, 277, 220, 255, { stroke: C.darkStroke });
   d.box(220, 215, 170, 55, 'Integración ad-hoc', { fill: C.darkFill, stroke: C.darkStroke, fontSize: 12 });

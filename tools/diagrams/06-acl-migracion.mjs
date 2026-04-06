@@ -32,7 +32,7 @@ export function draw(d, C) {
   d.box(590, 35, 200, 60, 'ERP Cloud (Chile)', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 12 });
   d.note(690, 80, 'config: CL', { anchor: 'middle', size: 9 });
 
-  d.box(590, 120, 200, 60, 'ERP Cloud (Peru)', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 12 });
+  d.box(590, 120, 200, 60, 'ERP Cloud (Perú)', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 12 });
   d.note(690, 165, 'config: PE', { anchor: 'middle', size: 9 });
 
   d.box(590, 205, 200, 60, 'ERP Cloud (España)', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 12 });

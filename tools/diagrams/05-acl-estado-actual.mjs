@@ -33,7 +33,7 @@ export function draw(d, C) {
 
   // ACL Peru
   d.rect(440, 155, 180, 100, { fill: C.orangeFill, stroke: C.orangeStroke });
-  d.text(530, 173, 'ACL Peru', { size: 12, anchor: 'middle', weight: 'bold', color: C.orangeStroke });
+  d.text(530, 173, 'ACL Perú', { size: 12, anchor: 'middle', weight: 'bold', color: C.orangeStroke });
   d.box(450, 183, 160, 28, 'CustomErpAdapter', { fill: C.orangeFill, stroke: C.orangeStroke, fontSize: 10 });
   d.box(450, 217, 160, 28, 'Custom ERP (REST)', { fill: C.darkFill, stroke: C.darkStroke, fontSize: 10 });
 

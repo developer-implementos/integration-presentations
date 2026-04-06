@@ -28,7 +28,7 @@ export function draw(d, C) {
 
   // Peru
   d.rect(260, 140, 180, 80, { fill: C.yellowFill, stroke: C.darkStroke, strokeWidth: 1.5 });
-  d.note(350, 158, 'Peru', { size: 12, anchor: 'middle', color: C.textDark });
+  d.note(350, 158, 'Perú', { size: 12, anchor: 'middle', color: C.textDark });
   d.box(270, 168, 75, 38, 'QA', { fill: C.yellowFill, stroke: C.yellowStroke, fontSize: 11 });
   d.box(355, 168, 75, 38, 'PROD', { fill: C.greenFill, stroke: C.greenStroke, fontSize: 11 });
 
