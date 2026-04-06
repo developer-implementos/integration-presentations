@@ -1,0 +1,40 @@
+/* Excalidraw presentation theme — warm cream background */
+.reveal {
+  background-color: #F5F0E8 !important;
+}
+
+.reveal .slides section {
+  color: #1a1a2e !important;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  color: #1a1a2e !important;
+}
+
+.reveal p, .reveal li, .reveal td, .reveal th {
+  color: #2c3e50 !important;
+}
+
+.reveal blockquote {
+  background: rgba(0,0,0,0.05) !important;
+  border-left-color: #8C27F1 !important;
+  color: #2c3e50 !important;
+}
+
+.reveal strong {
+  color: #1a1a2e !important;
+}
+
+.reveal code {
+  color: #8C27F1 !important;
+  background: rgba(0,0,0,0.06) !important;
+}
+
+.reveal a {
+  color: #3498db !important;
+}
+
+/* Speaker notes hint */
+.reveal .speaker-notes-paused {
+  color: #2c3e50 !important;
+}

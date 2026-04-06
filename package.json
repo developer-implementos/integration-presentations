@@ -4,10 +4,16 @@
   "description": "Presentaciones de integración para Integration API",
   "scripts": {
     "dev": "reveal-md presentations/ --theme night --css assets/css/custom.css --watch",
+    "dev:excalidraw": "reveal-md presentations/architecture/enterprise-architecture-excalidraw.md --theme white --css assets/css/excalidraw-theme.css --watch",
     "build": "reveal-md presentations/ --static dist --theme night --css assets/css/custom.css",
     "preview": "npx serve dist"
   },
   "devDependencies": {
-    "reveal-md": "^6.1.4"
+    "@aldinokemal2104/excalidraw-to-svg": "^1.0.7",
+    "@anthropic-ai/claude-code": "^2.1.90",
+    "excalidraw-to-svg": "^3.1.0",
+    "jsdom": "^29.0.1",
+    "reveal-md": "^6.1.4",
+    "roughjs": "^4.6.6"
   }
 }
