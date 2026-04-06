@@ -46,7 +46,7 @@ Bienvenidos. Platform multi-pais, 9 secciones + resumen ejecutivo. S para speake
 
 ---
 
-## 📋 Agenda
+## Agenda
 
 <div style="font-size: 0.55em;">
 
@@ -134,16 +134,12 @@ Modularidad, nube, datos, seguridad.
 
 ### Lineamientos
 
-<div style="font-size: 0.75em;">
-
-- Profundizar el trabajo de **arquitectura que permita escalar y replicar** soluciones entre países
-- Avanzar hacia mayor **estandarización, trazabilidad y gobernanza** tecnológica
-- Solucionar problemáticas de Peru y España que hoy **limitan el crecimiento** y control del negocio
-
-</div>
+- **Escalar y replicar** soluciones entre países
+- **Estandarizar** trazabilidad y gobernanza tecnológica
+- **Resolver** limitantes de Perú y España
 
 Note:
-Escalar entre paises, estandarizar, resolver Peru/Espana.
+3 lineamientos estrategicos: escalar, estandarizar, resolver.
 
 ----
 
@@ -491,7 +487,7 @@ workflow_dispatch. Mismo codigo, diferente config por pais.
 
 ----
 
-### Deployment Multi-País — Aislamiento
+### Aislamiento por País
 
 <div style="font-size: 0.55em;">
 
@@ -560,23 +556,9 @@ sync-worker se conecta a Dynamics AX via SQL directo.
 
 ----
 
-### Sync Worker — Ejemplo: Sincronización de Stock
+### Sync Worker — Stock Delta
 
-```mermaid
-%%{init: {'theme': 'default', 'themeVariables': {'lineColor': '#5dade2', 'actorTextColor': '#fff', 'signalTextColor': '#fff', 'actorBkg': '#3498db', 'actorBorder': '#2980b9', 'signalColor': '#5dade2'}}}%%
-sequenceDiagram
-    participant CS as Cloud Scheduler
-    participant SW as Sync Worker
-    participant AX as Dynamics AX SQL
-    participant FS as Firestore
-
-    CS->>SW: trigger (cada hora, 8AM-8PM Lun-Sab)
-    SW->>AX: SELECT stock WHERE updated > lastSync
-    AX-->>SW: rows (delta)
-    SW->>FS: upsert stock por sucursal
-    FS-->>SW: OK
-    SW->>SW: actualizar lastSync timestamp
-```
+![](../assets/excalidraw-detailed/sync-stock.svg)
 
 > Horario de tiendas: solo sincroniza cuando hay movimiento real de stock
 
@@ -587,7 +569,7 @@ Horario 8AM-8PM Lun-Sab = horario de tiendas, cuando hay movimiento real de stoc
 
 ----
 
-### Sync Worker — Estrategia de Sincronización
+### Estrategia de Sync
 
 <div style="font-size: 0.7em;">
 
@@ -667,7 +649,7 @@ Managed services. Preferir managed, self-hosted solo si necesario.
 
 ----
 
-### Arquitectura Redis (Memorystore)
+### Arquitectura Redis
 
 ```mermaid
 %%{init: {'theme': 'default', 'themeVariables': {'lineColor': '#5dade2'}}}%%
@@ -695,25 +677,34 @@ graph TB
     style M fill:#95a5a6,color:#fff
 ```
 
-<div style="font-size: 0.6em;">
+Note:
+1 Redis compartido. Si Redis cae, circuit breaker activa in-memory mock.
+
+----
+
+### Redis — Namespacing por Keys
+
+<div style="font-size: 0.7em;">
 
 | Uso | Key Prefix | Fail Strategy |
 |-----|-----------|---------------|
 | **Auth Blacklist** | `logout_token_*` | Fail-closed (deniega acceso) |
-| **Rate Limiting** | `throttle:*` | Fail-closed (429 Too Many Requests) |
+| **Rate Limiting** | `throttle:*` | Fail-closed (429) |
 | **Cache General** | `cache:*` | StampedeGuard + Singleflight |
 | **Distributed Locks** | `lock:*` | Redlock pattern |
 | **Pub/Sub Dedup** | `idempotency:*` | Message deduplication |
 
 </div>
 
+> 1 instancia, 5 propósitos — separación lógica por key prefix
+
 Note:
-1 Redis compartido, namespacing por key prefix. Fail-closed en auth y rate limiting.
-StampedeGuard previene thundering herd. Si Redis cae, in-memory mock para dev.
+Namespacing por key prefix. Fail-closed en auth y rate limiting.
+StampedeGuard previene thundering herd en cache miss.
 
 ----
 
-### Memorystore — Configuración Actual vs HA
+### Memorystore — BASIC vs HA
 
 <div style="font-size: 0.7em;">
 
@@ -737,7 +728,7 @@ Cuando el costo de downtime supere $50/mes, subir a STANDARD_HA. Zero code chang
 
 ----
 
-### Inventario GCP — Compute & Messaging
+### Inventario GCP
 
 <div style="font-size: 0.6em;">
 
@@ -856,20 +847,14 @@ Boundaries tan estrictos como microservicios, sin el overhead operacional. Shopi
 
 ----
 
-### Regla Fundamental: No Shared State
+### No Shared State
 
 ![](../assets/excalidraw-detailed/no-shared-state.svg)
 
-<div style="font-size: 0.7em;">
-
-- **1 Firestore**, pero cada módulo es dueño de sus **colecciones**
-- **NUNCA** se importa el schema/repositorio de otro módulo
-- Comunicación inter-módulo: **Facade** (sync) o **Evento** (async)
-
-</div>
+> 1 Firestore, cada módulo dueño de sus colecciones — comunicación vía **Facade** o **Evento**
 
 Note:
-1 Firestore, cada modulo dueno de sus colecciones. Comunicacion via Facade.
+NUNCA importar schema/repositorio de otro modulo. Facade para sync, Evento para async.
 
 ----
 
@@ -930,23 +915,9 @@ VTEX, Salesforce, Algolia, 4 gateways pago, 3 ERPs, Pub/Sub.
 
 ----
 
-### Salesforce Marketing Cloud — Flujo
+### Salesforce MC — Flujo
 
-```mermaid
-%%{init: {'theme': 'default', 'themeVariables': {'lineColor': '#5dade2', 'actorTextColor': '#fff', 'signalTextColor': '#fff', 'noteBkgColor': '#2c3e50', 'noteTextColor': '#fff', 'actorBkg': '#3498db', 'actorBorder': '#2980b9', 'signalColor': '#5dade2'}}}%%
-sequenceDiagram
-    participant API as Integration API
-    participant PS as Cloud Pub/Sub
-    participant NW as Notification Worker
-    participant SF as Salesforce MC
-
-    API->>PS: 1. Publish OrderConfirmedEvent
-    PS->>NW: 2. Push delivery HTTP
-    NW->>SF: 3. OAuth2 token request
-    SF-->>NW: access_token
-    NW->>SF: 4. Fire Journey
-    Note right of SF: SFMC decide canal<br/>Email - SMS<br/>WhatsApp - Push
-```
+![](../assets/excalidraw-detailed/salesforce-mc.svg)
 
 Note:
 Salesforce Marketing Cloud es el motor de notificaciones transaccionales.
@@ -1055,35 +1026,9 @@ La clave es que las dependencias siempre van de afuera hacia adentro.
 
 ----
 
-### Flujo Completo — Request a través de las Capas
+### Request entre Capas
 
-```mermaid
-%%{init: {'theme': 'default', 'themeVariables': {'lineColor': '#5dade2', 'actorTextColor': '#fff', 'signalTextColor': '#fff', 'actorBkg': '#2c3e50', 'actorBorder': '#5dade2', 'signalColor': '#5dade2'}}}%%
-sequenceDiagram
-    participant Client
-    participant Controller as Controller
-    participant Facade as Facade
-    participant Service as Service
-    participant Entity as Entity
-    participant Repo as Repository
-    participant DB as MongoDB
-
-    Client->>Controller: POST /v1/stock/reserve
-    Controller->>Controller: Validar DTO
-    Controller->>Facade: reserveStock(dto)
-    Facade->>Service: execute(command)
-    Service->>Repo: findBySku(sku)
-    Repo->>DB: findOne({ sku })
-    DB-->>Repo: document
-    Repo-->>Service: Stock entity
-    Service->>Entity: stock.reserve(qty)
-    Entity->>Entity: Validar reglas
-    Entity-->>Service: OK / Error
-    Service->>Repo: save(stock)
-    Repo->>DB: updateOne()
-    Service-->>Controller: void
-    Controller-->>Client: 200 OK
-```
+![](../assets/excalidraw-detailed/request-capas.svg)
 
 Note:
 Sigue las flechas: el request baja por las capas, la respuesta sube.
@@ -1113,7 +1058,7 @@ Si la logica es de negocio, va en Domain. Si es tecnica, va en Infrastructure.
 
 ----
 
-### Error Handling Estandarizado
+### Error Handling
 
 > Errores estandarizados con DomainError
 
@@ -1653,7 +1598,7 @@ Pipeline con Nx affected, security scanning y deploy multi-pais en paralelo.
 
 ----
 
-### Flujo de Validación — Enfoque Híbrido
+### Validación — Enfoque Híbrido
 
 ```mermaid
 %%{init: {'theme': 'default', 'themeVariables': {'lineColor': '#5dade2'}}}%%
@@ -1817,19 +1762,7 @@ El Cache Stampede protege contra N requests simultáneos a un mismo recurso.
 
 ### Circuit Breaker — Estados
 
-```mermaid
-%%{init: {'theme': 'default', 'themeVariables': {'lineColor': '#5dade2'}}}%%
-stateDiagram-v2
-    [*] --> CLOSED
-    CLOSED --> OPEN: 5 errores consecutivos
-    OPEN --> HALF_OPEN: después de 30s
-    HALF_OPEN --> CLOSED: request de prueba OK
-    HALF_OPEN --> OPEN: request de prueba falla
-
-    CLOSED: Requests pasan normalmente
-    OPEN: Requests rechazados (fail-fast)
-    HALF_OPEN: Permite 1 request de prueba
-```
+![](../assets/excalidraw-detailed/circuit-breaker.svg)
 
 Note:
 3 estados: Closed (normal), Open (fail-fast), Half-Open (probando).
