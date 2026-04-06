@@ -1242,7 +1242,7 @@ sync-worker se conecta a Dynamics AX via SQL directo.
 
 ----
 
-### Sync Worker — Tareas Programadas
+### Sync Worker — Ejemplo: Sincronización de Stock
 
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': {'lineColor': '#5dade2', 'actorTextColor': '#fff', 'signalTextColor': '#fff', 'actorBkg': '#3498db', 'actorBorder': '#2980b9', 'signalColor': '#5dade2'}}}%%
@@ -1250,28 +1250,49 @@ sequenceDiagram
     participant CS as Cloud Scheduler
     participant SW as Sync Worker
     participant AX as Dynamics AX SQL
+    participant FS as Firestore
 
-    CS->>SW: stock (cada hora, 8AM-8PM Lun-Sab)
-    SW->>AX: SELECT stock delta
-    AX-->>SW: rows
-
-    CS->>SW: erp (cada 4 horas)
-    SW->>AX: SELECT data delta
-    AX-->>SW: rows
-
-    CS->>SW: full (diario 2AM)
-    SW->>AX: SELECT * (full sync)
-    AX-->>SW: all data
-
-    CS->>SW: reconcile (domingos 3AM)
-    SW->>AX: Reconciliación semanal
+    CS->>SW: trigger (cada hora, 8AM-8PM Lun-Sab)
+    SW->>AX: SELECT stock WHERE updated > lastSync
+    AX-->>SW: rows (delta)
+    SW->>FS: upsert stock por sucursal
+    FS-->>SW: OK
+    SW->>SW: actualizar lastSync timestamp
 ```
 
+> Horario de tiendas: solo sincroniza cuando hay movimiento real de stock
 
 Note:
-4 tipos de sync con Dynamics AX:
-Stock: cada hora 8AM-8PM lun-sab (horario tiendas).
-ERP: delta cada 4 horas. Full: diario 2AM. Reconcile: domingos 3AM.
+Sync Worker se conecta directo al SQL de Dynamics AX (no usa ACL).
+Solo trae deltas (registros modificados desde última sync). Upsert en Firestore por sucursal.
+Horario 8AM-8PM Lun-Sab = horario de tiendas, cuando hay movimiento real de stock.
+
+----
+
+### Sync Worker — Estrategia de Sincronización
+
+<div style="font-size: 0.7em;">
+
+| Modo | Frecuencia | Qué hace | Por qué |
+|------|-----------|----------|---------|
+| **Delta** | Cada hora (8AM-8PM) | `WHERE updated > lastSync` | Rápido, solo cambios |
+| **Full** | Diario 2AM | `SELECT *` → replace completo | Safety net: corrige deltas perdidos |
+| **Reconciliación** | Domingos 3AM | Compara Firestore vs ERP | Detecta discrepancias silenciosas |
+
+</div>
+
+```text
+Delta (rápido, frecuente)     ← 99% del tiempo
+Full (completo, nocturno)     ← corrige drift acumulado
+Reconciliación (verificación) ← alerta si hay diferencias
+```
+
+> *Si delta falla, full lo corrige. Si full falla, reconciliación lo detecta.*
+
+Note:
+3 capas de proteccion: delta para velocidad, full para correccion, reconciliacion para deteccion.
+Es el patron que usan Stripe y Shopify para sync de datos criticos.
+Si reconciliacion detecta discrepancias, genera alerta en Teams.
 
 ----
 
@@ -1644,9 +1665,13 @@ graph TD
     style DB fill:#fbbc04,color:#2c3e50
 ```
 
+<div style="font-size: 0.7em;">
+
 - **1 Firestore**, pero cada módulo es dueño de sus **colecciones**
 - **NUNCA** se importa el schema/repositorio de otro módulo
 - Comunicación inter-módulo: **Facade** (sync) o **Evento** (async)
+
+</div>
 
 Note:
 1 Firestore, cada modulo dueno de sus colecciones. Comunicacion via Facade.
