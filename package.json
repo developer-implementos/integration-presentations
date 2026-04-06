@@ -6,7 +6,10 @@
     "dev": "reveal-md presentations/ --theme night --css assets/css/custom.css --watch",
     "dev:excalidraw": "reveal-md presentations/architecture/enterprise-architecture-excalidraw.md --theme white --css assets/css/excalidraw-theme.css --watch",
     "build": "reveal-md presentations/ --static dist --theme night --css assets/css/custom.css",
-    "preview": "npx serve dist"
+    "preview": "npx serve dist",
+    "diagrams": "node tools/generate-diagrams-v2.mjs",
+    "diagrams:list": "node tools/generate-diagrams-v2.mjs --list",
+    "diagrams:validate": "node tools/generate-diagrams-v2.mjs --validate"
   },
   "devDependencies": {
     "@aldinokemal2104/excalidraw-to-svg": "^1.0.7",
