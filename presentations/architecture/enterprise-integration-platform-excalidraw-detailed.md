@@ -84,20 +84,11 @@ Note:
 
 ### El Problema
 
-<div style="font-size: 0.7em;">
-
-- Operamos en **3 países con aplicaciones y sistemas distintos** — necesitamos unificarlos
-- Cada país tiene su propio ERP, WMS, CRM → **no podemos intercambiar componentes** de software fácilmente
-- Integraciones punto a punto → **frágil, costoso, no escalable**
-- No existe una arquitectura que se haga cargo de **conectar correctamente los servicios** de cada aplicación
-- Necesitamos una plataforma **composable**: escalable, segura, que permita **poner y sacar piezas de software** de manera rápida y dinámica
-
-</div>
-
 ![](../assets/excalidraw-detailed/el-problema.svg)
 
 Note:
-Integraciones ad-hoc, no escalable, no intercambiable.
+3 paises, sistemas distintos, integraciones ad-hoc. Fragil, costoso, no escalable.
+La solucion: plataforma composable que permita poner y sacar piezas de software.
 
 ----
 
