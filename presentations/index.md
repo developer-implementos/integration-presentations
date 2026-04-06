@@ -147,10 +147,10 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 
 <!-- .slide: data-background="#1a1a2e" -->
 
-<div style="display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 750px; margin: 0 auto;">
+<div style="display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 750px; margin: 0 auto;">
 
 <a href="architecture/clean-architecture.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 10px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
 <span style="font-size: 1.4em;">🧅</span>
 <div style="text-align: left; flex: 1;">
 <h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Clean Architecture</h4>
@@ -161,7 +161,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </a>
 
 <a href="architecture/platform-architecture.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 10px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
 <span style="font-size: 1.4em;">🏛️</span>
 <div style="text-align: left; flex: 1;">
 <h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Platform Architecture</h4>
@@ -172,7 +172,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </a>
 
 <a href="architecture/testing-patterns.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 10px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
 <span style="font-size: 1.4em;">🧪</span>
 <div style="text-align: left; flex: 1;">
 <h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Testing Patterns</h4>
@@ -183,7 +183,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </a>
 
 <a href="architecture/modern-angular.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 10px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #8b5cf6;">
 <span style="font-size: 1.4em;">🅰️</span>
 <div style="text-align: left; flex: 1;">
 <h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Angular Moderno</h4>
@@ -193,8 +193,16 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </div>
 </a>
 
+</div>
+
+----
+
+<!-- .slide: data-background="#1a1a2e" -->
+
+<div style="display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 750px; margin: 0 auto;">
+
 <a href="architecture/enterprise-architecture-overview.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #f1c40f;">
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 10px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #f1c40f;">
 <span style="font-size: 1.4em;">🌐</span>
 <div style="text-align: left; flex: 1;">
 <h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Enterprise Architecture Overview</h4>
@@ -205,7 +213,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </a>
 
 <a href="architecture/enterprise-integration-platform-mermaid.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #e74c3c;">
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 10px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #e74c3c;">
 <span style="font-size: 1.4em;">🏗️</span>
 <div style="text-align: left; flex: 1;">
 <h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Integration Platform (Mermaid)</h4>
@@ -216,7 +224,7 @@ Naveguen con las flechas o presionen ESC para ver el mapa completo.
 </a>
 
 <a href="architecture/enterprise-integration-platform.html" style="text-decoration: none;">
-<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 12px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #2ecc71;">
+<div style="background: linear-gradient(90deg, #1e293b 0%, #334155 100%); padding: 10px 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #2ecc71;">
 <span style="font-size: 1.4em;">✏️</span>
 <div style="text-align: left; flex: 1;">
 <h4 style="margin: 0; color: #f1f5f9; font-size: 0.85em;">Integration Platform (Excalidraw)</h4>
